@@ -9,6 +9,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from "@mui/material/Select";
 import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Deactivate from './Deactivate';
 import "./userstyle.css"
 // import axios from "axios";
 
@@ -17,6 +20,7 @@ import "./userstyle.css"
 export default function Profile() {
     const [shownoti, setShownoti] = React.useState(false);
     const [edit, setEdit] = React.useState(false);
+    const [showdeactivate,setShowdeactivate]=React.useState(false)
     const [fullformdata, setFullformdata] = React.useState(
         { name: "", email: "", phone: "", address: "", bio: "",gender:""}
     )
@@ -49,7 +53,12 @@ export default function Profile() {
         })
     }
 
-    // console.log(fullformdata.gender);
+    const deleteAcc=()=>
+    {
+        setShowdeactivate(!showdeactivate);
+    }
+
+    console.log(fullformdata.gender);
     return (
         <div className='fullprofile'>
             <div className='profile1'>
@@ -81,7 +90,7 @@ export default function Profile() {
                     <Button variant='outlined' id="pwdroute">Update Password</Button>
                 </Link>
 
-                <Button variant="contained" id="daac">Deactivate Account</Button>
+                <Button variant="contained" id="daac" onClick={deleteAcc}>Deactivate Account</Button>
             </div>
 
             <div className='profile2'>
@@ -97,6 +106,7 @@ export default function Profile() {
                                 onChange={formdatachange}
                                 name="name"
                                 autoComplete="off"
+                                id="inputline"
                             />
                             <br /><br></br>
                             <TextField
@@ -105,6 +115,7 @@ export default function Profile() {
                                 disabled
                                 name="email"
                                 autoComplete="off"
+                                id="inputline"
                             />
                             <br /><br></br>
 
@@ -115,19 +126,24 @@ export default function Profile() {
                                 disabled={!edit}
                                 name="phone"
                                 autoComplete="off"
+                                id="inputline"
                             />
                             <br /><br></br>
                             <TextField
                                 label="Address" variant="outlined"
                                 onChange={formdatachange}
                                 disabled={!edit}
-                                name="address"
+                                name="addresss"
                                 autoComplete="off"
+                                id="inputline"
                             />
                             <br /><br></br>
 
+                            <FormControl>
+                            <InputLabel>Gender</InputLabel>
                             <Select  
-                            id="mf" 
+                            id="mf"
+                            label="Gender" 
                             value={fullformdata.gender} 
                             onChange={formdatachange} 
                             name="gender"
@@ -135,15 +151,17 @@ export default function Profile() {
                                 <MenuItem value='male' id="mgopt">Male</MenuItem>
                                 <MenuItem value='female' id="fgopt">Female</MenuItem>
                                 <MenuItem value='other' id="ogopt">Other</MenuItem>
-                            </Select><br/><br/>
+                            </Select>
+                            </FormControl><br/><br/>
+                            
 
                             <TextField label="Bio"
                                 onChange={formdatachange}
                                 disabled={!edit}
                                 name="bio"
                                 autoComplete="off"
+                                id="inputline"
                             />
-
 
                         </div>
 
@@ -157,12 +175,10 @@ export default function Profile() {
                     ) : (
                         <Button variant="contained" onClick={forEdit}>Edit</Button>
                     )}
+                    {showdeactivate&&<Deactivate close={setShowdeactivate}/>}
                     <ToastContainer autoClose={1000} />
                 </div>
             </div>
-
-
-
         </div>
 
 
