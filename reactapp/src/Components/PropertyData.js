@@ -1,0 +1,33 @@
+import React from 'react';
+export const PropertyData=[
+    {
+        pNo:1,
+        pName:'a1',
+        price:10,
+        location:'L1'
+    },
+    {
+        pNo:2,
+        pName:'a2',
+        price:10,
+        location:'L2'
+    },
+    {
+        pNo:3,
+        pName:'a3',
+        price:10,
+        location:'L3'
+    },
+    {
+        pNo:4,
+        pName:'a4',
+        price:10,
+        location:'L4'
+    },
+    {
+        pNo:5,
+        pName:'a5',
+        price:10,
+        location:'L5'
+    },
+]
