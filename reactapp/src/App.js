@@ -12,6 +12,7 @@ import AddProperty from "./agent/AddProperty";
 import Prop from "./Pages/Website/proppage/propview";
 import Cards from "./Pages/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
+import Profile_update from "./agent/Profile_update";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Profile_update" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
           <Route path="/pwd" element={<Changepass />} />
           <Route path="/homepage" element={<Homepage />} />
