@@ -6,7 +6,10 @@ import Register from "./Pages/Auth/Register";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Helppage from "./Pages/Website/Userpage/Helppage/Helppage";
 import FindAgent from "./Pages/Website/Userpage/FindAgent/Agentfinder";
-
+import AddProperty from "./agent/AddProperty";
+import Prop from "./Pages/Website/proppage/propview";
+import Cards from "./Pages/UserWishList/Cards";
+import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
 
 function App() {
   return (
@@ -19,6 +22,10 @@ function App() {
           <Route path="/homepage" element={<Homepage/>} />
           <Route path="/help" element={<Helppage/>} />
           <Route path="/agent" element={<FindAgent/>} />
+          <Route path="/AddProperty"element={<AddProperty/>} />
+          <Route path="/prop" element={<Prop />} />
+          <Route path="/userwishlist" element={<Cards />} />
+          <Route path="/propertydescription" element={<PropertyDetails />} />
         </Routes>
       </BrowserRouter>
     </div>

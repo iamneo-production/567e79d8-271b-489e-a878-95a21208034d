@@ -1,0 +1,23 @@
+body {
+  color: #394362;
+}
+.card {
+  width: 21rem;
+  margin-bottom: 35px;
+  padding: 10px;
+  margin: 15px;
+}
+.card-text {
+  font-size: 0.9rem;
+}
+.container-fluid.row {
+  padding: top 6rem;
+}
+.fav-header {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.empty-text {
+  text-align: center;
+}
