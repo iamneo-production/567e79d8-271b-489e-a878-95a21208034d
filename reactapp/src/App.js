@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Website from "./Pages/Website";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
-import Profile_update from "./agent/Profile_update";
+import Profile_update from "./agent1/Profile_update";
 
 function App() {
   return (
