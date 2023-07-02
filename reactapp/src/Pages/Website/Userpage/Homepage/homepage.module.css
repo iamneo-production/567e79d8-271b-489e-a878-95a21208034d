@@ -1,0 +1,346 @@
+.main{
+    width: 100vw;
+    height: 300vh;
+    background-color: #00274C;
+}
+.welcome{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    background-color: #00274C;
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-family: Arial;
+    color: white;
+}
+.quote{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00274C;
+    font-size: 25px;
+    font-family: Arial;
+    color: white;
+}
+
+.container{
+    width: 100%;
+    height: 150px;
+    background-color: #00274C;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+.search_bar{
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    background: white;
+    padding: 10px 20px;
+    height: 59px;
+}
+
+.search_bar input{
+    background-color: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: black;
+}
+::placeholder{
+    color: black;
+}
+
+.search_bar button img{
+    width: 30px;
+}
+
+.search_bar button{
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.display{
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: space-around;
+}
+.display img{
+    width: 20%;
+    border-radius: 20px;
+}
+.lines{
+    width: 100%;
+    height: 80px;
+    background-color:#00274C;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 10px ;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.img2{
+    width: 30%;
+    background-color: #00274C;
+    padding-left: 20px;
+}
+.img3{
+    width: 30%;
+    padding-left: 40px;
+}
+
+.why{
+    width: 100%;
+    height: 150px;
+    background-color:#00274C;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.r{
+    width: 100%;
+    height: 500px;
+    background-color:#00274C;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.r1{
+    width: 25%;
+    height: 100%;
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+}
+.r2{
+    width: 25%;
+    height: 100%;
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+
+}
+.r3{
+    width: 25%;
+    height: 100%;
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+
+}
+
+.r img{
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+}
+.heading{
+    width: 100%;
+    height: 15%;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text{
+    width: 100%;
+    height: 35%;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.options{
+    width: 100%;
+    height: 700px;
+    background-color: #00274C;
+}
+.our_services{
+    width: 100%;
+    height: 150px;
+    background-color: #00274C;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.t{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #00274C;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+.t1{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: white;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.t2{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: white;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.t3{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: white;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.b{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #00274C;
+    margin-top: 50px;
+}
+.b1{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 1s;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.b2{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 1s;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.b3{
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 1s;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.t1:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+.t2:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+.t3:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+.b1:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+.b2:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+.b3:hover{
+    transform: scale(1.2);
+    z-index: 0.5;
+}
+
+.t img{
+    width: 40%;
+    height:40%;
+}
+.b img{
+    width: 40%;
+    height:40%;
+}
+
+h1{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
