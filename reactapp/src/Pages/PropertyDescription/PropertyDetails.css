@@ -1,0 +1,50 @@
+body {
+  color: #394362;
+}
+.property-details {
+  padding: 10px;
+}
+.icon svg {
+  width: 35px;
+  min-width: 35px;
+  height: 25px;
+  font-size: 1rem;
+  color: #003153;
+  margin: 7px;
+}
+
+.del-icon svg:focus,
+.del-icon svg:hover .heart-icon svg:focus,
+.heart-icon svg:hover {
+  color: rgba(255, 0, 0, 0.713);
+  outline: none;
+  cursor: pointer;
+}
+.header-title,
+.overview,
+.amenities {
+  color: #003153;
+  font-weight: bold;
+}
+.header-detail {
+  color: #4169e1;
+}
+.main-container {
+  margin: 10px;
+}
+.contact-button {
+  margin-left: 20%;
+}
+.price {
+  color: #4169e1;
+  font-weight: 600;
+  font-size: large;
+}
+.mail-icon svg {
+  width: 35px;
+  height: 25px;
+  font-size: 1rem;
+  color: #003153;
+  padding-left: 0;
+  margin-left: 0;
+}
