@@ -1,0 +1,27 @@
+
+.container{
+    justify-content: flex-start;
+    margin-top: 10px;
+      
+   }
+  
+  h1{
+    align-self: flex-start;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  
+  .total-card,
+  .rent-card,
+  .sell-card
+  {
+      width: 350px;
+      font-size: large; 
+      align-items: center;
+  }
+  
+  .one-card, .two-card{
+    width : 500px;
+    padding: 40px 5px 40px 5px;
+  
+  }
