@@ -13,7 +13,7 @@ import AgentRecord from './Components/AgentRecord';
 import UserRecord from './Components/UserRecord';
 import PropertyRecord from './Components/PropertyRecord'
 import search from './Components/search';
-import AddProperty from './Components/AddProperty';
+import AdProperty from './Components/AdProperty';
 import AddAgent from './Components/AddAgents';
 import AddUser from './Components/AddUser';
 import UpdateAgent from './Components/UpdateAgent';
@@ -49,7 +49,7 @@ function App() {
           <Route path='UserRecord' Component={UserRecord}></Route>
           <Route path='PropertyRecord' Component={PropertyRecord}></Route>
           <Route path='search' Component={search}></Route>
-          <Route path='AddProperty' Component={AddProperty}></Route>
+          <Route path='AdProperty' Component={AdProperty}></Route>
           <Route path='AddAgent' Component={AddAgent}></Route>
           <Route path='AddUser' Component={AddUser}></Route>
           <Route path='UpdateAgent' Component={UpdateAgent}></Route>

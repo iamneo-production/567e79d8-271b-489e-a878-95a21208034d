@@ -23,8 +23,8 @@ import {
 import { DashboardData } from './DashboardData';
 
 const Dashboard = () => {
-  const [hand,setHand]=useState('');
-  axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data.length));
+  {/*const [hand,setHand]=useState('');
+axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data.length));*/}
   const data = [
     {
       "name": "Kolkata",
@@ -57,19 +57,19 @@ const Dashboard = () => {
   ]
   return (
     <>
-<Container style={{paddingLeft:"125px",paddingTop:"50px"}}>
+<Container style={{paddingLeft:"200px",paddingTop:"50px"}}>
   <Row>
     <Col>
-          <Card style={{backgroundColor:"#ff0000"}}>
+          <Card style={{backgroundColor:"#ff0000",height:"175px",width:"200px",paddingRight:"0px"}} className="mr-0">
             <Card.Body>
             <FaIcons.FaUserSecret className='fa-5x'/>
-            <h3>{hand}</h3>
+            <h3>25</h3>
               <h4>Total Agent</h4>
             </Card.Body>
           </Card>
     </Col>
-        <Col>
-          <Card style={{backgroundColor:"#FC8213"}}>
+        <Col style={{width:"200px"}}>
+          <Card style={{backgroundColor:"#FC8213",height:"175px",width:"200px"}}>
             <Card.Body>
               <FaIcons.FaUser className='fa-5x'/>
               <h3>20</h3>
@@ -78,7 +78,7 @@ const Dashboard = () => {
           </Card>
         </Col>
         <Col>
-          <Card style={{backgroundColor:"#1355f9"}}>
+          <Card style={{backgroundColor:"#1355f9",height:"175px",width:"300px"}}>
             <Card.Body>
             <FaIcons.FaBuilding className='fa-5x'/>
               <h3>50</h3>
@@ -88,9 +88,9 @@ const Dashboard = () => {
         </Col>
   </Row>
 </Container>
-<Container>
+<Container style={{paddingLeft:"250px"}}>
 <Col>
-<BarChart width={1000} height={300} data={data} style={{paddingLeft:"100px",paddingTop:"20px"}}>
+<BarChart width={800} height={300} data={data} style={{paddingTop:"20px"}}>
   <CartesianGrid strokeDasharray="3 3" />
   <XAxis dataKey="name" />
   <YAxis />

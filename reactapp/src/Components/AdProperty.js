@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/esm/Container';
 import FormGroup from 'react-bootstrap/esm/FormGroup';
 import FormLabel from 'react-bootstrap/esm/FormLabel';
 
-const AddProperty = () => {
+const AdProperty = () => {
   return (
 <Container style={{paddingTop:"20px",paddingLeft:"150px"}}>
     <Form>
@@ -105,4 +105,4 @@ const AddProperty = () => {
   )
 }
 
-export default AddProperty
+export default AdProperty

@@ -17,7 +17,7 @@ return (
   <Container style={{paddingLeft:"125px",paddingTop:"50px"}}>
     <Row>
       <Col>
-        <Card style={{backgroundColor:"#ff0000"}}>
+        <Card style={{backgroundColor:"#ff0000",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaBuilding className='fa-5x'/>
             <Link to="/AdminHomepage/PropertyRecord" style={{textDecoration:"none"}}>
@@ -27,17 +27,17 @@ return (
         </Card>
       </Col>
       <Col>
-        <Card style={{backgroundColor:"#FC8213"}}>
+        <Card style={{backgroundColor:"#FC8213",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaUserPlus className='fa-5x'/>
-            <Link to="/AdminHomepage/AddProperty" style={{textDecoration:"none"}}>
+            <Link to="/AdminHomepage/AdProperty" style={{textDecoration:"none"}}>
               <h4 className='second' style={{color:"black"}}>Add Property</h4>
             </Link>
           </Card.Body>
         </Card>
       </Col>
       <Col>
-        <Card style={{backgroundColor:"#1355f9"}}>
+        <Card style={{backgroundColor:"#1355f9",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaCheckCircle className='fa-5x'/>
             <Link to="#" style={{textDecoration:"none"}}>

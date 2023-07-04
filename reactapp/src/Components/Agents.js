@@ -29,7 +29,7 @@ const Agents = () => {
   <Container style={{paddingLeft:"125px",paddingTop:"50px"}}>
     <Row>
       <Col>
-        <Card style={{backgroundColor:"#ff0000"}}>
+        <Card style={{backgroundColor:"#ff0000",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaUserSecret className='fa-5x'/>
             <Link to="/AdminHomepage/AgentRecord" style={{textDecoration:"none"}}>
@@ -39,7 +39,7 @@ const Agents = () => {
         </Card>
       </Col>
       <Col>
-        <Card style={{backgroundColor:"#FC8213"}}>
+        <Card style={{backgroundColor:"#FC8213",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaUserPlus className='fa-5x'/>
             <Link to="/AdminHomepage/AddAgent" style={{textDecoration:"none"}} >
@@ -49,10 +49,10 @@ const Agents = () => {
         </Card>
       </Col>
       <Col>
-        <Card style={{backgroundColor:"#1355f9"}}>
+        <Card style={{backgroundColor:"#1355f9",height:"175px",width:"200px"}}>
           <Card.Body>
             <FaIcons.FaCheckCircle className='fa-5x'/>
-            <Link to="/Demo" style={{textDecoration:"none"}}>
+            <Link to="/AdminHomepage/Demo" style={{textDecoration:"none"}}>
               <h4 className='third' style={{color:"black"}}>Approve Agents</h4>
             </Link>
           </Card.Body>

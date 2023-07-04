@@ -11,7 +11,6 @@ const AdminHomepage = () => {
   return (
     <>
     <Row>
-    <Navbar/>
     </Row>
     <Row>
     <Sidebar/>
