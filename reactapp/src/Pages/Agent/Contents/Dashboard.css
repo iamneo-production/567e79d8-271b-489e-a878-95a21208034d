@@ -1,0 +1,104 @@
+
+.container{
+    justify-content: flex-start;
+    margin-top: 10px;
+ }
+
+h1{
+  align-self: flex-start;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.first-card,
+.second-card,
+.third-card,
+.fourth-card,
+.fiveth-card 
+{
+    width: 100%;
+    color: red;
+    font-size: large;
+}
+
+.first-card:hover,
+.second-card:hover,
+.third-card:hover,
+.fourth-card:hover,
+.fiveth-card:hover,
+.seventh-card:hover,
+.sixth-card:hover,
+.eighth-card:hover,
+.nineth-card:hover
+
+{
+    transform: scale(1.05);
+}
+
+.tableone-card{
+    width : 500px;
+    padding: 40px 5px 40px 5px; 
+}
+
+.table {
+    width: 450px;
+}
+
+.seventh-card,
+.sixth-card {
+    width: 215px;
+    padding: 40px; 
+}
+
+
+.eighth-card,
+.nineth-card {
+    width: 215px;
+    padding: 20px; 
+}
+
+.graphone-card {
+     width: 620px;
+     padding: 20px;
+}
+.graphone-card:hover{
+    transform: scale(1.1);
+}
+.graphone-card .card-header {
+    padding-bottom: 30px;
+}
+
+.leaflet-container {
+    height: 52vh;
+    width: 100%;
+}
+.graphtwo-card {
+    width: 100%;
+    padding: 30px;
+}
+
+
+.graphtwo-card .card-header {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.dropdown {
+    margin-left: 80% ;
+}
+
+.graphthree-card {
+    width: 630px;
+    padding: 20px;
+}
+.graphthree-card:hover{
+    transform: scale(1.05);
+}
+
+.graphfour-card {
+    width: 630px;
+    padding: 20px;
+}
+.graphfour-card:hover{
+    transform: scale(1.05);
+}

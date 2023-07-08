@@ -1,0 +1,9 @@
+com\example\springapp\model\User.class
+com\example\springapp\model\Property.class
+com\example\springapp\repository\AgentRepository.class
+com\example\springapp\model\Agent.class
+com\example\springapp\controller\AgentController.class
+com\example\springapp\repository\UserRepository.class
+com\example\springapp\SpringappApplication.class
+com\example\springapp\service\AgentService.class
+com\example\springapp\repository\PropertyRepository.class

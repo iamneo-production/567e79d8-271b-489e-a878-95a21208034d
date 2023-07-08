@@ -1,0 +1,46 @@
+.deactivateAcc
+{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    pointer-events: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px #ccc;
+}
+
+.Acc-overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.pop-head
+{
+    border-bottom: solid #ccc;
+    text-align: center;
+    color: #00274c;
+}
+.pop-content
+{
+    flex: 1;
+    padding: 15px;
+}
+.pop-footer
+{
+    border-top: solid #ccc;
+    padding: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap:10px;
+}

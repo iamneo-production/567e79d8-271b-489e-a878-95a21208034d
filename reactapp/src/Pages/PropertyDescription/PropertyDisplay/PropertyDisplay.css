@@ -1,0 +1,16 @@
+.display-container {
+  /*width: 50vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0;*/
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.display-row {
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.grid-item {
+  margin-top: 15px;
+}

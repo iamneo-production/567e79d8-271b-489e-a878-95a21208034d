@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
+import AdminHomepage from "../../AdminHomepage";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -104,6 +106,9 @@ export default function Login() {
                       width: "100%",
                       background: "#FFA500",
                       borderRadius: 30,
+                    }}
+                    onClick={() => {
+                      navigate("/AdminHomepage");
                     }}
                   >
                     Login
