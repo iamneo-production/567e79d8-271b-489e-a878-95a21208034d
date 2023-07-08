@@ -1,0 +1,15 @@
+.first{
+    text-decoration: none;
+}
+.first:hover{
+    background-color: aqua;
+    width: 150px;
+}
+.second:hover{
+    background-color: aqua;
+    width:110px;
+}
+.third:hover{
+    background-color: aqua;
+    width:180px;
+}
