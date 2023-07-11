@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import Notifications from './Notification';
+import Notifications from '../Notification/Notification';
 import TextField from "@mui/material/TextField";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,7 +11,7 @@ import Select from "@mui/material/Select";
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import Deactivate from './Deactivate';
+import Deactivate from '../Deactivate/Deactivate';
 import "./userstyle.css"
 // import axios from "axios";
 
@@ -168,12 +168,12 @@ export default function Profile() {
 
                     </form><br />
                     {edit ? (
-                        <Button variant="contained" type="submit" onClick={() => {
+                        <Button variant="contained" type="submit" id="prodatasts"onClick={() => {
                             forSave()
                             notify()
                         }}>Save</Button>
                     ) : (
-                        <Button variant="contained" onClick={forEdit}>Edit</Button>
+                        <Button variant="contained" id="prodatasts"onClick={forEdit}>Edit</Button>
                     )}
                     {showdeactivate&&<Deactivate close={setShowdeactivate}/>}
                     <ToastContainer autoClose={1000} />

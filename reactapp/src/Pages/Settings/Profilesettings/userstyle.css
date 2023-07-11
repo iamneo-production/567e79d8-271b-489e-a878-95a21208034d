@@ -1,0 +1,115 @@
+.profile1
+{
+  width: 25%;
+  background-color:#003153;
+  border-radius: 2px;
+  text-align: center;
+}
+
+
+.fullprofile
+{
+  display: flex;
+  height: 100%;
+  overflow: auto;
+}
+
+.profile2
+{
+  background-color:#d9d9d9;
+  width:75%;
+  border-radius: 2px;
+}
+
+.profile2::-webkit-scrollbar
+{
+  display: none;
+}
+
+#dpfor1
+{
+  height: 35%;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 20%;
+  border-radius: 4px;
+  border: 5px solid #d9d9d9 ;
+}
+
+
+#mf
+{
+  width: 175px;
+  font-size: 17px;
+  background-color: transparent;
+}
+
+#fgopt,#mgopt,#ogopt
+{
+  width: 175px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#fgopt:hover,#mgopt:hover,#ogopt:hover{
+  background-color: #00274C;
+  color: white;
+}
+
+#chngimg
+{
+  background-color: darkslategray;
+  margin-left: -5%;
+  overflow: hidden;
+}
+
+
+
+#daac
+{
+  top: 180px;
+  background-color: brown;
+  margin-right: 6%;
+  width: max-content;
+}
+
+#prodatasts
+{
+  width:max-content;
+}
+
+#pwdroute
+{
+  top: 130px;
+  margin-right: 6%;
+  background-color:black;
+  padding: 12px;
+  border-radius: 5px;
+  width: max-content;
+}
+
+#pwdroute1
+{
+  color: white;
+  text-decoration: none;
+}
+
+#title-head
+{
+  margin-top: 3%;
+  position: absolute;
+  margin-left: 6%;
+}
+
+/* settings */
+
+.field
+{
+  padding: 20px;
+  background-color: rgba(250, 235, 215, 0.824);
+  border-radius: 5px;
+  margin:8%;
+}
+
+
+
