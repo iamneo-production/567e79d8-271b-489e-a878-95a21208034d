@@ -1,5 +1,6 @@
 import React from "react";
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
+import "./Ndesigns.css"
 // import Avatar from "@mui/material/Avatar";
 
 export default function Ndesign(props)

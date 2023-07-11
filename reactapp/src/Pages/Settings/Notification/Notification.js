@@ -1,5 +1,6 @@
 import React from "react";
-import Ndesign from "../../Components/Ndesigns";
+import Ndesign from "../../../Components/Ndesigns";
+import "./Notification.css"
 
 export default function Notifications()
 {
