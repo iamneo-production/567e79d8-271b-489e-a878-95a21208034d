@@ -5,19 +5,19 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import Agents from "./Components/Agents";
 import Users from "./Components/Users";
-import Property from './Components/Property';
-import Revenue from './Components/Revenue'
+import Property from "./Components/Property";
+import Revenue from "./Components/Revenue";
 import Dashboard from "./Components/Dashboard";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import AgentRecord from './Components/AgentRecord';
-import UserRecord from './Components/UserRecord';
-import PropertyRecord from './Components/PropertyRecord'
-import search from './Components/search';
-import AdProperty from './Components/AdProperty';
-import AddAgent from './Components/AddAgents';
-import AddUser from './Components/AddUser';
-import UpdateAgent from './Components/UpdateAgent';
-import Demo from './Components/Demo';
+import "bootstrap/dist/css/bootstrap.min.css";
+import AgentRecord from "./Components/AgentRecord";
+import UserRecord from "./Components/UserRecord";
+import PropertyRecord from "./Components/PropertyRecord";
+import Search from "./Components/search";
+import AdProperty from "./Components/AdProperty";
+import AddAgent from "./Components/AddAgents";
+import AddUser from "./Components/AddUser";
+import UpdateAgent from "./Components/UpdateAgent";
+import Demo from "./Components/Demo";
 import AdminHomepage from "./Pages/AdminHomepage";
 import Profile from "./Pages/Settings/Profilesettings";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
@@ -38,23 +38,21 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route path="/AdminHomepage" element={<AdminHomepage/>}>
-          <Route index element={<Dashboard/>}></Route>
-          <Route path='Agents' element={<Agents/>}/>
-          <Route path='Users' Component={Users}></Route>
-          <Route path='Property' Component={Property}></Route>
-          <Route path='Revenue' Component={Revenue}></Route>
-          <Route path='AgentRecord' Component={AgentRecord}></Route>
-          <Route path='UserRecord' Component={UserRecord}></Route>
-          <Route path='PropertyRecord' Component={PropertyRecord}></Route>
-          <Route path='search' Component={search}></Route>
-          <Route path='AdProperty' Component={AdProperty}></Route>
-          <Route path='AddAgent' Component={AddAgent}></Route>
-          <Route path='AddUser' Component={AddUser}></Route>
-          <Route path='UpdateAgent' Component={UpdateAgent}></Route>
-          <Route path='Demo' Component={Demo}></Route>
-          </Route>
+          <Route path="/AdminHomepage" element={<AdminHomepage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="Agents" element={<Agents />} />
+          <Route path="Users" element={<Users />} />
+          <Route path="Property" element={<Property />} />
+          <Route path="Revenue" element={<Revenue />} />
+          <Route path="AgentRecord" element={<AgentRecord />} />
+          <Route path="UserRecord" element={<UserRecord />} />
+          <Route path="PropertyRecord" element={<PropertyRecord />} />
+          <Route path="search" element={<Search />} />
+          <Route path="AdProperty" element={<AdProperty />} />
+          <Route path="AddAgent" element={<AddAgent />} />
+          <Route path="AddUser" element={<AddUser />} />
+          <Route path="UpdateAgent" element={<UpdateAgent />} />
+          <Route path="Demo" element={<Demo />} />
           <Route path="/Profile_update" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
           <Route path="/pwd" element={<Changepass />} />
