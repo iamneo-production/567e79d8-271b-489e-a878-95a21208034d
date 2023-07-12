@@ -19,7 +19,7 @@ import AddUser from "./Components/AddUser";
 import UpdateAgent from "./Components/UpdateAgent";
 import Demo from "./Components/Demo";
 import AdminHomepage from "./Pages/AdminHomepage";
-import Profile from "./Pages/Settings/Profilesettings";
+import Profile from "./Pages/Settings/Profilesettings/Profilesettings";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Helppage from "./Pages/Website/Userpage/Helppage/Helppage";
