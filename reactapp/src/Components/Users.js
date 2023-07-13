@@ -16,7 +16,7 @@ const Users = () => {
     <Container style={{paddingLeft:"125px",paddingTop:"50px"}}>
   <Row>
     <Col>
-          <Card style={{backgroundColor:"#ff0000"}}>
+          <Card style={{backgroundColor:"#ff0000",height:"175px",width:"200px"}}>
             <Card.Body>
             <FaIcons.FaUser className='fa-5x'/>
             <Link to="/AdminHomepage/UserRecord" style={{textDecoration:"none"}}>
@@ -26,7 +26,7 @@ const Users = () => {
           </Card>
     </Col>
         <Col>
-          <Card style={{backgroundColor:"#FC8213"}}>
+          <Card style={{backgroundColor:"#FC8213",height:"175px",width:"200px"}}>
             <Card.Body>
               <FaIcons.FaUserPlus className='fa-5x'/>
             <Link to="/AdminHomepage/AddUser" style={{textDecoration:"none"}} >
@@ -36,7 +36,7 @@ const Users = () => {
           </Card>
         </Col>
         <Col>
-          <Card style={{backgroundColor:"#1355f9"}}>
+          <Card style={{backgroundColor:"#1355f9",height:"175px",width:"200px"}}>
             <Card.Body>
             <FaIcons.FaCheckCircle className='fa-5x'/>
             <Link to="#" style={{textDecoration:"none"}}>

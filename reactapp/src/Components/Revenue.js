@@ -107,7 +107,7 @@ const Revenue = () => {
 <Container>
   <Row>
     <Col>
-<PieChart width={730} height={300}>
+<PieChart width={500} height={300}>
       <Pie
          data={pieData}
          color="#000000"
