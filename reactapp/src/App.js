@@ -30,20 +30,20 @@ function App() {
           <Route path="/register" element={<Register />} />
 
           <Route path="/AdminHomepage" element={<AdminHomepage/>}>
-          <Route index element={<Dashboard/>}></Route>
-          <Route path='Agents' element={<Agents/>}/>
-          <Route path='Users' Component={Users}></Route>
-          <Route path='Property' Component={Property}></Route>
-          <Route path='Revenue' Component={Revenue}></Route>
-          <Route path='AgentRecord' Component={AgentRecord}></Route>
-          <Route path='UserRecord' Component={UserRecord}></Route>
-          <Route path='PropertyRecord' Component={PropertyRecord}></Route>
-          <Route path='search' Component={search}></Route>
-          <Route path='AddProperty' Component={AddProperty}></Route>
-          <Route path='AddAgent' Component={AddAgent}></Route>
-          <Route path='AddUser' Component={AddUser}></Route>
-          <Route path='UpdateAgent' Component={UpdateAgent}></Route>
-          <Route path='Demo' Component={Demo}></Route>
+            <Route index element={<Dashboard/>}></Route>
+            <Route path='Agents' element={<Agents/>}/>
+            <Route path='Users' Component={Users}></Route>
+            <Route path='Property' Component={Property}></Route>
+            <Route path='Revenue' Component={Revenue}></Route>
+            <Route path='AgentRecord' Component={AgentRecord}></Route>
+            <Route path='UserRecord' Component={UserRecord}></Route>
+            <Route path='PropertyRecord' Component={PropertyRecord}></Route>
+            <Route path='search' Component={search}></Route>
+            <Route path='AddProperty' Component={AddProperty}></Route>
+            <Route path='AddAgent' Component={AddAgent}></Route>
+            <Route path='AddUser' Component={AddUser}></Route>
+            <Route path='UpdateAgent' Component={UpdateAgent}></Route>
+            <Route path='Demo' Component={Demo}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
