@@ -13,6 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Deactivate from '../Deactivate/Deactivate';
 import "./userstyle.css"
+import Addprofilepic from '../Profilepic/Addprofilepic';
 // import axios from "axios";
 
 
@@ -20,7 +21,8 @@ import "./userstyle.css"
 export default function Profile() {
     const [shownoti, setShownoti] = React.useState(false);
     const [edit, setEdit] = React.useState(false);
-    const [showdeactivate,setShowdeactivate]=React.useState(false)
+    const [showdeactivate,setShowdeactivate]=React.useState(false);
+    const [showAdddp,setShowAdddp]=React.useState(false);
     const [fullformdata, setFullformdata] = React.useState(
         { name: "", email: "", phone: "", address: "", bio: "",gender:""}
     )
@@ -53,6 +55,11 @@ export default function Profile() {
         })
     }
 
+    const changedp=()=>
+    {
+        setShowAdddp(!showAdddp);
+    }
+
     const deleteAcc=()=>
     {
         setShowdeactivate(!showdeactivate);
@@ -65,8 +72,7 @@ export default function Profile() {
                 <Avatar id="dpfor1" /><br />
                 <Button variant="contained"
                     id="chngimg"
-                    type="file"
-                    accept="image/*"
+                    onClick={changedp}
                 >Change image
                 </Button><br />
                 <h4 style={
@@ -176,6 +182,7 @@ export default function Profile() {
                         <Button variant="contained" id="prodatasts"onClick={forEdit}>Edit</Button>
                     )}
                     {showdeactivate&&<Deactivate close={setShowdeactivate}/>}
+                    {showAdddp&& <Addprofilepic close={setShowAdddp}/>}
                     <ToastContainer autoClose={1000} />
                 </div>
             </div>
