@@ -1,19 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-*{
-  font-family: 'Lato',sans-serif;
-}
-.users,.property,.agents,.aboutus{
-  display: flex;
-  height:90vh;
+
+* {
+  font-family: 'Lato', sans-serif;
 }
 
-.card{
-  height:300px;
-  color:white;
+.users,
+.property,
+.agents,
+.aboutus {
+  display: flex;
+  height: 90vh;
 }
-.right-nav{
+
+.card {
+  height: 300px;
+  color: white;
+}
+
+.right-nav {
   text-align: right;
 }
-.container-fluid{
+
+.container-fluid {
   display: inline-block;
 }

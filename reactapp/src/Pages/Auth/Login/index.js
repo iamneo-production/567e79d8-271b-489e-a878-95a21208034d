@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,18 +7,53 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router-dom";
-import AdminHomepage from "../../AdminHomepage";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid Email")
+    .min(3, "User doesn't exist")
+    .max(50, "User doesn't exist")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password is Incorrect")
+    .max(50, "Password is Incorrect")
+    .required("Password is required"),
+});
 
 export default function Login() {
   const navigate = useNavigate();
   const isMdUp = useMediaQuery({ minWidth: 768 });
+  const [initialValues, setInitialValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: initialValues,
+    validationSchema: LoginSchema,
+    onSubmit: (values, { setStatus, setSubmitting }) => {
+      handleSubmit(values);
+    },
+  });
+
+  async function handleSubmit(value) {
+    const data = value;
+    let payload = {
+      email: data?.email,
+      password: data?.password,
+    };
+    // dispatch(getLoginDetailsAction(payload));
+    console.log("login payload", payload);
+  }
   return (
     <Container fluid style={{ backgroundColor: "#00274C", height: "100vh" }}>
       <Row>
         <Col xs={12} sm={12} md={6} lg={6}>
           <p className="py-4 px-5" style={{ color: "#FFFFFF", fontSize: 20 }}>
-            Nestwor<span style={{ color: "#FF7F50" }}>X</span>
+            Elite<span style={{ color: "#FF7F50" }}>Estates</span>
           </p>
           <div className="d-none d-md-block">
             <div className="d-flex justify-content-center align-items-center px-5">
@@ -60,7 +95,7 @@ export default function Login() {
             >
               Login
             </h3>
-            <Form>
+            <Form onSubmit={formik.handleSubmit}>
               <Row>
                 <Col xs={12} sm={12} md={12} lg={12}>
                   <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -70,7 +105,20 @@ export default function Login() {
                     <Form.Control
                       type="email"
                       placeholder="Enter your email or mobile number"
+                      onChange={(e) =>
+                        setInitialValues({
+                          ...initialValues,
+                          email: e.target.value,
+                        })
+                      }
                     />
+                    {formik.touched.email && formik.errors.email && (
+                      <div>
+                        <span role="alert" style={{ color: "red" }}>
+                          {formik.errors.email}
+                        </span>
+                      </div>
+                    )}
                   </Form.Group>
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={12}>
@@ -81,7 +129,20 @@ export default function Login() {
                     <Form.Control
                       type="password"
                       placeholder="Enter your password"
+                      onChange={(e) =>
+                        setInitialValues({
+                          ...initialValues,
+                          password: e.target.value,
+                        })
+                      }
                     />
+                    {formik.touched.password && formik.errors.password && (
+                      <div>
+                        <span role="alert" style={{ color: "red" }}>
+                          {formik.errors.password}
+                        </span>
+                      </div>
+                    )}
                   </Form.Group>
                   <p
                     style={{
@@ -107,9 +168,9 @@ export default function Login() {
                       background: "#FFA500",
                       borderRadius: 30,
                     }}
-                    onClick={() => {
-                      navigate("/AdminHomepage");
-                    }}
+                    // onClick={() => {
+                    //   navigate("/AdminHomepage");
+                    // }}
                   >
                     Login
                   </Button>
