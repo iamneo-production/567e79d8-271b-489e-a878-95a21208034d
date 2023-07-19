@@ -23,7 +23,7 @@ export default function WhyUs() {
           className="d-flex justify-content-center align-items-center"
         >
           <div style={{ width: "70%" }}>
-            <h4>Wide Selection</h4>
+            <p style={{ fontSize: 24, fontWeight: "500" }}>Wide Selection</p>
             <p style={{ fontSize: 18, textAlign: "justify" }}>
               Find your dream home among a diverse range of properties for sale
               or rent. From cozy apartments to spacious houses and luxurious
@@ -39,7 +39,7 @@ export default function WhyUs() {
           lg={6}
           className="d-flex justify-content-center align-items-center"
         >
-          <img src={WideSelect} width="70%" />
+          <img src={WideSelect} style={{ width: "70%", borderRadius: 10 }} />
         </Col>
       </Row>
       <Row className="pb-5">
@@ -50,11 +50,7 @@ export default function WhyUs() {
           lg={6}
           className="d-flex justify-content-center align-items-center"
         >
-          <img
-            src={UserInterface}
-            width="70%"
-            // style={{ borderRadius: "60%" }}
-          />
+          <img src={UserInterface} style={{ width: "70%", borderRadius: 10 }} />
         </Col>
         <Col
           xs={12}
@@ -64,7 +60,9 @@ export default function WhyUs() {
           className="d-flex justify-content-center align-items-center"
         >
           <div style={{ width: "70%" }}>
-            <h4>User-friendly Interface</h4>
+            <p style={{ fontSize: 24, fontWeight: "500" }}>
+              User-friendly Interface
+            </p>
             <p style={{ fontSize: 18, textAlign: "justify" }}>
               Effortlessly navigate through our extensive property listings.
               Find your ideal home or investment opportunity with ease. Explore
@@ -82,8 +80,8 @@ export default function WhyUs() {
           lg={6}
           className="d-flex justify-content-center align-items-center"
         >
-          <div style={{ width: "70%" }}>
-            <h4>Expert Agents</h4>
+          <div>
+            <p style={{ fontSize: 24, fontWeight: "500" }}>Expert Agents</p>
             <p style={{ fontSize: 18, textAlign: "justify" }}>
               Connect with experienced real estate agents for personalized
               assistance. Our team of professionals is here to guide you through
@@ -99,7 +97,7 @@ export default function WhyUs() {
           lg={6}
           className="d-flex justify-content-center align-items-center"
         >
-          <img src={Agents} width="70%" />
+          <img src={Agents} style={{ width: "70%", borderRadius: 10 }} />
         </Col>
       </Row>
     </Container>

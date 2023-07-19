@@ -8,7 +8,7 @@ import Users from "./Components/Users";
 import Property from "./Components/Property";
 import Revenue from "./Components/Revenue";
 import Dashboard from "./Components/Dashboard";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import AgentRecord from "./Components/AgentRecord";
 import UserRecord from "./Components/UserRecord";
 import PropertyRecord from "./Components/PropertyRecord";
