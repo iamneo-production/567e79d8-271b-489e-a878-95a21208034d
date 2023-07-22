@@ -1,7 +1,7 @@
 package com.example.springapp.service;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import com.example.springapp.model.Agent;
 import com.example.springapp.repository.AgentRepository;
 import com.example.springapp.model.User;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class AgentService {
 
-    
+    @Autowired
     private final AgentRepository agentrepo;
     private final UserRepository userrepo;
     private final PropertyRepository propertyrepo;
@@ -25,6 +25,23 @@ public class AgentService {
         this.userrepo = userrepo;
         this.propertyrepo = propertyrepo;
     }
+
+     public Agent saveAgent(Agent agent) {
+	        return agentrepo.save(agent);
+	    }
+
+    public String deleteAgent(long id) {
+	        agentrepo.deleteById(id);
+	        return "agent removed !! " + id;
+	    }
+	    public Agent updateAgent(Agent agent) {
+	        Agent existingAgent = agentrepo.findById(agent.getId()).orElse(null);
+	        existingAgent.setName(agent.getName());
+	        existingAgent.setEmail(agent.getEmail());
+	        existingAgent.setPhone(agent.getPhone());
+	        existingAgent.setDescription(agent.getDescription());
+	        return agentrepo.save(existingAgent);
+	    }
 
     public List<Agent> getallagent()
     {

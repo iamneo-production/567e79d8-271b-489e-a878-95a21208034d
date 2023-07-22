@@ -2,6 +2,7 @@ package com.example.springapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 
 @Entity
@@ -9,10 +10,12 @@ import javax.persistence.Table;
 public class Agent {
 
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String email;
     private String phone;
+    private String description;
 
     public Agent() {
     }
@@ -55,5 +58,11 @@ public class Agent {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}	
 
 }
