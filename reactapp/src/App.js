@@ -28,7 +28,9 @@ import AddProperty from "../src/Pages/Agent/AddProperty";
 import Prop from "./Pages/Website/proppage/propview";
 import Cards from "./Pages/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
-import Profile_update from "../src/Pages/Agent/Profile_update";
+import ProfileUpdate from "./agent/Profile_update";
+import AllAgent from "./agent/AllAgent";
+import ViewAgent from "./agent/ViewAgent";
 
 function App() {
   return (
@@ -53,7 +55,7 @@ function App() {
           <Route path="AddUser" element={<AddUser />} />
           <Route path="UpdateAgent" element={<UpdateAgent />} />
           <Route path="Demo" element={<Demo />} />
-          <Route path="/Profile_update" element={<Profile_update />} />
+          <Route path="/Profile_update" element={<ProfileUpdate />} />
           <Route path="/Settings" element={<Profile />} />
           <Route path="/pwd" element={<Changepass />} />
           <Route path="/homepage" element={<Homepage />} />
@@ -63,6 +65,8 @@ function App() {
           <Route path="/prop" element={<Prop />} />
           <Route path="/userwishlist" element={<Cards />} />
           <Route path="/propertydescription" element={<PropertyDetails />} />
+          <Route exact path='/agents/' element={<AllAgent/>}></Route>
+          <Route exact path="/viewagent/:id" element={<ViewAgent/>} /> 
         </Routes>
       </BrowserRouter>
     </div>
