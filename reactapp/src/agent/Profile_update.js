@@ -6,15 +6,12 @@ const Profile_update = () => {
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [description, setDescription] = useState('');
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    // TODO: Implement the update logic here (e.g., make an API request to update the data and password)
-    // Once the update is successful, you can display a success message or perform any other actions
+    // TODO: Implement the update logic here
 
     setIsUpdating(false);
   };
@@ -22,8 +19,6 @@ const Profile_update = () => {
   const handleEdit = () => {
     setIsUpdating(true);
   };
-
-  const maskedPassword = currentPassword.replace(/./g, '*');
 
   return (
     <div className="shadow-2-strong">
@@ -94,32 +89,6 @@ const Profile_update = () => {
                     className="form-control"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="currentPassword" className="form-label">
-                    Current Password
-                  </label>
-                  <input
-                    type="password"
-                    id="currentPassword"
-                    className="form-control"
-                    value={currentPassword}
-                    readOnly
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="newPassword" className="form-label">
-                    New Password
-                  </label>
-                  <input
-                    type="password"
-                    id="newPassword"
-                    className="form-control"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
                     required
                   />
                 </div>

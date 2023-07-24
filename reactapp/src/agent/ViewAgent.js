@@ -18,7 +18,7 @@ export default function ViewAgent() {
   }, []);
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8080/agents/${id}`);
+    const result = await axios.get(`https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/${id}`);
     setUser(result.data);
   };
 

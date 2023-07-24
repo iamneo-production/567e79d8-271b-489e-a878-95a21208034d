@@ -12,7 +12,7 @@ export default function AllAgent() {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get('http://localhost:8080/agents/');
+    const result = await axios.get('https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/');
     setUsers(result.data);
   };
 
