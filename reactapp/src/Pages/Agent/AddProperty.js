@@ -5,36 +5,51 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 // import FormGroup from "react-bootstrap/esm/FormGroup";
-
+import * as Yup from 'yup';
+import { useFormik } from "formik";
 
 function AddProperty() {
   let navigate = useNavigate();
 
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
+  const [initialValues, setInitialValues] = useState({
     Price: "",
     PropertyAddress: "",
     sqft: ""
   });
+  
+  const validationSchema = Yup.object().shape({
+    Price : Yup.string().required('Price is required'),
+    PropertyAddress : Yup.string().required('Property Address is required'),
+    sqft: Yup.string().required('sqft is required'),
 
-  const [propertyType, setPropertyType] = useState("")
+  });
+  
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: (values, { setStatus, setSubmitting }) => {
+      onSubmit(values);
+    },
+  });
 
-  const { name, email, Price, PropertyAddress, sqft ,floorPlan , fNobNo ,BlockfNobNo} = user;
+  const [propertyType, setPropertyType] = useState("");
+
+  const { Price, PropertyAddress, sqft ,floorPlan , fNobNo ,BlockfNobNo} = initialValues;
  
 
   const onInputChange = (e) => {
     //spread operator (since we are giving only name field)
     //new update will keep on adding
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
     //check in components
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     //we are sending user so User
-    console.log(user);
-    await axios.post("http://localhost:8080/agent", user);
+    console.log(initialValues);
+    await axios.post("http://localhost:8080/agent", initialValues);
     // console.log(res);
     navigate("/");  
   }
@@ -62,7 +77,7 @@ function AddProperty() {
     setSelectedOptions(options);
   };
 
-  return (
+  return ( 
     <div className="container">
       <div className="row">
         {/*col-md-6 : colums of medium size with 6 span */}
@@ -71,7 +86,7 @@ function AddProperty() {
         >
           <h2 className={"text-center m-4"}>Add Property</h2>
 
-          <form onSubmit={(e) => onSubmit(e)}>
+          <form onSubmit={ formik.onSubmit}>
             {/* <div className={"mb-3"}>
               <label htmlFor={"Name"} className={"form-label"}>
                 Name
@@ -164,10 +179,9 @@ function AddProperty() {
                 type={"text"}
                 className={"form-control"}
                 placeholder={"Enter Sq.Ft "}
-                name={"sqft"}
                 value={sqft}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
               </div>
 
               <div className={"mb-3"}>
@@ -204,7 +218,7 @@ function AddProperty() {
                 name={"floorPlan"}
                 value={floorPlan}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
               </div>
 
               <div className={"mb-3"}>
@@ -243,7 +257,7 @@ function AddProperty() {
                 name={"sqft"}
                 value={sqft}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
               </div>
 
               <div className={"mb-3"}>
@@ -257,7 +271,7 @@ function AddProperty() {
                 name={"fNobNo"}
                 value={fNobNo}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
               </div>
 
               <div className={"mb-3"}>
@@ -280,10 +294,16 @@ function AddProperty() {
                 type={"text"}
                 className={"form-control"}
                 placeholder={"Enter Sq.Ft "}
-                name={"sqft"}
-                value={sqft}
+                value={initialValues.sqft}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
+              {formik.touched.sqft && formik.errors.sqft && (
+                      <div>
+                        <span role="alert" style={{ color: "red" }}>
+                          {formik.errors.sqft}
+                        </span>
+                      </div>
+              )}
             </div>
 
             <div className={"mb-3"}>
@@ -320,7 +340,7 @@ function AddProperty() {
                 name={"BlockfNobNo"}
                 value={BlockfNobNo}
                 onChange={(e) => onInputChange(e)}
-                required />
+               />
             </div>
 
             <div className={"mb-3"}>
@@ -358,10 +378,16 @@ function AddProperty() {
                 type={"text"}
                 className={"form-control"}
                 placeholder={"INR"}
-                name={"Price"}
-                value={Price}
+                value={initialValues.Price}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
+              {formik.touched.Price && formik.errors.Price && (
+                      <div>
+                        <span role="alert" style={{ color: "red" }}>
+                          {formik.errors.Price}
+                        </span>
+                      </div>
+              )}
             </div>
 
             <div className={"mb-3"}>
@@ -420,10 +446,16 @@ function AddProperty() {
                 type={"text"}
                 className={"form-control"}
                 placeholder={"Enter Property address"}
-                name={"PropertyAddress"}
-                value={PropertyAddress}
+                value={initialValues.PropertyAddress}
                 onChange={(e) => onInputChange(e)}
-                required />
+              />
+              {formik.touched.PropertyAddress && formik.errors.PropertyAddress && (
+                      <div>
+                        <span role="alert" style={{ color: "red" }}>
+                          {formik.errors.PropertyAddress}
+                        </span>
+                      </div>
+              )}
             </div>
 
             <div className={"mb-3"}>
@@ -511,13 +543,13 @@ function AddProperty() {
               </Form.Group>
               </div>
             </div>
-
+            
             <button type={"submit"} className={"btn btn-outline-primary"}>
               Submit
             </button>
 
             <Link className={"btn btn-outline-danger mx-2"} to={"/"}>Cancel</Link>
-
+          
           </form>
         </div>
       </div>

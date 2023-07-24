@@ -24,11 +24,11 @@ import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Helppage from "./Pages/Website/Userpage/Helppage/Helppage";
 import FindAgent from "./Pages/Website/Userpage/FindAgent/Agentfinder";
-import AddProperty from "./agent/AddProperty";
+import AddProperty from "../src/Pages/Agent/AddProperty";
 import Prop from "./Pages/Website/proppage/propview";
 import Cards from "./Pages/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
-import Profile_update from "./agent/Profile_update";
+import Profile_update from "../src/Pages/Agent/Profile_update";
 
 function App() {
   return (
