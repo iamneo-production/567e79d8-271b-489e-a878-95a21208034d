@@ -161,7 +161,7 @@ export default function Login() {
                         cursor: "pointer",
                       }}
                       onClick={() => {
-                        navigate("/register");
+                        navigate("/forgot-pwd");
                       }}
                     >
                       Forgot password?

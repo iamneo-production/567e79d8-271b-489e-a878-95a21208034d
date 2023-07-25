@@ -56,7 +56,7 @@ function App() {
           <Route path="Demo" element={<Demo />} />
           <Route path="/Profile_update" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
-          <Route path="/pwd" element={<Changepass />} />
+          <Route path="/forgot-pwd" element={<Changepass />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/help" element={<Helppage />} />
           <Route path="/agent" element={<FindAgent />} />
