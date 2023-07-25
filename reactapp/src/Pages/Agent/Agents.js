@@ -45,14 +45,10 @@ const Agents = () => {
             >
               <Card.Body>
                 <FaIcons.FaUserSecret className="fa-5x" />
-                <Link
-                  to="/AdminHomepage/AgentRecord"
-                  style={{ textDecoration: "none" }}
-                >
                   <h4 className="first" style={{ color: "black" }}>
-                    Agent Record
+                    Agent Count
+                    20
                   </h4>
-                </Link>
               </Card.Body>
             </Card>
           </Col>

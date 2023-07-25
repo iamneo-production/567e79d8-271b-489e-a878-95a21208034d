@@ -12,6 +12,7 @@ const AddAgent = () => {
   const [firstname,setName]=useState('');
   const [email,setEmail]=useState('');
   const [lastname,setPhone]=useState('');
+  const[description,setDescription]=useState('');
   const handleSubmit =(e)=>{
     e.preventDefault();
     const whole={firstname,lastname,email};
@@ -31,12 +32,16 @@ const AddAgent = () => {
         </Form.Group>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Phone No" value={lastname} onChange={(e)=>setPhone(e.target.value)}  />
+        <Form.Label>Phone</Form.Label>
+        <Form.Control type="number" placeholder="Enter Phone No" value={lastname} onChange={(e)=>setPhone(e.target.value)}  />
       </Form.Group>
       <Form.Group as={Col} controlId="formGridPassword">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Description</Form.Label>
+          <Form.Control size="lg" type="text" placeholder="Large text" value={description} onChange={(e)=>setDescription(e.target.value)}/>
         </Form.Group>
       </Row>
 

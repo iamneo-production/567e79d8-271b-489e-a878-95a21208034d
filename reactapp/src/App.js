@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Website from "./Pages/Website";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
+import AdminLogin from "./Components/AdminLogin";
 import Agents from "./Pages/Agent/Agents";
 import Users from "./Pages/User/Users";
 import Property from "./Pages/Property/Property";
@@ -39,8 +40,21 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/AdminHomepage" element={<AdminHomepage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/AdminLogin" element={<AdminLogin/>}/>
+          <Route path="/Profile_update" element={<Profile_update />} />
+          <Route path="/Settings" element={<Profile />} />
+          <Route path="/forgot-pwd" element={<Changepass />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/help" element={<Helppage />} />
+          <Route path="/agent" element={<FindAgent />} />
+          <Route path="/AddProperty" element={<AddProperty />} />
+          <Route path="/prop" element={<Prop />} />
+          <Route path="/userwishlist" element={<Cards />} />
+          <Route path="/propertydescription" element={<PropertyDetails />} />
+          <Route exact path="/agents/" element={<AllAgent />}></Route>
+          <Route exact path="/viewagent/:id" element={<ViewAgent />} />
+          <Route path="/AdminHomepage" element={<AdminHomepage />} >
+          <Route path="" element={<Dashboard />} />
           <Route path="Agents" element={<Agents />} />
           <Route path="Users" element={<Users />} />
           <Route path="Property" element={<Property />} />
@@ -54,18 +68,7 @@ function App() {
           <Route path="AddUser" element={<AddUser />} />
           <Route path="UpdateAgent" element={<UpdateAgent />} />
           <Route path="Demo" element={<Demo />} />
-          <Route path="/Profile_update" element={<Profile_update />} />
-          <Route path="/Settings" element={<Profile />} />
-          <Route path="/forgot-pwd" element={<Changepass />} />
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/help" element={<Helppage />} />
-          <Route path="/agent" element={<FindAgent />} />
-          <Route path="/AddProperty" element={<AddProperty />} />
-          <Route path="/prop" element={<Prop />} />
-          <Route path="/userwishlist" element={<Cards />} />
-          <Route path="/propertydescription" element={<PropertyDetails />} />
-          <Route exact path="/agents/" element={<AllAgent />}></Route>
-          <Route exact path="/viewagent/:id" element={<ViewAgent />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
