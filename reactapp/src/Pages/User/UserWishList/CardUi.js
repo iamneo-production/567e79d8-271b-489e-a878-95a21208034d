@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "./CardUi.css";
-import ContactAgent from "../../Components/ContactAgent";
+import ContactAgent from "../ContactAgent";
 const CardUi = ({ favourite, handleDelete }) => {
   const monthNames = [
     "January",

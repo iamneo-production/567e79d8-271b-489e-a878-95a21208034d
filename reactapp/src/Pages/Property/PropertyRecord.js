@@ -5,23 +5,12 @@ import * as AiIcons from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { AgentsData } from "../Pages/Agent/AgentsData";
-import input from "../Pages/Agent/Agents";
-const search = () => {
+import { PropertyData } from "./PropertyData";
+const PropertyRecord = () => {
   return (
     <>
-      <Container style={{ paddingTop: "10px", paddingLeft: "125px" }}>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search Agent"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-      </Container>
       <Container style={{ paddingLeft: "125px", paddingTop: "20px" }}>
+        <h2 style={{ paddingTop: "20px" }}>Property Record</h2>
         <table
           class="table table-striped"
           id="dev-table"
@@ -29,20 +18,22 @@ const search = () => {
         >
           <thead>
             <tr>
-              <th>Agent No</th>
-              <th>Agent Name</th>
-              <th>Property Count</th>
+              <th>Property No</th>
+              <th>Property Name</th>
+              <th>Price</th>
+              <th>Location</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {AgentsData.map((item) => {
+            {PropertyData.map((item) => {
               return (
                 <tr>
-                  <td>{item.aNo}</td>
-                  <td>{item.aName}</td>
-                  <td>{input}</td>
+                  <td>{item.pNo}</td>
+                  <td>{item.pName}</td>
+                  <td>{item.price}</td>
+                  <td>{item.location}</td>
                   <td>
                     <Button variant="primary">
                       <AiIcons.AiFillEdit />
@@ -63,4 +54,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default PropertyRecord;

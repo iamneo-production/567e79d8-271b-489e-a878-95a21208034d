@@ -5,23 +5,12 @@ import * as AiIcons from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { AgentsData } from "../Pages/Agent/AgentsData";
-import input from "../Pages/Agent/Agents";
-const search = () => {
+import { AgentsData } from "./AgentsData";
+const AgentRecord = () => {
   return (
     <>
-      <Container style={{ paddingTop: "10px", paddingLeft: "125px" }}>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search Agent"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-      </Container>
       <Container style={{ paddingLeft: "125px", paddingTop: "20px" }}>
+        <h2 style={{ paddingTop: "20px" }}>Agent Record</h2>
         <table
           class="table table-striped"
           id="dev-table"
@@ -42,7 +31,7 @@ const search = () => {
                 <tr>
                   <td>{item.aNo}</td>
                   <td>{item.aName}</td>
-                  <td>{input}</td>
+                  <td>{item.pCount}</td>
                   <td>
                     <Button variant="primary">
                       <AiIcons.AiFillEdit />
@@ -63,4 +52,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default AgentRecord;

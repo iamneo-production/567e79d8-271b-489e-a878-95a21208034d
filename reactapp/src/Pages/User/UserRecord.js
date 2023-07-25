@@ -5,23 +5,12 @@ import * as AiIcons from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { AgentsData } from "../Pages/Agent/AgentsData";
-import input from "../Pages/Agent/Agents";
-const search = () => {
+import { UserData } from "./UserData";
+const UserRecord = () => {
   return (
     <>
-      <Container style={{ paddingTop: "10px", paddingLeft: "125px" }}>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search Agent"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-      </Container>
       <Container style={{ paddingLeft: "125px", paddingTop: "20px" }}>
+        <h2 style={{ paddingTop: "20px" }}>User Record</h2>
         <table
           class="table table-striped"
           id="dev-table"
@@ -29,20 +18,20 @@ const search = () => {
         >
           <thead>
             <tr>
-              <th>Agent No</th>
-              <th>Agent Name</th>
-              <th>Property Count</th>
+              <th>User No</th>
+              <th>User Name</th>
+              <th>Property Bought</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {AgentsData.map((item) => {
+            {UserData.map((item) => {
               return (
                 <tr>
-                  <td>{item.aNo}</td>
-                  <td>{item.aName}</td>
-                  <td>{input}</td>
+                  <td>{item.uNo}</td>
+                  <td>{item.uName}</td>
+                  <td>{item.pBought}</td>
                   <td>
                     <Button variant="primary">
                       <AiIcons.AiFillEdit />
@@ -63,4 +52,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default UserRecord;
