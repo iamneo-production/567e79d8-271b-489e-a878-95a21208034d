@@ -7,6 +7,7 @@ import LockPersonTwoToneIcon from '@mui/icons-material/LockPersonTwoTone';
 import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
 import gif1 from "../../../assets/Forgotpasswordimg.gif"
 import { useNavigate } from "react-router-dom";
+import "./Changepassword.css"
 
 export default function Changepass() {
     const [editable, setEditable] = React.useState(false);
@@ -102,7 +103,7 @@ export default function Changepass() {
                     value={passform.currentpass}
                     onChange={inputchange}
                     name="currentpass"
-                    // id={!editable}
+                    
                 /><br /><br />
 
                 <TextField
@@ -113,7 +114,7 @@ export default function Changepass() {
                     value={passform.newpass}
                     onChange={inputchange}
                     name="newpass"
-                    // id={!editable}
+                    
                 /><br /><br />
 
                 <TextField
@@ -124,7 +125,7 @@ export default function Changepass() {
                     value={passform.confirmnewpass}
                     onChange={inputchange}
                     name="confirmnewpass"
-                    // id={!editable}
+
                 /><br /><br />
 
                 {
@@ -134,7 +135,9 @@ export default function Changepass() {
                             passstatus()
                         }
                         }>Save</Button>) : 
-                        (<Button variant="outlined" onClick={editpass}>Update Password</Button>)
+                        (<Button 
+                            variant="outlined" onClick={editpass} id="updatepass"
+                            >Update Password</Button>)
                 }
             </form>
             <ToastContainer autoClose={1500} />
