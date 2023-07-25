@@ -80,7 +80,7 @@ export default function WhyUs() {
           lg={6}
           className="d-flex justify-content-center align-items-center"
         >
-          <div>
+          <div style={{ width: "70%" }}>
             <p style={{ fontSize: 24, fontWeight: "500" }}>Expert Agents</p>
             <p style={{ fontSize: 18, textAlign: "justify" }}>
               Connect with experienced real estate agents for personalized

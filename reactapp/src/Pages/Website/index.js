@@ -6,21 +6,32 @@ import WhyUs from "./WhyUs";
 import Featured from "./Featured";
 import Testimonial from "./Testimonial";
 import Contact from "./Contact";
+import Home from "./Home";
+import Footer from "./Footer";
 
 export default function Website() {
   return (
     <div>
       <WebsiteHeader />
-      <HomePage />
-      <div className="pt-4">
+      <div id="home">
+        <Home />
+      </div>
+      <div className="pt-5" id="explore">
         <Explore />
       </div>
-      <div className="pt-5">
+      <div className="pt-5" id="whyus">
         <WhyUs />
       </div>
-      <Featured />
-      <Testimonial />
-      <Contact />
+      <div className="pt-5" id="properties">
+        <Featured />
+      </div>
+      <div id="testimonial">
+        <Testimonial />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
+      <Footer />
     </div>
   );
 }

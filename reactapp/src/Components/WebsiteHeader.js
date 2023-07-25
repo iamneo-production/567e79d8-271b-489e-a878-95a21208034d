@@ -5,85 +5,82 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../src/assets/Logo.svg";
 
 function WebsiteHeader() {
   const navigate = useNavigate();
   return (
     <Navbar
-      // fixed="top"
-      expand={"sm"}
+      sticky="top"
+      expand={"md"}
       className=" py-3"
-      style={{ backgroundColor: "#00274C" }}
+      style={{ backgroundColor: "#E8E8E8" }}
     >
       <Container fluid>
         <Navbar.Brand href="/" style={{ color: "#FFFFFF" }}>
-          Nestwor<span style={{ color: "#FF7F50" }}>X</span>
+          <img src={Logo} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"sm"}`} />
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"md"}`} />
         <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-${"sm"}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-${"sm"}`}
+          id={`offcanvasNavbar-expand-${"md"}`}
+          aria-labelledby={`offcanvasNavbarLabel-expand-${"md"}`}
           placement="end"
-          style={{ backgroundColor: "#00274C", width: "80%" }}
+          style={{ backgroundColor: "#E8E8E8", width: "70%" }}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title
-              id={`offcanvasNavbarLabel-expand-${"sm"}`}
-              style={{ color: "#FFFFFF" }}
-            >
-              Nestwor<span style={{ color: "#FF7F50" }}>X</span>
+            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${"md"}`}>
+              <img src={Logo} />
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="justify-content-center flex-grow-1">
+            <Nav className="justify-content-center align-items-center flex-grow-1">
               <Nav.Link
-                href="#action1"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                href="#action2"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/#explore"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
                 Explore
               </Nav.Link>
               <Nav.Link
-                href="#action2"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/#whyus"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
                 Why Us?
               </Nav.Link>
               <Nav.Link
-                href="#action2"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/#properties"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
-                Featured Properties
+                Properties
               </Nav.Link>
               <Nav.Link
-                href="#action2"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/#testimonial"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
                 Testimonials
               </Nav.Link>
               <Nav.Link
-                href="#action2"
-                className="mx-4"
-                style={{ color: "#FFFFFF", fontSize: 14 }}
+                href="/#contact"
+                className="mx-3"
+                style={{ color: "#202020", fontWeight: "600" }}
               >
                 Contact
               </Nav.Link>
             </Nav>
-            <Form className="d-flex">
+            <Form className="d-flex mx-3">
               <Button
-                variant="outline"
-                className="mx-3"
-                style={{ color: "#FFFFFF" }}
+                variant="link"
+                style={{ color: "#202020", fontWeight: "600" }}
                 onClick={() => {
                   navigate("/login");
                 }}
@@ -91,8 +88,11 @@ function WebsiteHeader() {
                 Login
               </Button>
               <Button
-                variant="outline"
-                style={{ color: "#FFFFFF", border: "1px solid #FFFFFF" }}
+                style={{
+                  color: "#FFFFFF",
+                  backgroundColor: "#202020",
+                  borderColor: "#202020",
+                }}
                 onClick={() => {
                   navigate("/register");
                 }}

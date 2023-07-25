@@ -1,3 +1,10 @@
+.homebg {
+    background-image: url("../../assets/HomeBg.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+}
+
 .img-row {
     display: flex;
     flex-wrap: wrap;
@@ -39,6 +46,7 @@
     border-radius: 50%;
     border-color: black;
     color: black;
+    background-color: #ffffff;
     width: 30px;
     height: 30px;
     display: flex;
@@ -50,4 +58,37 @@
     background-image: url("../../assets/Contact/ContactBg.svg");
     background-repeat: no-repeat;
     background-position: bottom;
+}
+
+/* Container needed to position the overlay. Adjust the width as needed */
+.overlay-container {
+    position: relative;
+    width: 100%;
+}
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transition: .3s ease;
+}
+
+/* When you mouse over the container, the overlay text will "zoom" in display */
+.overlay-container:hover .overlay {
+    box-shadow: 1px 1px 3px 3px #888888;
+}
+
+/* Some text inside the overlay, which is positioned in the middle vertically and horizontally */
+.overlay-text {
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: 90%;
+    left: 25%;
+    transform: translate(-50%, -50%);
 }

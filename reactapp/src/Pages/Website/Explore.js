@@ -17,29 +17,79 @@ import "./style.css";
 export default function Explore() {
   return (
     <Container fluid>
-      <Row>
+      <Row className="mb-4">
         <Col xs={12} sm={12} md={12} lg={12} className="text-center">
           <h2>Explore more by trending categories</h2>
         </Col>
       </Row>
       <Row className="img-row">
         <Col className="img-column">
-          <img src={House} />
-          <img src={office} />
+          <div class="overlay-container">
+            <img src={House} />
+            <div class="overlay">
+              <div class="overlay-text">House</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={office} />
+            <div class="overlay">
+              <div class="overlay-text">Make your Office</div>
+            </div>
+          </div>
         </Col>
         <Col className="img-column">
-          <img src={Bungalow} />
-          <img src={Condo} />
+          <div class="overlay-container">
+            <img src={Bungalow} />
+            <div class="overlay">
+              <div class="overlay-text">Bungalow</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={Condo} />
+            <div class="overlay">
+              <div class="overlay-text">Condo</div>
+            </div>
+          </div>
         </Col>
         <Col className="img-column">
-          <img src={SweetHome} />
-          <img src={DreamHome} />
-          <img src={Luxurious} />
+          <div class="overlay-container">
+            <img src={SweetHome} />
+            <div class="overlay">
+              <div class="overlay-text">Sweet Home</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={DreamHome} />
+            <div class="overlay">
+              <div class="overlay-text">Dream Home</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={Luxurious} />
+            <div class="overlay">
+              <div class="overlay-text">Luxurious</div>
+            </div>
+          </div>
         </Col>
         <Col className="img-column">
-          <img src={Apartments} />
-          <img src={Coloniel} />
-          <img src={Duplex} />
+          <div class="overlay-container">
+            <img src={Apartments} />
+            <div class="overlay">
+              <div class="overlay-text">Apartments</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={Coloniel} />
+            <div class="overlay">
+              <div class="overlay-text">Colonial</div>
+            </div>
+          </div>
+          <div class="overlay-container">
+            <img src={Duplex} />
+            <div class="overlay">
+              <div class="overlay-text">Duplex</div>
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>

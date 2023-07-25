@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LoginLogo from "../../../assets/Login.svg";
+import LoginLogo from "../../../assets/Reg.svg";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-// import * as Yup from "yup";
+import * as Yup from "yup";
+import WebsiteHeader from "../../../Components/WebsiteHeader";
 
 // const RegisterSchema = Yup.object().shape({
 //   firstname: Yup.string()
@@ -69,225 +70,239 @@ export default function Register() {
     console.log("register payload", payload);
   }
   return (
-    <Container fluid style={{ backgroundColor: "#00274C", minHeight: "100vh" }}>
-      <Row>
-        <Col xs={12} sm={12} md={6} lg={6}>
-          <p className="py-4 px-5" style={{ color: "#FFFFFF", fontSize: 20 }}>
-            Nestwor<span style={{ color: "#FF7F50" }}>X</span>
-          </p>
-
-          <div className="d-none d-md-block">
-            <div className="d-flex justify-content-center align-items-center px-5">
-              <h1 style={{ color: "#FFFFFF", fontSize: 34 }}>
-                Elevate your real estate management with seamless registration
-              </h1>
+    <>
+      <WebsiteHeader />
+      <Container
+        fluid
+        style={{ backgroundColor: "#E8E8E8", minHeight: "87vh" }}
+      >
+        <Row>
+          <Col xs={12} sm={12} md={6} lg={6}>
+            <div className="d-none d-md-block">
+              <div className="d-flex justify-content-center align-items-center px-5 pt-3">
+                <h1
+                  style={{ color: "#202020", fontSize: 40, fontWeight: "600" }}
+                >
+                  Elevate your real estate management with seamless registration
+                </h1>
+              </div>
+              <div className="d-flex justify-content-center align-items-center">
+                <img src={LoginLogo} style={{ width: "55%" }} />
+              </div>
             </div>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={LoginLogo} />
-            </div>
-          </div>
-        </Col>
-        <Col
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-          className="d-flex justify-content-center align-items-center"
-        >
-          <div
-            style={{
-              backgroundImage:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))",
-              backdropFilter: "blur(5px)",
-              backgroundColor: "rgba(0,0,0,0.05)",
-              border: "1px solid rgba(248, 248, 248, 1)",
-              borderRadius: 35,
-              padding: 40,
-            }}
+          </Col>
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="d-flex justify-content-center align-items-center"
           >
-            <h3
+            <div
               style={{
-                fontSize: 25,
-                fontWeight: 600,
-                marginBottom: "10%",
-                color: "#FFFFFF",
+                backgroundImage:
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))",
+                backdropFilter: "blur(5px)",
+                backgroundColor: "rgba(0,0,0,0.10)",
+                border: "1px solid rgba(248, 248, 248, 1)",
+                borderRadius: 35,
+                padding: 40,
               }}
             >
-              Register
-            </h3>
-            <Form onSubmit={formik.handleSubmit}>
-              <Row>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      First Name
-                    </Form.Label>
-                    <Form.Control
-                      placeholder="Enter your first name"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          firstname: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.firstname && formik.errors.firstname && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.firstname}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Last Name
-                    </Form.Label>
-                    <Form.Control
-                      placeholder="Enter your last name"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          lastname: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.lastname && formik.errors.lastname && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.lastname}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>Email</Form.Label>
-                    <Form.Control
-                      placeholder="Enter your email address"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          email: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.email && formik.errors.email && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.email}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Mobile Number
-                    </Form.Label>
-                    <Form.Control
-                      placeholder="Enter your mobile number"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          mobile: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.mobile && formik.errors.mobile && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.mobile}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Password
-                    </Form.Label>
-                    <Form.Control
-                      placeholder="Enter your password"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          password: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.password && formik.errors.password && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.password}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-                <Col xs={12} sm={12} md={6} lg={6}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Confirm Password
-                    </Form.Label>
-                    <Form.Control
-                      placeholder="Confirm your password"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          confirm_password: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.confirm_password &&
-                      formik.errors.confirm_password && (
+              <h3
+                style={{
+                  fontSize: 25,
+                  fontWeight: 600,
+                  marginBottom: "8%",
+                  color: "#202020",
+                }}
+              >
+                Register
+              </h3>
+              <Form onSubmit={formik.handleSubmit}>
+                <Row>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        First Name
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your first name"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            firstname: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.firstname && formik.errors.firstname && (
                         <div>
                           <span role="alert" style={{ color: "red" }}>
-                            {formik.errors.confirm_password}
+                            {formik.errors.firstname}
                           </span>
                         </div>
                       )}
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12}>
-                  <Button
-                    className="mt-3 mb-1"
-                    variant="primary"
-                    type="submit"
-                    style={{
-                      width: "100%",
-                      background: "#FFA500",
-                      borderRadius: 30,
-                    }}
-                  >
-                    Register
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-            <p style={{ color: "#FFFFFF", textAlign: "center", fontSize: 14 }}>
-              Already have an account?{" "}
-              <a
-                style={{ color: "#FFA500", cursor: "pointer" }}
-                onClick={() => navigate("/login")}
+                    </Form.Group>
+                  </Col>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Last Name
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your last name"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            lastname: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.lastname && formik.errors.lastname && (
+                        <div>
+                          <span role="alert" style={{ color: "red" }}>
+                            {formik.errors.lastname}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Email
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your email address"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            email: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.email && formik.errors.email && (
+                        <div>
+                          <span role="alert" style={{ color: "red" }}>
+                            {formik.errors.email}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Mobile Number
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your mobile number"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            mobile: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.mobile && formik.errors.mobile && (
+                        <div>
+                          <span role="alert" style={{ color: "red" }}>
+                            {formik.errors.mobile}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Password
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your password"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            password: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.password && formik.errors.password && (
+                        <div>
+                          <span role="alert" style={{ color: "red" }}>
+                            {formik.errors.password}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                  <Col xs={12} sm={12} md={6} lg={6}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Confirm Password
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Confirm your password"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            confirm_password: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.confirm_password &&
+                        formik.errors.confirm_password && (
+                          <div>
+                            <span role="alert" style={{ color: "red" }}>
+                              {formik.errors.confirm_password}
+                            </span>
+                          </div>
+                        )}
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12} sm={12} md={12} lg={12}>
+                    <Button
+                      className="mt-3 mb-1"
+                      variant="primary"
+                      type="submit"
+                      style={{
+                        width: "100%",
+                        background: "#202020",
+                        borderRadius: 30,
+                      }}
+                    >
+                      Register
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+              <p
+                style={{ color: "#202020", textAlign: "center", fontSize: 14 }}
               >
-                Login
-              </a>
-            </p>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+                Already have an account?{" "}
+                <a
+                  style={{ color: "blue", cursor: "pointer" }}
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </a>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
