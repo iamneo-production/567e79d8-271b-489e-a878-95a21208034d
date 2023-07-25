@@ -116,7 +116,10 @@ export default function Login() {
                       />
                       {formik.touched.email && formik.errors.email && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.email}
                           </span>
                         </div>
@@ -141,7 +144,10 @@ export default function Login() {
                       />
                       {formik.touched.password && formik.errors.password && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.password}
                           </span>
                         </div>

@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
-import WideSelect from "../../assets/WhyUs/WideSelect.svg";
 import Star from "../../assets/Star.svg";
 import LeftQuotes from "../../assets/LeftQuotes.svg";
 import RightQuotes from "../../assets/RightQuotes.svg";
@@ -37,7 +36,6 @@ export default function Testimonial() {
           </p>
         </Col>
       </Row>
-      {/* <Row className="pb-5 pt-2"><</Row> */}
       <Row className="pb-5 pt-2">
         <Carousel
           prevIcon={<PreviousButton />}

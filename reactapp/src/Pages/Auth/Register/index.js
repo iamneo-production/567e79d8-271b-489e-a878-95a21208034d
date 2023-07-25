@@ -10,32 +10,32 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
 
-// const RegisterSchema = Yup.object().shape({
-//   firstname: Yup.string()
-//     .min(3, "First name is too short")
-//     .max(50, "First name is too long")
-//     .required("First name is required"),
-//   lastname: Yup.string()
-//     .min(3, "Last name is too short")
-//     .max(50, "Last name is too long")
-//     .required("Last name is required"),
-//   email: Yup.string()
-//     .email("Invalid Email")
-//     .min(3, "User doesn't exist")
-//     .max(50, "User doesn't exist")
-//     .required("Email is required"),
-//   mobile: Yup.string()
-//     .mobile("Invalid mobile number")
-//     .required("Mobile number is required"),
-// password: Yup.string()
-//   .min(8, "Password is Incorrect")
-//   .max(50, "Password is Incorrect")
-//   .required("Password is required"),
-// confirm_password: Yup.string()
-//   .min(8, "Password is Incorrect")
-//   .max(50, "Password is Incorrect")
-//   .required("Password is required"),
-// });
+const RegisterSchema = Yup.object().shape({
+  firstname: Yup.string()
+    .min(3, "First name is too short")
+    .max(50, "First name is too long")
+    .required("First name is required"),
+  lastname: Yup.string()
+    .min(3, "Last name is too short")
+    .max(50, "Last name is too long")
+    .required("Last name is required"),
+  email: Yup.string()
+    .email("Invalid Email")
+    .min(3, "User doesn't exist")
+    .max(50, "User doesn't exist")
+    .required("Email is required"),
+  mobile: Yup.string()
+    .min(10, "Invalid mobile number")
+    .required("Mobile number is required"),
+  password: Yup.string()
+    .min(8, "Password is Incorrect")
+    .max(50, "Password is Incorrect")
+    .required("Password is required"),
+  confirm_password: Yup.string()
+    .min(8, "Password is Incorrect")
+    .max(50, "Password is Incorrect")
+    .required("Please confirm your password"),
+});
 
 export default function Register() {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export default function Register() {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: initialValues,
-    // validationSchema: RegisterSchema,
+    validationSchema: RegisterSchema,
     onSubmit: (values, { setStatus, setSubmitting }) => {
       handleSubmit(values);
     },
@@ -138,7 +138,10 @@ export default function Register() {
                       />
                       {formik.touched.firstname && formik.errors.firstname && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.firstname}
                           </span>
                         </div>
@@ -162,7 +165,10 @@ export default function Register() {
                       />
                       {formik.touched.lastname && formik.errors.lastname && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.lastname}
                           </span>
                         </div>
@@ -188,7 +194,10 @@ export default function Register() {
                       />
                       {formik.touched.email && formik.errors.email && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.email}
                           </span>
                         </div>
@@ -212,7 +221,10 @@ export default function Register() {
                       />
                       {formik.touched.mobile && formik.errors.mobile && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.mobile}
                           </span>
                         </div>
@@ -238,7 +250,10 @@ export default function Register() {
                       />
                       {formik.touched.password && formik.errors.password && (
                         <div>
-                          <span role="alert" style={{ color: "red" }}>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
                             {formik.errors.password}
                           </span>
                         </div>
@@ -263,7 +278,10 @@ export default function Register() {
                       {formik.touched.confirm_password &&
                         formik.errors.confirm_password && (
                           <div>
-                            <span role="alert" style={{ color: "red" }}>
+                            <span
+                              role="alert"
+                              style={{ color: "red", fontSize: 13 }}
+                            >
                               {formik.errors.confirm_password}
                             </span>
                           </div>

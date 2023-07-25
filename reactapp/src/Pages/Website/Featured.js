@@ -123,48 +123,6 @@ export default function Featured() {
             </div>
           </Card>
         </Col>
-        {/* <div className="d-none d-md-block">
-          <Col
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            className="d-flex justify-content-center align-items-center mt-4"
-          >
-            <Button
-              variant="primary"
-              style={{
-                width: "20%",
-                background: "#00274C",
-                borderRadius: 30,
-                padding: 10,
-              }}
-            >
-              Browse more
-            </Button>
-          </Col>
-        </div> */}
-        {/* <div className="d-block d-md-none">
-          <Col
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            className="d-flex justify-content-center align-items-center mt-4"
-          >
-            <Button
-              variant="primary"
-              style={{
-                width: "50%",
-                background: "#00274C",
-                borderRadius: 30,
-                padding: 10,
-              }}
-            >
-              Browse more
-            </Button>
-          </Col>
-        </div> */}
       </Row>
     </Container>
   );

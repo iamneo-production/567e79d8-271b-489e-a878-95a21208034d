@@ -1,6 +1,5 @@
 import React from "react";
 import WebsiteHeader from "../../Components/WebsiteHeader";
-import HomePage from "./HomePage";
 import Explore from "./Explore";
 import WhyUs from "./WhyUs";
 import Featured from "./Featured";

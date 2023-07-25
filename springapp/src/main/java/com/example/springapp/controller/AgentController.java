@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.springapp.model.Agent;
 import com.example.springapp.model.User;
@@ -15,12 +16,26 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class AgentController {
 
     private final AgentService agentService;
 
     public AgentController(AgentService agentService) {
         this.agentService = agentService;
+    }
+    
+    @PostMapping("/agents")
+    public Agent addAgent(@RequestBody Agent agent) {
+        return agentService.saveAgent(agent);
+    }
+     @DeleteMapping("/agents/{id}")
+    public String deleteAgent(@PathVariable long id) {
+        return agentService.deleteAgent(id);
+    }
+    @PutMapping("/agents/")
+    public Agent updateAgent(@RequestBody Agent agent) {
+        return agentService.updateAgent(agent);
     }
 
     @GetMapping("/agents")

@@ -5,12 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import {
-  FaLandmark,
-  FaLocationArrow,
-  FaSearch,
-  FaSearchLocation,
-} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 export default function Home() {
   const navigate = useNavigate();

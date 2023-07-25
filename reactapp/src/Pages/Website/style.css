@@ -78,12 +78,12 @@
     transition: .3s ease;
 }
 
-/* When you mouse over the container, the overlay text will "zoom" in display */
+
 .overlay-container:hover .overlay {
     box-shadow: 1px 1px 3px 3px #888888;
 }
 
-/* Some text inside the overlay, which is positioned in the middle vertically and horizontally */
+
 .overlay-text {
     color: white;
     font-size: 18px;
