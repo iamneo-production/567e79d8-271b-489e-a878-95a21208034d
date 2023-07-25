@@ -24,6 +24,15 @@ public class PropertyController {
 	{
 		return propertyService.getAllProperties();
 	}
+	@RequestMapping("/properties/count1")
+	public int getCountPending(){
+		return propertyService.findpending();
+	}
+
+	@RequestMapping("/properties/count2")
+	public int getCountCancelled(){
+		return propertyService.findcancelled();
+	}
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value="/properties")
