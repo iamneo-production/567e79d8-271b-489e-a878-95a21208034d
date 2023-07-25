@@ -12,7 +12,7 @@ import AgentRecord from "./Pages/Agent/AgentRecord";
 import UserRecord from "./Pages/User/UserRecord";
 import PropertyRecord from "./Pages/Property/PropertyRecord";
 import Search from "./Components/search";
-import AdProperty from "./Components/AdProperty";
+import AdProperty from "./Pages/Property/AdProperty";
 import AddAgent from "./Pages/Agent/AddAgents";
 import AddUser from "./Pages/User/AddUser";
 import UpdateAgent from "./Pages/Agent/UpdateAgent";
