@@ -2,8 +2,6 @@ import React from 'react'
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import Notifications from '../Notification/Notification';
 import TextField from "@mui/material/TextField";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,25 +12,24 @@ import FormControl from '@mui/material/FormControl';
 import Deactivate from '../Deactivate/Deactivate';
 import "./userstyle.css"
 import Addprofilepic from '../Profilepic/Addprofilepic';
-// import axios from "axios";
+import axios from "axios";
 
 
 
 export default function Profile() {
-    const [shownoti, setShownoti] = React.useState(false);
-    const [edit, setEdit] = React.useState(false);
     const [showdeactivate,setShowdeactivate]=React.useState(false);
     const [showAdddp,setShowAdddp]=React.useState(false);
     const [fullformdata, setFullformdata] = React.useState(
         { name: "", email: "", phone: "", address: "", bio: "",gender:""}
     )
 
-    const forEdit = () => {
-        setEdit(!edit);
-    };
 
-    const forSave = () => {
-        setEdit(false);
+    const forsave = () => {
+        console.log(fullformdata)
+        console.log("hi")
+        axios.put("http://localhost:8080/users/1",fullformdata)
+        .then(res=>console.log(res))
+        .catch(err=>console.log("error",err))
     };
 
 
@@ -42,9 +39,7 @@ export default function Profile() {
         });
     }
 
-    const displaynoti = () => {
-        setShownoti(!shownoti);
-    }
+    
 
     function formdatachange(event) {
         setFullformdata(prevFormData => {
@@ -100,15 +95,13 @@ export default function Profile() {
             </div>
 
             <div className='profile2'>
-                <NotificationsNoneOutlinedIcon id="noticon" onClick={displaynoti} />
-                <h1 id="title-head">My Profile</h1>
-                {shownoti && <Notifications />}
+                {/* <h1 id="title-head">My Profile</h1> */}
+                <Button variant='outlined' id='head'>PROFILE</Button>
                 <div className='field'>
                     <form className="field1" >
                         <div>
                             <TextField
                                 label="Full Name" variant="outlined"
-                                disabled={!edit}
                                 onChange={formdatachange}
                                 name="name"
                                 autoComplete="off"
@@ -129,7 +122,6 @@ export default function Profile() {
                             <TextField
                                 label="Phone Number" variant="outlined"
                                 onChange={formdatachange}
-                                disabled={!edit}
                                 name="phone"
                                 autoComplete="off"
                                 id="inputline"
@@ -138,7 +130,6 @@ export default function Profile() {
                             <TextField
                                 label="Address" variant="outlined"
                                 onChange={formdatachange}
-                                disabled={!edit}
                                 name="addresss"
                                 autoComplete="off"
                                 id="inputline"
@@ -146,41 +137,34 @@ export default function Profile() {
                             <br /><br></br>
 
                             <FormControl>
-                            <InputLabel>Gender</InputLabel>
-                            <Select  
+                        <InputLabel>Gender</InputLabel>
+                        <Select
                             id="mf"
-                            label="Gender" 
-                            value={fullformdata.gender} 
-                            onChange={formdatachange} 
+                            label="Gender"
+                            value={fullformdata.gender}
+                            onChange={formdatachange}
                             name="gender"
-                            disabled={!edit}>
-                                <MenuItem value='male' id="mgopt">Male</MenuItem>
-                                <MenuItem value='female' id="fgopt">Female</MenuItem>
-                                <MenuItem value='other' id="ogopt">Other</MenuItem>
-                            </Select>
-                            </FormControl><br/><br/>
+                        >
+                            <MenuItem value='male' id="mgopt">Male</MenuItem>
+                            <MenuItem value='female' id="fgopt">Female</MenuItem>
+                            <MenuItem value='other' id="ogopt">Other</MenuItem>
+                        </Select>
+                    </FormControl><br /><br />
                             
 
                             <TextField label="Bio"
                                 onChange={formdatachange}
-                                disabled={!edit}
                                 name="bio"
                                 autoComplete="off"
                                 id="inputline"
                             />
 
-                        </div>
+                        </div><br/>
+                        <Button variant="contained" onClick={forsave} >Save</Button><br/>
 
 
-                    </form><br />
-                    {edit ? (
-                        <Button variant="contained" type="submit" id="prodatasts"onClick={() => {
-                            forSave()
-                            notify()
-                        }}>Save</Button>
-                    ) : (
-                        <Button variant="contained" id="prodatasts"onClick={forEdit}>Edit</Button>
-                    )}
+                    </form>
+                    
                     {showdeactivate&&<Deactivate close={setShowdeactivate}/>}
                     {showAdddp&& <Addprofilepic close={setShowAdddp}/>}
                     <ToastContainer autoClose={1000} />

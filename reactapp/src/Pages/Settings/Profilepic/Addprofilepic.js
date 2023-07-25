@@ -1,38 +1,39 @@
 import React from 'react';
 import Button from "@mui/material/Button";
 import "./Addprofilepic.css"
+import TextField from "@mui/material/TextField";
+import axios from 'axios';
 
 export default function Addprofilepic({close}) {
+  const [imgsel,setImgsel]= React.useState({imgurl:""});
 
-  const inputRef = React.useRef(null);
-  const [imgsel,setImgsel]= React.useState("");
+  function imgselchange(event) {
+    setImgsel(prevFormData => {
+        return {
+            ...prevFormData,
+            [event.target.name]: event.target.value
+        }
+    })
+}
 
-
-  const refchange =(event)=>
+  function UploadImageUrl()
   {
-    const imgup =event.target.files[0];
-    console.log(imgup);
-    console.log("clicked");
-    setImgsel(imgup);
+    axios.put("http://localhost:8080/user/dp/1", imgsel)
+            
+            close(false)
   }
   return (
     <div className='dpchange-overlay'>
         <div  className='ChangeAccdp'>
             <h1 >Add Profile Picture</h1>
-            <div className='dnd' >
-            {imgsel&&(<img src={URL.createObjectURL(imgsel)} id="dp-pick"/>)}
-            
-            <input type='file'
-             ref={inputRef} 
-             onChange={refchange}
-             hidden/><br/>
-
-            </div>
+            <TextField
+            label="Paste Image Url"
+            name='imgurl'
+            onChange={imgselchange}
+            /><br/>
             <div className='dpchange-btnorder'>
 
-            {imgsel?(<Button id="dpchange-btn1" variant='contained'>Upload</Button>):
-            (<Button onClick={()=>inputRef.current.click()} id="dpchange-btn1" variant='contained'>Browse</Button>)}
-            
+            <Button id="dpchange-btn1" variant='contained' onClick={()=>{UploadImageUrl()}}>Upload</Button>
             <Button variant='outlined' id="dpchange-btn2" onClick={()=>close(false)}>Cancel</Button>
             </div>
         </div>
