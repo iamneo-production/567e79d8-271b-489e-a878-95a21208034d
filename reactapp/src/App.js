@@ -41,7 +41,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/AdminLogin" element={<AdminLogin/>}/>
-          <Route path="/Profile_update" element={<Profile_update />} />
+          <Route path="/updateagent/:id" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
           <Route path="/forgot-pwd" element={<Changepass />} />
           <Route path="/homepage" element={<Homepage />} />
