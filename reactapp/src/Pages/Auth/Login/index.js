@@ -13,6 +13,7 @@ import WebsiteHeader from "../../../Components/WebsiteHeader";
 import { EndPoints } from "../../../Config/endPoints";
 import { post } from "../../../Config/services";
 import Snackbar from "@mui/material/Snackbar";
+import { useDispatch } from "react-redux";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -28,6 +29,7 @@ const LoginSchema = Yup.object().shape({
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isMdUp = useMediaQuery({ minWidth: 768 });
   const [initialValues, setInitialValues] = useState({
     email: "",
@@ -54,6 +56,9 @@ export default function Login() {
     };
     await post(EndPoints.login, payload)
       .then((res) => {
+        console.log("response of login", res);
+        // dispatch(logins(res?.data?));
+        // localStorage.setItem("token", res?.token);
         setSnack(true);
         setMessage(res?.message);
       })
