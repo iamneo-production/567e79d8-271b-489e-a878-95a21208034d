@@ -80,6 +80,8 @@ function App() {
           <Route path="AddUser" element={<AddUser />} />
           <Route path="UpdateAgent" element={<UpdateAgent />} />
           <Route path="Demo" element={<Demo />} /> */}
+           <Route path="/userwishlist" element={<Cards />} />
+          <Route path="/propertydescription" element={<PropertyDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
