@@ -24,6 +24,18 @@ export const get = async (url) => {
   }
 };
 
+export const authPost = async (url, data) => {
+  try {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const response = await api.post(url, data, { headers });
+    return response.data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
 // Custom POST method
 export const post = async (url, data) => {
   try {

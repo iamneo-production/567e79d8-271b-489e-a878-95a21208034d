@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
 import { EndPoints } from "../../../Config/endPoints";
-import { post } from "../../../Config/services";
+import { authPost, post } from "../../../Config/services";
 import Snackbar from "@mui/material/Snackbar";
 import { useDispatch } from "react-redux";
 
@@ -54,7 +54,7 @@ export default function Login() {
       email: data?.email,
       password: data?.password,
     };
-    await post(EndPoints.login, payload)
+    await authPost(EndPoints.login, payload)
       .then((res) => {
         console.log("response of login", res);
         // dispatch(logins(res?.data?));

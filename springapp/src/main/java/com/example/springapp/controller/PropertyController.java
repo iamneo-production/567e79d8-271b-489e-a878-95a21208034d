@@ -1,4 +1,4 @@
-package com.xadmin.SpringBootCrud.controller;
+package com.example.springapp.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xadmin.SpringBootCrud.bean.Property;
-import com.xadmin.SpringBootCrud.service.PropertyService;
+import com.example.springapp.model.Property;
+import com.example.springapp.service.PropertyService;
 
 @RestController
 public class PropertyController {

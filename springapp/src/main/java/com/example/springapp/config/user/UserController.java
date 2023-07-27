@@ -13,7 +13,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @CrossOrigin(origins = "*")
     @PostMapping("/api/auth/register")
     public BaseResponceDto registerUser(@RequestBody User newUser){
         if(userService.createUser(newUser)){
@@ -23,7 +22,7 @@ public class UserController {
         }
 
     }
-    @CrossOrigin(origins = "*")
+
     @PostMapping("/api/auth/login")
     public BaseResponceDto loginUser(@RequestBody UserLoginDto loginDetails){
         if(userService.checkUserNameExists(loginDetails.getEmail())){

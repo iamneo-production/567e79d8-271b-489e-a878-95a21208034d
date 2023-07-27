@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
-import { post } from "../../../Config/services";
+import { authPost, post } from "../../../Config/services";
 import { EndPoints } from "../../../Config/endPoints";
 import Snackbar from "@mui/material/Snackbar";
 
@@ -69,7 +69,7 @@ export default function Register() {
       password: data?.password,
       roles: data?.role,
     };
-    await post(EndPoints.register, payload)
+    await authPost(EndPoints.register, payload)
       .then((res) => {
         setSnack(true);
         setMessage(res?.message);

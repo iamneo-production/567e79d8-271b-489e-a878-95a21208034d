@@ -1,4 +1,4 @@
 export const EndPoints = {
-  login: "/auth/login",
-  register: "/auth/register",
+  login: "/api/auth/login",
+  register: "/api/auth/register",
 };

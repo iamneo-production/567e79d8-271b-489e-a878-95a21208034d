@@ -1,13 +1,13 @@
-package com.xadmin.SpringBootCrud.service;
+package com.example.springapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.springapp.model.Property;
+import com.example.springapp.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xadmin.SpringBootCrud.bean.Property;
-import com.xadmin.SpringBootCrud.repository.PropertyRepository;
 
 @Service
 
@@ -57,7 +57,7 @@ public class PropertyService {
 	}
 
 	public void deleteProperty(String id) {
-		propertyRepo.deleteById(id);
+		propertyRepo.deleteById(Long.valueOf(id));
 		
 	}
 
