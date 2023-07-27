@@ -9,16 +9,15 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
+import { post } from "../../../Config/services";
+import { EndPoints } from "../../../Config/endPoints";
+import Snackbar from "@mui/material/Snackbar";
 
 const RegisterSchema = Yup.object().shape({
   firstname: Yup.string()
     .min(3, "First name is too short")
     .max(50, "First name is too long")
     .required("First name is required"),
-  lastname: Yup.string()
-    .min(3, "Last name is too short")
-    .max(50, "Last name is too long")
-    .required("Last name is required"),
   email: Yup.string()
     .email("Invalid Email")
     .min(3, "User doesn't exist")
@@ -28,13 +27,12 @@ const RegisterSchema = Yup.object().shape({
     .min(10, "Invalid mobile number")
     .required("Mobile number is required"),
   password: Yup.string()
-    .min(8, "Password is Incorrect")
-    .max(50, "Password is Incorrect")
+    .min(8, "Password length must be atleast 8 characters")
     .required("Password is required"),
   confirm_password: Yup.string()
-    .min(8, "Password is Incorrect")
-    .max(50, "Password is Incorrect")
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Please confirm your password"),
+  role: Yup.string().required("role is required"),
 });
 
 export default function Register() {
@@ -46,7 +44,11 @@ export default function Register() {
     mobile: "",
     password: "",
     confirm_password: "",
+    role: "",
   });
+
+  const [snack, setSnack] = useState(false);
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -60,14 +62,26 @@ export default function Register() {
   async function handleSubmit(value) {
     const data = value;
     let payload = {
-      firstname: data?.firstname,
-      lastname: data?.lastname,
+      firstName: data?.firstname,
+      lastName: data?.lastname,
       email: data?.email,
       mobile: data?.mobile,
       password: data?.password,
-      confirm_password: data?.confirm_password,
+      roles: data?.role,
     };
-    console.log("register payload", payload);
+    await post(EndPoints.register, payload)
+      .then((res) => {
+        setSnack(true);
+        setMessage(res?.message);
+        navigate("/login");
+      })
+      .catch((err) => {
+        setSnack(true);
+        setMessage(err?.message);
+      });
+    setTimeout(() => {
+      setSnack(false);
+    }, 3000);
   }
   return (
     <>
@@ -109,17 +123,50 @@ export default function Register() {
                 padding: 40,
               }}
             >
-              <h3
-                style={{
-                  fontSize: 25,
-                  fontWeight: 600,
-                  marginBottom: "8%",
-                  color: "#202020",
-                }}
-              >
-                Register
-              </h3>
               <Form onSubmit={formik.handleSubmit}>
+                <div className="d-flex justify-content-between">
+                  <h3
+                    style={{
+                      fontSize: 25,
+                      fontWeight: 600,
+                      marginBottom: "8%",
+                      color: "#202020",
+                    }}
+                  >
+                    Register
+                  </h3>
+                  <div>
+                    <Form.Check
+                      inline
+                      label="Buyer"
+                      name="Buyer"
+                      type="radio"
+                      checked={initialValues.role === "ROLE_BUYER"}
+                      value="ROLE_BUYER"
+                      onChange={(e) =>
+                        setInitialValues({
+                          ...initialValues,
+                          role: e.target.value,
+                        })
+                      }
+                    />
+                    <Form.Check
+                      inline
+                      label="Agent"
+                      name="Agent"
+                      type="radio"
+                      checked={initialValues.role === "ROLE_AGENT"}
+                      value="ROLE_AGENT"
+                      onChange={(e) =>
+                        setInitialValues({
+                          ...initialValues,
+                          role: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </div>
+
                 <Row>
                   <Col xs={12} sm={12} md={6} lg={6}>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -241,6 +288,7 @@ export default function Register() {
                       <Form.Control
                         style={{ height: 40 }}
                         placeholder="Enter your password"
+                        type="password"
                         onChange={(e) =>
                           setInitialValues({
                             ...initialValues,
@@ -268,6 +316,7 @@ export default function Register() {
                       <Form.Control
                         style={{ height: 40 }}
                         placeholder="Confirm your password"
+                        type="password"
                         onChange={(e) =>
                           setInitialValues({
                             ...initialValues,
@@ -321,6 +370,13 @@ export default function Register() {
           </Col>
         </Row>
       </Container>
+      <Snackbar
+        open={snack}
+        onClose={() => {
+          setSnack(false);
+        }}
+        message={message}
+      />
     </>
   );
 }

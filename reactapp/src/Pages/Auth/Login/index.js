@@ -10,6 +10,9 @@ import { useMediaQuery } from "react-responsive";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
+import { EndPoints } from "../../../Config/endPoints";
+import { post } from "../../../Config/services";
+import Snackbar from "@mui/material/Snackbar";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,6 +34,9 @@ export default function Login() {
     password: "",
   });
 
+  const [snack, setSnack] = useState(false);
+  const [message, setMessage] = useState("");
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: initialValues,
@@ -46,8 +52,18 @@ export default function Login() {
       email: data?.email,
       password: data?.password,
     };
-    // dispatch(getLoginDetailsAction(payload));
-    console.log("login payload", payload);
+    await post(EndPoints.login, payload)
+      .then((res) => {
+        setSnack(true);
+        setMessage(res?.message);
+      })
+      .catch((err) => {
+        setSnack(true);
+        setMessage(err?.message);
+      });
+    setTimeout(() => {
+      setSnack(false);
+    }, 3000);
   }
   return (
     <>
@@ -201,6 +217,13 @@ export default function Login() {
           </Col>
         </Row>
       </Container>
+      <Snackbar
+        open={snack}
+        onClose={() => {
+          setSnack(false);
+        }}
+        message={message}
+      />
     </>
   );
 }
