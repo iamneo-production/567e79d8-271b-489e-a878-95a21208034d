@@ -1,111 +1,112 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import image from './Agent1.jpg'
 
-import React, { useState } from 'react';
+export default function Profile_update() {
+  let navigate = useNavigate();
 
-const Profile_update = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
-  const [description, setDescription] = useState('');
-  const [isUpdating, setIsUpdating] = useState(false);
+  const { id } = useParams();
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    description: "",
+  });
 
-    // TODO: Implement the update logic here
+  const { name, email, phone,description } = user;
 
-    setIsUpdating(false);
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleEdit = () => {
-    setIsUpdating(true);
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/`, user);
+    navigate(`/viewagent/${id}`);
+  };
+
+  const loadUser = async () => {
+    const result = await axios.get(`https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/${id}`);
+    setUser(result.data);
   };
 
   return (
-    <div className="shadow-2-strong">
-      <div className="container mt-4">
-        <div className="card">
-          <div className="card-body">
-            <h2 className="card-title text-center">Personal information</h2>
-            <div className="mb-4">
-              <strong>Name:</strong> {name}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+          <div className="justify-content-center align-items-center">
+             <img src={image} className="img-fluid" alt="Agent"  width="200px" height="200px" />
+         </div>
+        <h2 className="text-center m-4" style={{ fontWeight: 'bold', color: 'blue', textShadow: '1px 1px 1px #000' }}>
+          Update Agent Profile
+</h2>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className="mb-3">
+              <label htmlFor="Name" className="form-label">
+                Name
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your name"
+                name="name"
+                value={name}
+                onChange={(e) => onInputChange(e)}
+              />
             </div>
-            <div className="mb-4">
-              <strong>Email:</strong> {email}
+            <div className="mb-3">
+              <label htmlFor="Username" className="form-label">
+                Phone
+              </label>
+              <input
+                type={"number"}
+                className="form-control"
+                placeholder="Enter your number"
+                name="phone"
+                value={phone}
+                onChange={(e) => onInputChange(e)}
+              />
             </div>
-            <div className="mb-4">
-              <strong>Phone Number:</strong> {number}
+            <div className="mb-3">
+              <label htmlFor="Email" className="form-label">
+                E-mail
+              </label>
+              <input
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your e-mail address"
+                name="email"
+                value={email}
+                onChange={(e) => onInputChange(e)}
+              />
+               <label htmlFor="description" className="form-label">
+                Description
+              </label>
+              <textarea
+                type={"text"}
+                className="form-control"
+                placeholder="Enter your description"
+                name="description"
+                value={description}
+                onChange={(e) => onInputChange(e)}
+                rows={3}
+              />
             </div>
-            <div className="mb-4">
-              <strong>Description:</strong> {description}
-            </div>
-            {isUpdating ? (
-              <form onSubmit={handleUpdate}>
-                <div className="mb-4">
-                  <label htmlFor="name" className="form-label">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="form-control"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="number" className="form-label">
-                    Phone Number
-                  </label>
-                  <input
-                    type="number"
-                    id="number"
-                    className="form-control"
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="description" className="form-label">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    id="description"
-                    className="form-control"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Update
-                </button>
-              </form>
-            ) : (
-              <button onClick={handleEdit} className="btn btn-primary">
-                Edit Profile
-              </button>
-            )}
-          </div>
+            <button type="submit" className="btn btn-outline-primary">
+              Submit
+            </button>
+            <Link className="btn btn-outline-danger mx-2" to="/agents/">
+              Cancel
+            </Link>
+          </form>
         </div>
       </div>
     </div>
   );
-};
-
-export default Profile_update;
+}
