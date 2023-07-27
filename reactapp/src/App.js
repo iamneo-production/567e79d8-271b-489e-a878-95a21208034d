@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Website from "./Pages/Website";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
+import PrivateRouter from "./PrivateRouter";
 import AdminLogin from "./Components/AdminLogin";
 import Agents from "./Pages/Agent/Agents";
 import Users from "./Pages/User/Users";
@@ -40,6 +41,17 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route element={<PrivateRouter element={{ role: "admin" }} />}>
+            <Route path="/admin/*" element={<AdminHomepage />} />
+          </Route>
+          <Route element={<PrivateRouter element={{ role: "buyer" }} />}>
+            <Route path="/buyer/*" element={<Users />} />
+          </Route>
+          <Route element={<PrivateRouter element={{ role: "agent" }} />}>
+            <Route path="/agent/*" element={<Agents />} />
+          </Route>
+          {/* <Route path="/AdminHomepage" element={<AdminHomepage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/AdminLogin" element={<AdminLogin/>}/>
           <Route path="/updateagent/:id" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
@@ -51,9 +63,9 @@ function App() {
           <Route path="/prop" element={<Prop />} />
           <Route path="/userwishlist" element={<Cards />} />
           <Route path="/propertydescription" element={<PropertyDetails />} />
-          <Route exact path="/agents/" element={<AllAgent />}></Route>
+          <Route exact path="/agents/" element={<AllAgent />}/>
           <Route exact path="/viewagent/:id" element={<ViewAgent />} />
-          <Route path="/AdminHomepage" element={<AdminHomepage />} >
+          <Route path="/AdminHomepage" element={<AdminHomepage />} />
           <Route path="" element={<Dashboard />} />
           <Route path="Agents" element={<Agents />} />
           <Route path="Users" element={<Users />} />
@@ -67,8 +79,7 @@ function App() {
           <Route path="AddAgent" element={<AddAgent />} />
           <Route path="AddUser" element={<AddUser />} />
           <Route path="UpdateAgent" element={<UpdateAgent />} />
-          <Route path="Demo" element={<Demo />} />
-          </Route>
+          <Route path="Demo" element={<Demo />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
