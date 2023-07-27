@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.springapp.model.Agent;
 import com.example.springapp.repository.AgentRepository;
+import com.example.springapp.model.Property;
+import com.example.springapp.repository.PropertyRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +16,11 @@ public class AgentService {
     @Autowired
     private final AgentRepository agentrepo;
 
-    public AgentService(AgentRepository agentrepo) {
+    private final PropertyRepository propertyrepo;
+
+    public AgentService(AgentRepository agentrepo, PropertyRepository propertyrepo) {
         this.agentrepo = agentrepo;
+        this.propertyrepo = propertyrepo;
     }
 
     public Agent saveAgent(Agent agent) {
@@ -44,4 +49,11 @@ public class AgentService {
         return agentrepo.findById(id);
     }
 
+    public List<Property> getallproperty() {
+        return propertyrepo.findAll();
+    }
+
+    public Optional<Property> getpropertybyid(Long id) {
+        return propertyrepo.findById(id);
+    }
 }

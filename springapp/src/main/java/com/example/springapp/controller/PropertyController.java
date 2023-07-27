@@ -1,31 +1,51 @@
 package com.example.springapp.controller;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.springapp.model.Property;
 import com.example.springapp.service.PropertyService;
 
-import java.util.Optional;
-import java.util.List;
-
 @RestController
-@RequestMapping("/api")
 public class PropertyController {
 
-    private final PropertyService propertyService;
+	@Autowired
+	private PropertyService propertyService;
 
-    // private final PropertyServiceProvider propertyServiceProvider;
+	@RequestMapping("/Properties")
+	public List<Property> getAllProperties() {
+		return propertyService.getAllProperties();
+	}
 
-    @Autowired
-    public PropertyController(PropertyService propertyService) {
-        this.propertyService = propertyService;
-    }
+	@RequestMapping("/properties/count1")
+	public int getCountPending() {
+		return propertyService.findpending();
+	}
 
-    @PostMapping("/properties")
-    public Property addProperty(@RequestBody Property property) {
-        return propertyService.saveProperty(property);
-    }
+	@RequestMapping("/properties/count2")
+	public int getCountCancelled() {
+		return propertyService.findcancelled();
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/properties")
+	public void addProperty(@RequestBody Property property) {
+		propertyService.addProperty(property);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/properties/{id}")
+	public void updateProperty(@PathVariable String id, @RequestBody Property property) {
+		propertyService.updateProperty(id, property);
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/properties/{id}")
+	public void DeleteProperty(@PathVariable String id) {
+		propertyService.deleteProperty(id);
+	}
 
 }

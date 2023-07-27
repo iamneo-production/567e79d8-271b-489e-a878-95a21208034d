@@ -4,7 +4,7 @@ import { FaToilet, FaParking, FaRupeeSign, FaHouseUser } from "react-icons/fa";
 import { TbRulerMeasure } from "react-icons/tb";
 import { BiBed } from "react-icons/bi";
 
-import ContactAgent from "../../../Components/ContactAgent";
+import ContactAgent from "../../User/ContactAgent";
 const Content = ({ property }) => {
   return (
     <div

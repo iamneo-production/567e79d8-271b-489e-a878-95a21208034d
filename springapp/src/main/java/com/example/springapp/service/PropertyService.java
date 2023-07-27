@@ -1,26 +1,63 @@
 package com.example.springapp.service;
 
-import com.example.springapp.repository.PropertyRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.springapp.model.Property;
 import com.example.springapp.repository.PropertyRepository;
-
-import java.util.List;
-// import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
+
 public class PropertyService {
 
-    public final PropertyRepository propertyrepo;
+	@Autowired
 
-    @Autowired
-    public PropertyService(PropertyRepository propertyrepo) {
-        this.propertyrepo = propertyrepo;
-    }
+	public PropertyRepository propertyRepo;
 
-    public Property saveProperty(Property property) {
-        return propertyrepo.save(property);
-    }
+	public List<Property> getAllProperties() {
+		List<Property> properties = new ArrayList<>();
+		propertyRepo.findAll().forEach(properties::add);
+		return properties;
+	}
+
+	public int findpending() {
+		int count = 0;
+		List<Property> properties = new ArrayList<>();
+		propertyRepo.findAll().forEach(properties::add);
+		for (int i = 0; i < properties.size(); i++) {
+			if (properties.get(i).getStatus().equals("Pending"))
+				count++;
+		}
+		return count;
+	}
+
+	public int findcancelled() {
+		int count = 0;
+		List<Property> properties = new ArrayList<>();
+		propertyRepo.findAll().forEach(properties::add);
+		for (int i = 0; i < properties.size(); i++) {
+			if (properties.get(i).getStatus().equals("Cancelled"))
+				count = count + 1;
+		}
+		return count;
+	}
+
+	public void addProperty(Property property) {
+		propertyRepo.save(property);
+
+	}
+
+	public void updateProperty(String id, Property property) {
+
+		propertyRepo.save(property);
+
+	}
+
+	public void deleteProperty(String id) {
+		propertyRepo.deleteById(Long.valueOf(id));
+
+	}
 
 }

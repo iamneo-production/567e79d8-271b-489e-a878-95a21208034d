@@ -9,6 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import WebsiteHeader from "../../../Components/WebsiteHeader";
+import { EndPoints } from "../../../Config/endPoints";
+import { authPost, post } from "../../../Config/services";
+import Snackbar from "@mui/material/Snackbar";
+import { useDispatch } from "react-redux";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,11 +29,15 @@ const LoginSchema = Yup.object().shape({
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isMdUp = useMediaQuery({ minWidth: 768 });
   const [initialValues, setInitialValues] = useState({
     email: "",
     password: "",
   });
+
+  const [snack, setSnack] = useState(false);
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -45,150 +54,181 @@ export default function Login() {
       email: data?.email,
       password: data?.password,
     };
-    // dispatch(getLoginDetailsAction(payload));
-    console.log("login payload", payload);
+    await authPost(EndPoints.login, payload)
+      .then((res) => {
+        console.log("response of login", res);
+        // dispatch(logins(res?.data?));
+        // localStorage.setItem("token", res?.token);
+        setSnack(true);
+        setMessage(res?.message);
+      })
+      .catch((err) => {
+        setSnack(true);
+        setMessage(err?.message);
+      });
+    setTimeout(() => {
+      setSnack(false);
+    }, 3000);
   }
   return (
-    <Container fluid style={{ backgroundColor: "#00274C", height: "100vh" }}>
-      <Row>
-        <Col xs={12} sm={12} md={6} lg={6}>
-          <p className="py-4 px-5" style={{ color: "#FFFFFF", fontSize: 20 }}>
-            Elite<span style={{ color: "#FF7F50" }}>Estates</span>
-          </p>
-          <div className="d-none d-md-block">
-            <div className="d-flex justify-content-center align-items-center px-5">
-              <h1 style={{ color: "#FFFFFF", fontSize: 34 }}>
-                Unlock the Potential of Real Estate with Seamless Access
-              </h1>
+    <>
+      <WebsiteHeader />
+      <Container fluid style={{ backgroundColor: "#E8E8E8", height: "87vh" }}>
+        <Row>
+          <Col xs={12} sm={12} md={6} lg={6}>
+            <div className="d-none d-md-block">
+              <div className="d-flex justify-content-center align-items-center px-5 pt-5">
+                <h1
+                  style={{ color: "#202020", fontSize: 40, fontWeight: "600" }}
+                >
+                  Unlock the Potential of Real Estate with Seamless Access
+                </h1>
+              </div>
+              <div className="d-flex justify-content-center align-items-center">
+                <img src={LoginLogo} style={{ width: "60%" }} />
+              </div>
             </div>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src={LoginLogo} />
-            </div>
-          </div>
-        </Col>
-        <Col
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-          className="d-flex justify-content-center align-items-center"
-        >
-          <div
-            style={{
-              backgroundImage:
-                "linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))",
-              backdropFilter: "blur(5px)",
-              backgroundColor: "rgba(0,0,0,0.05)",
-              border: "1px solid rgba(248, 248, 248, 1)",
-              borderRadius: 35,
-              padding: 40,
-              width: isMdUp ? "65%" : "100%",
-            }}
+          </Col>
+          <Col
+            xs={12}
+            sm={12}
+            md={6}
+            lg={6}
+            className="d-flex justify-content-center align-items-center"
           >
-            <h3
+            <div
               style={{
-                fontSize: 25,
-                fontWeight: 600,
-                marginBottom: "10%",
-                color: "#FFFFFF",
+                backgroundImage:
+                  "linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))",
+                backdropFilter: "blur(5px)",
+                backgroundColor: "rgba(0,0,0,0.10)",
+                border: "1px solid rgba(248, 248, 248, 1)",
+                borderRadius: 35,
+                padding: 40,
+                width: isMdUp ? "65%" : "100%",
               }}
             >
-              Login
-            </h3>
-            <Form onSubmit={formik.handleSubmit}>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12}>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Email or Mobile number
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter your email or mobile number"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          email: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.email && formik.errors.email && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.email}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                </Col>
-                <Col xs={12} sm={12} md={12} lg={12}>
-                  <Form.Group className="mb-1" controlId="formGroupPassword">
-                    <Form.Label style={{ color: "#FFFFFF" }}>
-                      Password
-                    </Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Enter your password"
-                      onChange={(e) =>
-                        setInitialValues({
-                          ...initialValues,
-                          password: e.target.value,
-                        })
-                      }
-                    />
-                    {formik.touched.password && formik.errors.password && (
-                      <div>
-                        <span role="alert" style={{ color: "red" }}>
-                          {formik.errors.password}
-                        </span>
-                      </div>
-                    )}
-                  </Form.Group>
-                  <p
-                    style={{
-                      color: "#FFFFFF",
-                      textAlign: "right ",
-                      fontSize: 14,
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      navigate("/register");
-                    }}
-                  >
-                    Forgot password?
-                  </p>
-                </Col>
-                <Col xs={12} sm={12} md={12} lg={12}>
-                  <Button
-                    className="mt-3 mb-1"
-                    variant="primary"
-                    type="submit"
-                    style={{
-                      width: "100%",
-                      background: "#FFA500",
-                      borderRadius: 30,
-                    }}
-                    // onClick={() => {
-                    //   navigate("/AdminHomepage");
-                    // }}
-                  >
-                    Login
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-            <p style={{ color: "#FFFFFF", textAlign: "center", fontSize: 14 }}>
-              Don't have an account?{" "}
-              <a
-                style={{ color: "#FFA500", cursor: "pointer" }}
-                onClick={() => navigate("/register")}
+              <h3
+                style={{
+                  fontSize: 25,
+                  fontWeight: 600,
+                  marginBottom: "10%",
+                  color: "#202020",
+                }}
               >
-                Register
-              </a>
-            </p>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+                Login
+              </h3>
+              <Form onSubmit={formik.handleSubmit}>
+                <Row>
+                  <Col xs={12} sm={12} md={12} lg={12}>
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Email or Mobile number
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        placeholder="Enter your email or mobile number"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            email: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.email && formik.errors.email && (
+                        <div>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
+                            {formik.errors.email}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                  <Col xs={12} sm={12} md={12} lg={12}>
+                    <Form.Group className="mb-1" controlId="formGroupPassword">
+                      <Form.Label style={{ color: "#202020" }}>
+                        Password
+                      </Form.Label>
+                      <Form.Control
+                        style={{ height: 40 }}
+                        type="password"
+                        placeholder="Enter your password"
+                        onChange={(e) =>
+                          setInitialValues({
+                            ...initialValues,
+                            password: e.target.value,
+                          })
+                        }
+                      />
+                      {formik.touched.password && formik.errors.password && (
+                        <div>
+                          <span
+                            role="alert"
+                            style={{ color: "red", fontSize: 13 }}
+                          >
+                            {formik.errors.password}
+                          </span>
+                        </div>
+                      )}
+                    </Form.Group>
+                    <p
+                      style={{
+                        color: "#202020",
+                        textAlign: "right ",
+                        fontSize: 14,
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        navigate("/forgot-pwd");
+                      }}
+                    >
+                      Forgot password?
+                    </p>
+                  </Col>
+                  <Col xs={12} sm={12} md={12} lg={12}>
+                    <Button
+                      className="mt-3 mb-1"
+                      variant="primary"
+                      type="submit"
+                      style={{
+                        width: "100%",
+                        background: "#202020",
+                        borderRadius: 30,
+                      }}
+                    >
+                      Login
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+              <p
+                style={{ color: "#202020", textAlign: "center", fontSize: 14 }}
+              >
+                Don't have an account?{"  "}
+                <a
+                  style={{
+                    color: "blue",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => navigate("/register")}
+                >
+                  Register
+                </a>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Snackbar
+        open={snack}
+        onClose={() => {
+          setSnack(false);
+        }}
+        message={message}
+      />
+    </>
   );
 }

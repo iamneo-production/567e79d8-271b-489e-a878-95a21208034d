@@ -6,25 +6,24 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/esm/Container';
 import FormGroup from 'react-bootstrap/esm/FormGroup';
 import FormLabel from 'react-bootstrap/esm/FormLabel';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import axios from 'axios'
 
-const UpdateAgent = () => {
-    const location = useLocation();
-    const [firstname,setName]=useState('');
-    const [email,setEmail]=useState('');
-    const [lastname,setPhone]=useState('');
-    const handleSubmit =(e)=>{
-        e.preventDefault();
-        const whole={firstname,lastname,email};
-        axios({
-          method:'put',
-          url:`http://localhost:8080/api/v1/employees/${location.state.id}`,
-          data: whole
-        }).then(()=>alert("Agent Updated"));
-      }
+const AddAgent = () => {
+  const [firstname,setName]=useState('');
+  const [email,setEmail]=useState('');
+  const [lastname,setPhone]=useState('');
+  const[description,setDescription]=useState('');
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    const whole={firstname,lastname,email};
+    axios({
+      method:'post',
+      url:'http://localhost:8080/api/v1/employees',
+      data: whole
+    }).then(()=>alert("New Agent Added"));
+  }
   return (
-    <Container style={{paddingTop:"20px",paddingLeft:"150px"}}>
+<Container style={{paddingTop:"20px",paddingLeft:"150px"}}>
     <Form onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
@@ -33,21 +32,25 @@ const UpdateAgent = () => {
         </Form.Group>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Phone No" value={lastname} onChange={(e)=>setPhone(e.target.value)}  />
+        <Form.Label>Phone</Form.Label>
+        <Form.Control type="number" placeholder="Enter Phone No" value={lastname} onChange={(e)=>setPhone(e.target.value)}  />
       </Form.Group>
       <Form.Group as={Col} controlId="formGridPassword">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
         </Form.Group>
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Description</Form.Label>
+          <Form.Control size="lg" type="text" placeholder="Large text" value={description} onChange={(e)=>setDescription(e.target.value)}/>
+        </Form.Group>
       </Row>
 
       <Button variant="primary" type="submit">
-        Update
+        Submit
       </Button>
     </Form>
 </Container>
   )
 }
 
-export default UpdateAgent
+export default AddAgent
