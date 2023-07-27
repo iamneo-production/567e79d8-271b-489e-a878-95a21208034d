@@ -15,6 +15,7 @@ public class Property {
     private String address;
     private Double price;
     private String type;
+    private String status;
 
     public Long getId() {
         return id;
@@ -63,14 +64,22 @@ public class Property {
     public void setType(String type) {
         this.type = type;
     }
+    public String getStatus() {
+        return status;
+    }
 
-    public Property(Long id, String title, String description, String address, Double price, String type) {
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Property(Long id, String title, String description, String address, Double price, String type,String status) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.address = address;
         this.price = price;
         this.type = type;
+        this.status=status;
     }
 
     public Property() {
