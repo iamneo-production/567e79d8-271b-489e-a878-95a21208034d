@@ -5,7 +5,6 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import PrivateRouter from "./PrivateRouter";
 import Agents from "./Pages/Agent/Agents";
-import Dashboard from "./Components/Dashboard";
 import AdminHomepage from "./Pages/AdminHomepage";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 
