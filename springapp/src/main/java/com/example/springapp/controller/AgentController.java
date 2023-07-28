@@ -1,6 +1,5 @@
 package com.example.springapp.controller;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,18 +51,18 @@ public class AgentController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers() {
-//        List<User> users = agentService.getalluser();
-//        return ResponseEntity.ok(users);
-//    }
+    // @GetMapping("/users")
+    // public ResponseEntity<List<User>> getAllUsers() {
+    // List<User> users = agentService.getalluser();
+    // return ResponseEntity.ok(users);
+    // }
 
-//    @GetMapping("/users/{id}")
-//    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-//        Optional<User> userOptional = agentService.getuserbyid(id);
-//        return userOptional.map(ResponseEntity::ok)
-//                .orElseGet(() -> ResponseEntity.notFound().build());
-//    }
+    // @GetMapping("/users/{id}")
+    // public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    // Optional<User> userOptional = agentService.getuserbyid(id);
+    // return userOptional.map(ResponseEntity::ok)
+    // .orElseGet(() -> ResponseEntity.notFound().build());
+    // }
 
     @GetMapping("/properties")
     public ResponseEntity<List<Property>> getAllProperty() {

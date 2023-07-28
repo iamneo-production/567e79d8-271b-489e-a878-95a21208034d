@@ -23,42 +23,37 @@ public class AgentService {
         this.propertyrepo = propertyrepo;
     }
 
-     public Agent saveAgent(Agent agent) {
-	        return agentrepo.save(agent);
-	    }
+    public Agent saveAgent(Agent agent) {
+        return agentrepo.save(agent);
+    }
 
     public String deleteAgent(long id) {
-	        agentrepo.deleteById(id);
-	        return "agent removed !! " + id;
-	    }
-	    public Agent updateAgent(Agent agent) {
-	        Agent existingAgent = agentrepo.findById(agent.getId()).orElse(null);
-	        existingAgent.setName(agent.getName());
-	        existingAgent.setEmail(agent.getEmail());
-	        existingAgent.setPhone(agent.getPhone());
-	        existingAgent.setDescription(agent.getDescription());
-	        return agentrepo.save(existingAgent);
-	    }
+        agentrepo.deleteById(id);
+        return "agent removed !! " + id;
+    }
 
-    public List<Agent> getallagent()
-    {
+    public Agent updateAgent(Agent agent) {
+        Agent existingAgent = agentrepo.findById(agent.getId()).orElse(null);
+        existingAgent.setName(agent.getName());
+        existingAgent.setEmail(agent.getEmail());
+        existingAgent.setPhone(agent.getPhone());
+        existingAgent.setDescription(agent.getDescription());
+        return agentrepo.save(existingAgent);
+    }
+
+    public List<Agent> getallagent() {
         return agentrepo.findAll();
     }
 
-    public Optional<Agent> getagentbyid(Long id)
-    {
+    public Optional<Agent> getagentbyid(Long id) {
         return agentrepo.findById(id);
     }
 
-
-
-    public List<Property> getallproperty()
-    {
+    public List<Property> getallproperty() {
         return propertyrepo.findAll();
     }
 
-    public Optional<Property> getpropertybyid(Long id)
-    {
+    public Optional<Property> getpropertybyid(Long id) {
         return propertyrepo.findById(id);
     }
 }
