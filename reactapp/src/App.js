@@ -7,6 +7,7 @@ import PrivateRouter from "./PrivateRouter";
 import Agents from "./Pages/Agent/Agents";
 import AdminHomepage from "./Pages/AdminHomepage";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
+import Changepass from "./Pages/Auth/Changepass/Changepassword";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-pwd" element={<Changepass />} />
+
           <Route element={<PrivateRouter element={{ role: "admin" }} />}>
             <Route path="/admin/*" element={<AdminHomepage />} />
           </Route>
