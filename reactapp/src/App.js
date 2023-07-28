@@ -50,17 +50,18 @@ function App() {
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
             <Route path="/agent/*" element={<Agents />} />
           </Route>
+          <Route path="/Settings" element={<Profile />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/results" element={<Prop />} />
+          <Route path="/forgot-pwd" element={<Changepass />} />
           {/* <Route path="/AdminHomepage" element={<AdminHomepage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/AdminLogin" element={<AdminLogin/>}/>
           <Route path="/updateagent/:id" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
-          <Route path="/forgot-pwd" element={<Changepass />} />
-          <Route path="/homepage" element={<Homepage />} />
           <Route path="/help" element={<Helppage />} />
           <Route path="/agent" element={<FindAgent />} />
           <Route path="/AddProperty" element={<AddProperty />} />
-          <Route path="/prop" element={<Prop />} />
           <Route path="/userwishlist" element={<Cards />} />
           <Route path="/propertydescription" element={<PropertyDetails />} />
           <Route exact path="/agents/" element={<AllAgent />}/>

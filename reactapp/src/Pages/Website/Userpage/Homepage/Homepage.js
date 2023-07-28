@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from "./homepage.module.css"
 import Navbar from "../../../../Components/Navbar/Navbar"
 import img1 from "../../../../assets/userpageimg/search.png";
@@ -24,8 +25,8 @@ function Homepage(){
             <div className={classes.quote}>Find your dream property with ease</div>
             <div className={classes.container}>
                 <form className={classes.search_bar}>
-                    <input type="text" placeholder="search property"></input>
-                    <button type="submit"><img src={img1} alt=""/></button>
+                    <input  placeholder="search property"/>
+                    <button type="submit" onClick={handleSearch}><img src={img1} alt=""/></button>
                 </form>
             </div>
             <div className={classes.display}>

@@ -447,9 +447,13 @@ function Prop() {
     const [selectedBath, setSelectedBath] = useState("");
     const [filteredProperties, setFilteredProperties] = useState([]);
 
+
+
     const handleLoadMoreProperties = () => {
         setPropertyCount((prevCount) => prevCount + 4);
     };
+
+  
 
     const handleSearchProperties = () => {
         const filters = {
@@ -540,7 +544,7 @@ function Prop() {
                     </div>
                 </nav>
 
-                <h4>Showing Results For Chennai</h4>
+                <h4>Showing Results For {queryParamValue}</h4>
 
 
                 <div className="container-xxl py-5">

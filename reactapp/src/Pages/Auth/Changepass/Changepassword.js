@@ -73,7 +73,7 @@ export default function Changepass() {
     
 
     return (
-        <div id="massbody">
+        <div >
             <h2 id="formtitle">CHANGE PASSWORD</h2>
             <img src={gif1} id="gifed" />
             <form id="passfield">
