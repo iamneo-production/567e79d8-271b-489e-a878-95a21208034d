@@ -1,14 +1,15 @@
 package com.example.springapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.springapp.config.user.User;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Property")
 public class Property {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -16,6 +17,18 @@ public class Property {
     private Double price;
     private String type;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
+    private User agent;
+
+    public User getAgent() {
+        return agent;
+    }
+
+    public void setAgent(User agent) {
+        this.agent = agent;
+    }
 
     public Long getId() {
         return id;

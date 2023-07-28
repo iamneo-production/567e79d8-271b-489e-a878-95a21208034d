@@ -11,9 +11,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
 import { EndPoints } from "../../../Config/endPoints";
-import { authPost, post } from "../../../Config/services";
+import { authPost } from "../../../Config/services";
 import Snackbar from "@mui/material/Snackbar";
 import { useDispatch } from "react-redux";
+import { logins } from "../../../provider/features/userSlice";
+import { setToken } from "../../../provider/features/tokenSlice";
+import { setRole } from "../../../provider/features/roleSlice";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -56,11 +59,20 @@ export default function Login() {
     };
     await authPost(EndPoints.login, payload)
       .then((res) => {
-        console.log("response of login", res);
-        // dispatch(logins(res?.data?));
-        // localStorage.setItem("token", res?.token);
+        dispatch(logins(res?.data));
+        localStorage.setItem("token", res?.data?.token);
         setSnack(true);
         setMessage(res?.message);
+        if (res?.data?.userData?.roles === "ROLE_ADMIN") {
+          dispatch(setRole("admin"));
+          navigate("/admin/home");
+        } else if (res?.data?.userData?.roles === "ROLE_AGENT") {
+          dispatch(setRole("agent"));
+          navigate("/agent/home");
+        } else if (res?.data?.userData?.roles === "ROLE_BUYER") {
+          dispatch(setRole("buyer"));
+          navigate("/buyer/home");
+        }
       })
       .catch((err) => {
         setSnack(true);

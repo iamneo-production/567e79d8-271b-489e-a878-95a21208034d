@@ -1,6 +1,7 @@
 package com.example.springapp.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
 public class AgentController {
+
 
     private final AgentService agentService;
 
@@ -65,11 +66,11 @@ public class AgentController {
 //                .orElseGet(() -> ResponseEntity.notFound().build());
 //    }
 
-    @GetMapping("/properties")
-    public ResponseEntity<List<Property>> getAllProperty() {
-        List<Property> property = agentService.getallproperty();
-        return ResponseEntity.ok(property);
-    }
+//    @GetMapping("/properties")
+//    public ResponseEntity<List<Property>> getAllProperty() {
+//        List<Property> property = agentService.getallproperty();
+//        return ResponseEntity.ok(property);
+//    }
 
     @GetMapping("/properties/{id}")
     public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
