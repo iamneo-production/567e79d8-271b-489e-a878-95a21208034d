@@ -2,29 +2,32 @@ import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import {Navbar} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import './Style.css';
 import { IconContext } from 'react-icons';
+import { Link, Route, Routes } from 'react-router-dom';
+import Profile_update from 'reactapp/src/Components/Pages/Agent/agent/Profile_update.js';
+import AddProperty from 'reactapp/src/Components/Pages/Agent/agent/AddProperty.js';
+import Transactions from 'reactapp/src/Pages/Contents/Transaction.jsx';
+import Dashboard from 'reactapp/src/Pages/Contents/Dashboard.jsx';
 
-
-function Navigation() {
+export default function LayoutAgent() {
     const [sidemenu, setSidemenu] = useState(false);
     const showSideMenu = () => setSidemenu(!sidemenu);
 
     const SideMenu = [
       {
           list: 'Dashboard',
-          path: '/',
+          path: '/dashboard',
           class: 'menu'
       },
       {
           list: 'Property',
-          path: '/property',
+          path: '/addproperty',
           class: 'menu'
       },
       {
           list: 'Profile',
-          path: '/profile',
+          path: '/profile_update',
           class: 'menu'
       },
       {
@@ -66,8 +69,23 @@ function Navigation() {
             })}
           </ul>
         </nav>
+
+        <Routes>
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/transactions">
+          <Transactions />
+        </Route>
+        <Route path="/property">
+          <AddProperty />
+        </Route>
+        <Route path="/profile">
+          <Profile_update />
+        </Route>
+        
+      </Routes>
       </IconContext.Provider>
        
     )
 }
-export default Navigation;

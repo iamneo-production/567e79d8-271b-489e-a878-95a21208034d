@@ -31,6 +31,7 @@ import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
 import Profile_update from "./Pages/Agent/agent/Profile_update";
 import AllAgent from "./Pages/Agent/agent/AllAgent";
 import ViewAgent from "./Pages/Agent/agent/ViewAgent";
+import LayoutAgent from "./Pages/Agent/Navigation/LayoutAgent.js";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
           <Route path="AddUser" element={<AddUser />} />
           <Route path="UpdateAgent" element={<UpdateAgent />} />
           <Route path="Demo" element={<Demo />} />
+          <Route path="LayoutAgent" element={<LayoutAgent />} />
           </Route>
         </Routes>
       </BrowserRouter>

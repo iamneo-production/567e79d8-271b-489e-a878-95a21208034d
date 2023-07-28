@@ -1,4 +1,4 @@
-package com.xadmin.SpringBootCrud.service;
+package com.example.springapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xadmin.SpringBootCrud.bean.Property;
-import com.xadmin.SpringBootCrud.repository.PropertyRepository;
+import com.example.springapp.model.Property;
+import com.example.springapp.repository.PropertyRepository;
 
 @Service
 
@@ -15,7 +15,7 @@ public class PropertyService {
 	
 	@Autowired
 	
-	public PropertyRepository propertyRepo;
+	public static PropertyRepository propertyRepo;
 	
 	public List<Property> getAllProperties()
 	{
@@ -50,15 +50,24 @@ public class PropertyService {
 	}
 
 
-	public void updateProperty(String id, Property property) {
+	public void updateProperty(long id, Property property) {
 		
 		propertyRepo.save(property);
 		
 	}
 
-	public void deleteProperty(String id) {
+	public void deleteProperty(long id) {
 		propertyRepo.deleteById(id);
-		
+		Long longValue = Long.valueOf(id);
+
+
 	}
+
+	public static double calculateSuccessPercentage(long agentId) {
+        long totalProperties = propertyRepo.countByAgentId(agentId);
+        long successfulProperties = propertyRepo.countByAgentIdAndVerificationStatus(agentId, "sold");
+        return ((double) successfulProperties / totalProperties) * 100.0;
+}
+
 
 }

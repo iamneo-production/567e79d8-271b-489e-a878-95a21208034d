@@ -10,12 +10,14 @@ public class Property {
 
     @Id
     private Long id;
+    private long agentId;
     private String title;
     private String description;
     private String address;
     private Double price;
     private String type;
     private String status;
+    private String verficationStatus; //availableorsold
 
     public Long getId() {
         return id;
@@ -78,11 +80,30 @@ public class Property {
         this.description = description;
         this.address = address;
         this.price = price;
-        this.type = type;
-        this.status=status;
+        this.type = type;  
+        this.status=status; 
     }
 
     public Property() {
     }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
+    }
+
+    public String getVerficationStatus() {
+        return verficationStatus;
+    }
+
+    public void setVerficationStatus(String verficationStatus) {
+        this.verficationStatus = verficationStatus;
+    }
+
+    
+
 
 }
