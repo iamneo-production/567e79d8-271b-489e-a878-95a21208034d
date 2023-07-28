@@ -1,12 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Navbar from "./Components/Navbar";
+// import Navbar from "./Components/Navbar";
 import Agents from "./components/Agents";
 import Sidebar from "./Components/Sidebar";
 import Users from "./components/Users";
 import Property from "./components/Property";
 import Revenue from "./components/Revenue";
-import Dashboard from "./Components/Dashboard";
+// import Dashboard from "./Components/Dashboard";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/esm/Row";

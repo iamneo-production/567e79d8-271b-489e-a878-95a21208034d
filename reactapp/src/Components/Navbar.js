@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-export default Navbar = () => {
+const Navbar = () => {
   return (
     <div className="whole">
       <nav
@@ -35,3 +35,5 @@ export default Navbar = () => {
     </div>
   );
 };
+
+export default Navbar;

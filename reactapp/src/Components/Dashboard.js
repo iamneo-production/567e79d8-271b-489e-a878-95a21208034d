@@ -22,7 +22,7 @@ import {
 } from "recharts";
 import { DashboardData } from "./DashboardData";
 
-export default Dashboard = () => {
+const Dashboard = () => {
   {
     /*const [hand,setHand]=useState('');
 axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data.length));*/
@@ -170,3 +170,5 @@ axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data
     </>
   );
 };
+
+export default Dashboard;
