@@ -15,7 +15,6 @@ import { authPost } from "../../../Config/services";
 import Snackbar from "@mui/material/Snackbar";
 import { useDispatch } from "react-redux";
 import { logins } from "../../../provider/features/userSlice";
-import { setToken } from "../../../provider/features/tokenSlice";
 import { setRole } from "../../../provider/features/roleSlice";
 
 const LoginSchema = Yup.object().shape({
