@@ -4,6 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.springapp.model.Property;
 
-public interface PropertyRepository extends JpaRepository<Property,Long>{
-    
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PropertyRepository extends JpaRepository<Property, Long> {
+
 }

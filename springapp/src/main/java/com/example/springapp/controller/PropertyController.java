@@ -1,4 +1,4 @@
-package com.xadmin.SpringBootCrud.controller;
+package com.example.springapp.controller;
 
 import java.util.List;
 
@@ -9,39 +9,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xadmin.SpringBootCrud.bean.Property;
-import com.xadmin.SpringBootCrud.service.PropertyService;
+import com.example.springapp.model.Property;
+import com.example.springapp.service.PropertyService;
 
 @RestController
 public class PropertyController {
-	
-	
+
 	@Autowired
 	private PropertyService propertyService;
-	
+
 	@RequestMapping("/Properties")
-	public List<Property> getAllProperties()
-	{
+	public List<Property> getAllProperties() {
 		return propertyService.getAllProperties();
 	}
-	
-	
-	@RequestMapping(method = RequestMethod.POST, value="/properties")
-	public void addProperty(@RequestBody Property property)
-	{
+
+	@RequestMapping("/properties/count1")
+	public int getCountPending() {
+		return propertyService.findpending();
+	}
+
+	@RequestMapping("/properties/count2")
+	public int getCountCancelled() {
+		return propertyService.findcancelled();
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/properties")
+	public void addProperty(@RequestBody Property property) {
 		propertyService.addProperty(property);
 	}
-	
-	@RequestMapping(method = RequestMethod.PUT, value="/properties/{id}")
-	public void updateProperty(@PathVariable String id, @RequestBody Property property)
-	{
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/properties/{id}")
+	public void updateProperty(@PathVariable String id, @RequestBody Property property) {
 		propertyService.updateProperty(id, property);
 	}
-	
-	
-	@RequestMapping(method= RequestMethod.DELETE, value="/properties/{id}")
-	public void DeleteProperty(@PathVariable String id)
-	{
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/properties/{id}")
+	public void DeleteProperty(@PathVariable String id) {
 		propertyService.deleteProperty(id);
 	}
 

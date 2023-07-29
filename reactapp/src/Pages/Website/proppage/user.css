@@ -1,29 +1,16 @@
 
-/* div{
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
-} 
-
- *{
-    text-decoration: none;
-}
-*/
-.navbar{
+#navbarprop{
     background-color: #003153;
     font-family: calibri;
     padding-right: 15px;
     padding-left:  15px;
 }
-.navdiv{
+#navdivprop{
     display: flex;
     align-items: center;
     justify-content: space-between;    
 
 }
-
-
 .logo{
     padding-right: 20px;
 }
@@ -96,11 +83,12 @@ li a{
     padding: 10px;
     margin:1%
 }
-#search{
+#searchprop{
+    background-color: #FFFFFF;
     padding: 10px;
     margin:1%
 }
-#search:hover{
+#searchprop:hover{
     background-color: #00b4d8 ;
     color: white;
 }
@@ -209,4 +197,55 @@ textarea{
 }
 h4{
     float: left;
+}
+
+#rent-sell {
+    margin: auto;
+}
+
+#sellrenthover:hover {
+    background-color: #003153;
+}
+
+#sellrent {
+    background-color: #003153 !important;
+}
+
+#rent-sell-block {
+padding-left: 15%;
+}
+
+#propertydetails {
+    text-align: center;
+}
+
+#browse{
+    width: fit-content;
+    height: fit-content;
+    font-size: larger;
+}
+
+#wishlist {
+    border: none;
+    margin: -10px;
+    width: auto;
+    
+}
+
+#wishlisttext {
+    /* margin: 0px -79px 0px 0px; */
+    width: auto;
+}
+
+#submitcp {
+    background-color: #FFFFFF;
+}
+
+#submitcp:hover {
+    background-color:rgb(46, 163, 163);
+}
+
+#imgsize{
+    width: 420px ;
+    height: 270px;
 }

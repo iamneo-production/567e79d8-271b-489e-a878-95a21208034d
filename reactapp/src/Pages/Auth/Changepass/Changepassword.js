@@ -4,24 +4,17 @@ import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LockPersonTwoToneIcon from '@mui/icons-material/LockPersonTwoTone';
-import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
 import gif1 from "../../../assets/Forgotpasswordimg.gif"
-import { useNavigate } from "react-router-dom";
 import "./Changepassword.css"
+import axios from "axios";
 
 export default function Changepass() {
     const [editable, setEditable] = React.useState(false);
-    const [passform, setPassform] = React.useState({ currentpass: "", newpass: "", confirmnewpass: "" })
+    const [passform, setPassform] = React.useState({ currentpass: "", password: "", confirmnewpass: "" })
 
     const editpass = () => {
         setEditable(!editable);
     }
-
-    const navigate = useNavigate();
-
-    const handlelick = () => {
-        navigate('/Settings');
-    };
 
     const inputchange = (e) => {
         setPassform({ ...passform, [e.target.name]: e.target.value });
@@ -69,27 +62,18 @@ export default function Changepass() {
             setEditable(true);
         }
         else {
-            toast.success('Password updated', { position: toast.POSITION.BOTTOM_RIGHT });
-
-            // if (!editable) {
-            //     axios.post(, {
-            //       currentPassword: passform.currentpass,
-            //       newPassword: passform.newpass
-            //     })
-            //     .then(response => {
-            //       toast.success('Password updated', { position: toast.POSITION.BOTTOM_RIGHT });
-            //     })
-            //     .catch(error => {
-            //       toast.error('Failed to update password', { position: toast.POSITION.BOTTOM_RIGHT });
-            //     });
-              }
-        }
+            axios.put('http://localhost:8080/user/changepass/1', passform)
+                .then(Response => {
+                    toast.success("saved", {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    }); console.log(Response);
+                });
+            }setEditable(false)}
 
     
 
     return (
         <div id="massbody">
-            <KeyboardBackspaceOutlinedIcon id="goback" onClick={handlelick} />
             <h2 id="formtitle">CHANGE PASSWORD</h2>
             <img src={gif1} id="gifed" />
             <form id="passfield">
@@ -113,7 +97,7 @@ export default function Changepass() {
                     disabled={!editable}
                     value={passform.newpass}
                     onChange={inputchange}
-                    name="newpass"
+                    name="password"
                     
                 /><br /><br />
 
