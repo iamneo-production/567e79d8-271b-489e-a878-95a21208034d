@@ -11,6 +11,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { API_BASE_URL } from "../../../Config";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -25,35 +26,85 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import { del, get,post } from "../../../Config/services";
 const Header = ({ property }) => {
   // current page url
   //const currentPageUrl = window.location.href;
   const currentPageUrl = "http://192.168.195.123:3000/";
+  const token = localStorage.getItem("token");
   //fav icon
   const [addToFav, setAddToFav] = useState(false);
   const [favLoad, setFavLoad] = useState(true);
+  const userId=7;
+  //const GET_URL="http://localhost:7070/favourites/";
+  const GET_URL=`${API_BASE_URL}/api/userwishlist/`;
   const handleFavClick = () => {
+    //setAddToFav(!addToFav);
+    if(addToFav){
+      const getFavId=async ()=>{
+        try{
+          const res=await get(GET_URL+userId+"/"+property.propertyId);
+          const responseFav=await res;
+          const DEL_URL=`${API_BASE_URL}/api/userwishlist/`+responseFav.id;
+            const deleteOptions={
+              method:"DELETE"
+            }
+            const result=await del(DEL_URL);
+        }
+        catch(err){
+          console.log(err.stack);
+        }
+      }
+      getFavId();
+    }  
+    else{
+      const API_URL=`${API_BASE_URL}/api/userwishlist`;
+      const addNewFav = async () =>{
+        const newFav={"propertyId":property.propertyId,"userId":userId};
+        const postOptions={
+          method:"POST",
+          headers:{
+              "Content-Type":"application/json"
+          },
+          body:JSON.stringify(newFav)
+        };
+        const result=await post(API_URL,newFav);
+      }
+      addNewFav();
+    }
+    toast(
+      !addToFav ? "Added to your favourites" : "Removed from your favourites",
+      {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
     setAddToFav(!addToFav);
   };
   useEffect(() => {
-    if (favLoad) {
-      setFavLoad(false);
-    } else {
-      toast(
-        addToFav ? "Added to your favourites" : "Removed from your favourites",
-        {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+    const getFavId=async ()=>{
+      try{
+        const response=await get(GET_URL+userId+"/"+property.propertyId);
+        const responseFav=await response;
+        if(responseFav!=null){
+          setAddToFav(true);
         }
-      );
+        else{
+          setAddToFav(false);
+        }
+      }
+      catch(err){
+        console.log(err.stack);
+      }
     }
-  }, [addToFav]);
+    getFavId();
+  }, []);
   //share icon
   const [show, setShow] = useState(false);
   const handleClose = () => {

@@ -5,7 +5,7 @@ import PropertyDisplay from "./PropertyDisplay/PropertyDisplay";
 import "./PropertyDetails.css";
 const PropertyDetails = () => {
   const property = {
-    propertyId: 1,
+    propertyId: 200,
     title: "3BHK-Single Floor Villa",
     description:
       "New House for Sale . 5cent land and 1400 sqft 3 bed room(1 attached+ 1 common toilet) . Open well water available 2 car parking space Porch, sit out , living room,dining room, kitchen, inverter and hot water provision ",

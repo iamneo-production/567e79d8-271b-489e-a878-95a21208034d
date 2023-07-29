@@ -1,21 +1,36 @@
 package com.example.springapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.springapp.config.user.User;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Property")
 public class Property {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+//    private long agentId;
     private String title;
     private String description;
     private String address;
     private Double price;
     private String type;
     private String status;
+//    private String verificationStatus; //availableorsold
+
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
+    private User agent;
+
+    public User getAgent() {
+        return agent;
+    }
+
+    public void setAgent(User agent) {
+        this.agent = agent;
+    }
 
     public Long getId() {
         return id;
@@ -78,11 +93,30 @@ public class Property {
         this.description = description;
         this.address = address;
         this.price = price;
-        this.type = type;
+        this.type = type;  
         this.status=status;
     }
 
     public Property() {
     }
+
+//    public long getAgentId() {
+//        return agentId;
+//    }
+//
+//    public void setAgentId(long agentId) {
+//        this.agentId = agentId;
+//    }
+
+//    public String getVerificationStatus() {
+//        return verificationStatus;
+//    }
+//
+//    public void setVerificationStatus(String verificationStatus) {
+//        this.verificationStatus = verificationStatus;
+//    }
+
+    
+
 
 }

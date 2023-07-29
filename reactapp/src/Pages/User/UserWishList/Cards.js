@@ -1,7 +1,9 @@
 import React from "react";
 import CardUi from "./CardUi";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./CardUi.css";
+import { API_BASE_URL } from "../../../Config";
+import { del, get, post } from "../../../Config/services";
 const Cards = () => {
   const favourites = [
     {
@@ -90,14 +92,62 @@ const Cards = () => {
       },
     },
   ];
-  const [favouritesList, setFavouritesList] = useState(favourites);
-  const handleDelete = (id) => {
+  
+  const API_URL=`${API_BASE_URL}/api/userwishlist/`;
+  const [favouritesList, setFavouritesList] = useState([]);
+  const userId=1;
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await get(API_URL + userId);
+        const listItems = await response;
+        console.log(listItems);
+        const Property_URL = `${API_BASE_URL}/api/properties/`;
+        const updatedFavourites = await Promise.all(
+          listItems.map(async (favItem) => {
+            const propertyResponse = await get(Property_URL + favItem.propertyId);
+            const propertyList = await propertyResponse;
+            const favourite = {
+              favouriteId: favItem.id,
+              title: propertyList.title,
+              price: propertyList.price,
+              type: propertyList.type,
+              status: propertyList.status,
+              propertyid: favItem.propertyId,
+              src: "images/img5.jpg",
+              date: new Date(favItem.date),
+              Agent: {
+                agentId: 1,
+                agentName: "AgentName",
+                email: "agent@gmail.com",
+                contactNo: "+911234567890",
+                url: "images/img9.png",
+              },
+            };
+            return favourite;
+          })
+        );
+        setFavouritesList(updatedFavourites);
+      } catch (err) {
+        console.log(err.stack);
+      }
+    };
+  
+    fetchItems();
+  }, []);
+  
+  const handleDelete = async (id) => {
     const temp = favouritesList.filter((item) => {
       if (id !== item.favouriteId) {
         return item;
       }
     });
     setFavouritesList(temp);
+    const DEL_URL=`${API_BASE_URL}/api/userwishlist/`+id;
+    const deleteOptions={
+      method:"DELETE"
+    }
+    const result=await del(DEL_URL);
   };
 
   return (

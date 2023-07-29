@@ -6,8 +6,9 @@ import { BiBed } from "react-icons/bi";
 
 import ContactAgent from "../../User/ContactAgent";
 import { API_BASE_URL } from "../../../Config";
+import { get, post } from "../../../Config/services";
 const Content = ({ property }) => {
-  const amount=(1000000/100)*5;
+  const amount=(10000/100)*5;
   const token = localStorage.getItem("token");
   //const api_url="http://localhost:7070/api/users/";
   //const post_url="http://localhost:7070/api/payment";
@@ -15,9 +16,11 @@ const Content = ({ property }) => {
   const post_url=`${API_BASE_URL}/api/payment`;
   const paynow= async ()=>{
       try{
-          const response = await fetch(api_url);
-          const transactionDetails=await response.json();
-          console.log(transactionDetails);
+          const res=await get(api_url);
+          const transactionDetails=await res;
+          //console.log(transactionDetails);
+          console.log(res);
+          //transactionDetails=res;
           var options = {
               "key": transactionDetails.key, 
               "amount": transactionDetails.amount, 
@@ -56,7 +59,8 @@ const Content = ({ property }) => {
                   body:JSON.stringify(addNewPaymentDetail)
 
               };
-              const result=await fetch(post_url,postOptions);
+              const result=await post(post_url,addNewPaymentDetail);
+              console.log(result);
               
           }
       }
