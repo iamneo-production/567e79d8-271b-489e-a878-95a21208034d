@@ -2,6 +2,7 @@ package com.example.springapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.springapp.model.Property;
 import com.example.springapp.repository.PropertyRepository;
@@ -22,6 +23,16 @@ public class PropertyService {
 		List<Property> properties = new ArrayList<>();
 		propertyRepo.findAll().forEach(properties::add);
 		return properties;
+	}
+	public Property findById(Long theId){
+		Optional <Property>result=propertyRepo.findById(theId);
+		Property property=null;
+		if(result.isPresent()){
+			property=result.get();
+		}else{
+			throw  new RuntimeException("Not Found");
+		}
+		return property;
 	}
 	public int findpending(){
 		int count=0;

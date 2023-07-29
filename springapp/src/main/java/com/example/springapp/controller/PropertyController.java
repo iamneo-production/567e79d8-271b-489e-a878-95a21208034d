@@ -1,13 +1,10 @@
 package com.example.springapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.springapp.model.Property;
 import com.example.springapp.service.PropertyService;
@@ -33,6 +30,7 @@ public class PropertyController {
 	public int getCountCancelled(){
 		return propertyService.findcancelled();
 	}
+
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value="/properties")
@@ -46,7 +44,11 @@ public class PropertyController {
 	{
 		propertyService.updateProperty(id, property);
 	}
-	
+	/*@GetMapping("/properties/{propertyId}")
+	public Property displayById(@PathVariable int id){
+		Property property=propertyService.findById(Long.valueOf(id));
+		return property;
+	}*/
 	
 	@RequestMapping(method= RequestMethod.DELETE, value="/properties/{id}")
 	public void DeleteProperty(@PathVariable String id)
