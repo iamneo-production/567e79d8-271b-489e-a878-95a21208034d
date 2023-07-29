@@ -56,11 +56,11 @@ function App() {
           <Route path="/updateagent/:id" element={<Profile_update />} />
           <Route path="/Settings" element={<Profile />} />
           <Route path="/forgot-pwd" element={<Changepass />} />
-          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/user" element={<Homepage />} />
           <Route path="/help" element={<Helppage />} />
           <Route path="/agent" element={<FindAgent />} />
           <Route path="/AddProperty" element={<AddProperty />} />
-          <Route path="/prop" element={<Prop />} />
+          <Route path="/results" element={<Prop />} />
           <Route path="/userwishlist" element={<Cards />} />
           <Route path="/propertydescription" element={<PropertyDetails />} />
           <Route exact path="/agents/" element={<AllAgent />}/>
