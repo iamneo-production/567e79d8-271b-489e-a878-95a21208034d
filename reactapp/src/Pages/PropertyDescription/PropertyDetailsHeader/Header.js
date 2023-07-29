@@ -29,8 +29,8 @@ import {
 import { del, get,post } from "../../../Config/services";
 const Header = ({ property }) => {
   // current page url
-  //const currentPageUrl = window.location.href;
-  const currentPageUrl = "http://192.168.195.123:3000/";
+  const currentPageUrl = window.location.href;
+  //const currentPageUrl = "http://192.168.195.123:3000/";
   const token = localStorage.getItem("token");
   //fav icon
   const [addToFav, setAddToFav] = useState(false);
