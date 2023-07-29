@@ -9,16 +9,16 @@ import FormLabel from 'react-bootstrap/esm/FormLabel';
 import axios from 'axios'
 
 const AddAgent = () => {
-  const [firstname,setName]=useState('');
+  const [name,setName]=useState('');
   const [email,setEmail]=useState('');
-  const [lastname,setPhone]=useState('');
+  const [phone,setPhone]=useState('');
   const[description,setDescription]=useState('');
   const handleSubmit =(e)=>{
     e.preventDefault();
-    const whole={firstname,lastname,email};
+    const whole={name,email,phone,description};
     axios({
       method:'post',
-      url:'http://localhost:8080/api/v1/employees',
+      url:'http://localhost:8080/agents',
       data: whole
     }).then(()=>alert("New Agent Added"));
   }
@@ -28,12 +28,12 @@ const AddAgent = () => {
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Agent Name</Form.Label>
-          <Form.Control type="name" placeholder="Enter Name" value={firstname} onChange={(e)=>setName(e.target.value)}/>
+          <Form.Control type="name" placeholder="Enter Name" value={name} onChange={(e)=>setName(e.target.value)}/>
         </Form.Group>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Phone</Form.Label>
-        <Form.Control type="number" placeholder="Enter Phone No" value={lastname} onChange={(e)=>setPhone(e.target.value)}  />
+        <Form.Control type="number" placeholder="Enter Phone No" value={phone} onChange={(e)=>setPhone(e.target.value)}  />
       </Form.Group>
       <Form.Group as={Col} controlId="formGridPassword">
           <Form.Label>Email</Form.Label>

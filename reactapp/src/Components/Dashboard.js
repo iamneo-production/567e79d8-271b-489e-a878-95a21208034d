@@ -23,8 +23,10 @@ import {
 import { DashboardData } from './DashboardData';
 
 const Dashboard = () => {
-  {/*const [hand,setHand]=useState('');
-axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data.length));*/}
+  const [count,setCount]=useState('');
+  const[count1,setCount1]=useState('');
+  axios.get('http://localhost:8080/agents').then((res)=>setCount(res.data.length));
+  axios.get('http://localhost:8080/properties').then((res)=>setCount1(res.data.length));
   const data = [
     {
       "name": "Kolkata",
@@ -63,7 +65,7 @@ axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data
           <Card style={{backgroundColor:"#ff0000",height:"175px",width:"200px",paddingRight:"0px"}} className="mr-0">
             <Card.Body>
             <FaIcons.FaUserSecret className='fa-5x'/>
-            <h3>25</h3>
+            <h3>{count}</h3>
               <h4>Total Agent</h4>
             </Card.Body>
           </Card>
@@ -81,7 +83,7 @@ axios.get('http://localhost:8080/api/v1/employees').then((res)=>setHand(res.data
           <Card style={{backgroundColor:"#1355f9",height:"175px",width:"300px"}}>
             <Card.Body>
             <FaIcons.FaBuilding className='fa-5x'/>
-              <h3>50</h3>
+              <h3>{count1}</h3>
               <h4>Total Properties Listed</h4>
             </Card.Body>
           </Card>

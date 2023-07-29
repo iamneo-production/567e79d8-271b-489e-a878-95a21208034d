@@ -31,6 +31,7 @@ import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
 import Profile_update from "./Pages/Agent/agent/Profile_update";
 import AllAgent from "./Pages/Agent/agent/AllAgent";
 import ViewAgent from "./Pages/Agent/agent/ViewAgent";
+import UpdateProperty from "./Pages/Property/UpdateProperty";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
           <Route path="AgentRecord" element={<AgentRecord />} />
           <Route path="UserRecord" element={<UserRecord />} />
           <Route path="PropertyRecord" element={<PropertyRecord />} />
+          <Route path="UpdateProperty" element={<UpdateProperty />} />
           <Route path="search" element={<Search />} />
           <Route path="AdProperty" element={<AdProperty />} />
           <Route path="AddAgent" element={<AddAgent />} />

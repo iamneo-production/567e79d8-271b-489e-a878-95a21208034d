@@ -29,7 +29,7 @@ function Sidebar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            <li style={{color:"white",listStyle:"none",fontSize:"15px",paddingLeft:"10px"}}><Link to='/AdminHomepage'>Admin Name</Link></li>
+            <li style={{color:"white",listStyle:"none",fontSize:"15px",paddingLeft:"10px"}}><Link to='/AdminHomepage'>abc</Link></li>
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
