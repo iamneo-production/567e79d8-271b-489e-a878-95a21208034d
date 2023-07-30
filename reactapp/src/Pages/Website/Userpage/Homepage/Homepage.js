@@ -41,17 +41,11 @@ function Homepage() {
       <div className={classes.quote}>Find your dream property with ease</div>
       <div className={classes.container}>
         <form className={classes.search_bar}>
-           {/* <input 
-            type="text"
-            onChange={(e) =>setLocation(e.target.value)}
-            placeholder="search property"
-          ></input>
-          <button type="submit"  onClick={(e) => handleSearchProperties(e)}>  */}
-          <input type="search" placeholder="search property"
+        
+          <input type="search" placeholder="Search Location"
                     onChange={(e)=>setQuery(e.target.value)}></input>
                     <button type="submit" onClick={handleSearch}><img src={img1} alt=""/></button>
-            {/* <img src={img1} alt="" /> */}
-          {/* </button> */}
+        
         </form>
       </div>
       <div className={classes.display}>
