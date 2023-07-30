@@ -1,22 +1,22 @@
 package com.example.springapp.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
+import java.util.Calendar;
 import com.example.springapp.model.Agent;
-import com.example.springapp.model.Property;
 import com.example.springapp.service.AgentService;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.http.ResponseEntity;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
 public class AgentController {
 
+    private static Map<String, List<Integer>> viewsData = new HashMap<>();
     private final AgentService agentService;
 
     public AgentController(AgentService agentService) {
@@ -57,23 +57,33 @@ public class AgentController {
     // return ResponseEntity.ok(users);
     // }
 
-    // @GetMapping("/users/{id}")
-    // public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-    // Optional<User> userOptional = agentService.getuserbyid(id);
-    // return userOptional.map(ResponseEntity::ok)
-    // .orElseGet(() -> ResponseEntity.notFound().build());
-    // }
-
-    @GetMapping("/properties")
-    public ResponseEntity<List<Property>> getAllProperty() {
-        List<Property> property = agentService.getallproperty();
-        return ResponseEntity.ok(property);
+    // agentBackend-Agentviewcount
+    @GetMapping("/{id}/views")
+    public List<Integer> getAgentViewsData(@PathVariable long id) {
+        String agentIdStr = String.valueOf(id);
+        return viewsData.getOrDefault(agentIdStr, new ArrayList<>());
     }
 
-    @GetMapping("/properties/{id}")
-    public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
-        Optional<Property> propertyOptiona = agentService.getpropertybyid(id);
-        return propertyOptiona.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    @PostMapping("/{id}/views")
+    public List<Integer> addAgentView(@PathVariable long id) {
+
+        Calendar cal = Calendar.getInstance();
+        int currentMonth = cal.get(Calendar.MONTH);
+
+        String agentIdStr = String.valueOf(id);
+        List<Integer> agentViewsData = viewsData.getOrDefault(agentIdStr, new ArrayList<>());
+        if (currentMonth < agentViewsData.size()) {
+            agentViewsData.set(currentMonth, agentViewsData.get(currentMonth) + 1);
+        } else {
+            int diff = currentMonth - agentViewsData.size();
+            for (int i = 0; i < diff; i++) {
+                agentViewsData.add(0);
+            }
+            agentViewsData.add(1);
+        }
+
+        viewsData.put(agentIdStr, agentViewsData);
+        return agentViewsData;
+
     }
 }

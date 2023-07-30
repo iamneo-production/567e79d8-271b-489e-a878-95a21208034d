@@ -4,7 +4,6 @@ import * as _ from "lodash";
 
 function useAuth(element) {
   const role = useSelector((s) => s?.role?.value);
-  console.log("user", role);
   if (!_.isEmpty(role)) {
     if (role === element) {
       return true;
@@ -18,8 +17,8 @@ function useAuth(element) {
 
 function PrivateRouter(props) {
   const { element } = props;
-  const isAuth = useAuth(element?.data);
-  return isAuth ? <Outlet /> : <Navigate to="/" />;
+  const isAuth = useAuth(element?.role);
+  return isAuth ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRouter;
