@@ -1,4 +1,4 @@
-import Reac, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Transactions.css';
 import { Container, Row, Col, Table} from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'

@@ -118,16 +118,23 @@
 }
 
 #head{
-  position: absolute;
-  margin-left: 6.5%;
-  margin-top: 2%;
   background-color: #00274C;
   color: white;
 }
+
 
 #inputline
 {
   width: 300px;
 }
 
+#btn-position{
+  position: absolute;
+  display: flex;
+  justify-content:space-evenly;
+  gap: 35px;
+  margin-top: 20px;
+  margin-left: 6.5%;
+  backdrop-filter: blur();
+}
 

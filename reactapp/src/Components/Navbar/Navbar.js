@@ -15,14 +15,13 @@ function Navbar(){
     return(
         <div className={classes.main}>
             <div className={classes.icon}>
-                <h className={classes.logo}>LOGO</h>
+                <h className={classes.logo}><b>Elite Estates</b></h>
             </div>
             <div className={classes.menu}>
                 <ul>
-                    <li><a href="/buy">Buy</a></li>
-                    <li><a href="/rent">Rent</a></li>
+                    
                     <li><a href="/">Home</a></li>
-                    <li><a href="/agent" onClick={findagentHandler}>Find Agent</a></li>
+                    <li><a href="#">Agent</a></li>
                     <li><a href="/help" onClick={helpHandler}>Help</a></li>
                 </ul>
             </div>
