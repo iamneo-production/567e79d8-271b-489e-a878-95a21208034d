@@ -9,11 +9,7 @@ const PropertyDetails = () => {
     title: "3BHK-Single Floor Villa",
     description:
       "New House for Sale . 5cent land and 1400 sqft 3 bed room(1 attached+ 1 common toilet) . Open well water available 2 car parking space Porch, sit out , living room,dining room, kitchen, inverter and hot water provision ",
-    address: {
-      street: "12 Big Street",
-      city: "Big City ,Chennai",
-      pinCode: "600055",
-    },
+    address: "12 Big Street , Big City ,Chennai,600055",
     price: "50000",
     type: "villa",
     status: "sale",
@@ -32,7 +28,7 @@ const PropertyDetails = () => {
       url: "images/img9.png",
     },
   };
-
+  const propertyId=3;
   return (
     <div className="property-details">
       <div className="container main-container">
@@ -41,8 +37,8 @@ const PropertyDetails = () => {
             <PropertyDisplay />
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 main-item2">
-            <Header property={property} />
-            <Content property={property} />
+            <Header property={property} Id={propertyId} />
+            <Content property={property}  Id={propertyId}/>
           </div>
         </div>
       </div>
