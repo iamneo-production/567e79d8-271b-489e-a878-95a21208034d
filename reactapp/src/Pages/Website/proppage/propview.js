@@ -45,9 +45,13 @@ console.log()
       }, [location.state.location]);
 
 
+
+
     const handleLoadMoreProperties = () => {
         setPropertyCount((prevCount) => prevCount + 4);
     };
+
+  
 
     const handleSearchProperties = () => {
         const filters = {
