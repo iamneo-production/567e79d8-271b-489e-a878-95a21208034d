@@ -10,6 +10,10 @@ import { useMediaQuery } from "react-responsive";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
+import { EndPoints } from "../../../Config/endPoints";
+import { authPost, post } from "../../../Config/services";
+import Snackbar from "@mui/material/Snackbar";
+import { useDispatch } from "react-redux";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,11 +29,15 @@ const LoginSchema = Yup.object().shape({
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isMdUp = useMediaQuery({ minWidth: 768 });
   const [initialValues, setInitialValues] = useState({
     email: "",
     password: "",
   });
+
+  const [snack, setSnack] = useState(false);
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -46,8 +54,21 @@ export default function Login() {
       email: data?.email,
       password: data?.password,
     };
-    // dispatch(getLoginDetailsAction(payload));
-    console.log("login payload", payload);
+    await authPost(EndPoints.login, payload)
+      .then((res) => {
+        console.log("response of login", res);
+        // dispatch(logins(res?.data?));
+        // localStorage.setItem("token", res?.token);
+        setSnack(true);
+        setMessage(res?.message);
+      })
+      .catch((err) => {
+        setSnack(true);
+        setMessage(err?.message);
+      });
+    setTimeout(() => {
+      setSnack(false);
+    }, 3000);
   }
   return (
     <>
@@ -201,6 +222,13 @@ export default function Login() {
           </Col>
         </Row>
       </Container>
+      <Snackbar
+        open={snack}
+        onClose={() => {
+          setSnack(false);
+        }}
+        message={message}
+      />
     </>
   );
 }

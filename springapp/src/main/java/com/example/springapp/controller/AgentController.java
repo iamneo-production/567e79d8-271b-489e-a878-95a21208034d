@@ -1,10 +1,8 @@
 package com.example.springapp.controller;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping; 
@@ -12,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 import java.util.Calendar;
 import com.example.springapp.model.Agent;
-import com.example.springapp.model.User;
 import com.example.springapp.model.Property;
 import com.example.springapp.service.AgentService;
+
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,15 +29,17 @@ public class AgentController {
     public AgentController(AgentService agentService) {
         this.agentService = agentService;
     }
-    
+
     @PostMapping("/agents")
     public Agent addAgent(@RequestBody Agent agent) {
         return agentService.saveAgent(agent);
     }
-     @DeleteMapping("/agents/{id}")
+
+    @DeleteMapping("/agents/{id}")
     public String deleteAgent(@PathVariable long id) {
         return agentService.deleteAgent(id);
     }
+
     @PutMapping("/agents/")
     public Agent updateAgent(@RequestBody Agent agent) {
         return agentService.updateAgent(agent);
@@ -56,62 +56,31 @@ public class AgentController {
         Optional<Agent> agentOptional = agentService.getagentbyid(id);
         return agentOptional.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
-            }
+    }
 
-            @GetMapping("/users")
-            public ResponseEntity<List<User>> getAllUsers() {
-                List<User> users = agentService.getalluser();
-                return ResponseEntity.ok(users);
-            }
-        
-            @GetMapping("/users/{id}")
-            public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-                Optional<User> userOptional = agentService.getuserbyid(id);
-                return userOptional.map(ResponseEntity::ok)
-                        .orElseGet(() -> ResponseEntity.notFound().build());
-                    }
+    // @GetMapping("/users")
+    // public ResponseEntity<List<User>> getAllUsers() {
+    // List<User> users = agentService.getalluser();
+    // return ResponseEntity.ok(users);
+    // }
 
-                    @GetMapping("/properties")
-                    public ResponseEntity<List<Property>> getAllProperty() {
-                        List<Property> property = agentService.getallproperty();
-                        return ResponseEntity.ok(property);
-                    }
-                
-                @GetMapping("/properties/{id}")
-                    public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
-                        Optional<Property> propertyOptiona = agentService.getpropertybyid(id);
-                        return propertyOptiona.map(ResponseEntity::ok)
-                                .orElseGet(() -> ResponseEntity.notFound().build());
-                            }
+    // @GetMapping("/users/{id}")
+    // public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    // Optional<User> userOptional = agentService.getuserbyid(id);
+    // return userOptional.map(ResponseEntity::ok)
+    // .orElseGet(() -> ResponseEntity.notFound().build());
+    // }
 
-                //agentBackend-Agentviewcount
-                 @GetMapping("/{id}/views")
-                            public List<Integer> getAgentViewsData(@PathVariable long id) {
-                                String agentIdStr = String.valueOf(id);
-                                return viewsData.getOrDefault(agentIdStr, new ArrayList<>());
-                            }
-                        
-                        
-                 @PostMapping("/{id}/views")
-                            public List<Integer> addAgentView(@PathVariable long id) {
-                               
-                                Calendar cal = Calendar.getInstance();
-                                int currentMonth = cal.get(Calendar.MONTH);
-                        
-                                String agentIdStr = String.valueOf(id);
-                                List<Integer> agentViewsData = viewsData.getOrDefault(agentIdStr, new ArrayList<>());
-                                if (currentMonth < agentViewsData.size()) {
-                                    agentViewsData.set(currentMonth, agentViewsData.get(currentMonth) + 1);
-                                } else {
-                                    int diff = currentMonth - agentViewsData.size();
-                                    for (int i = 0; i < diff; i++) {
-                                        agentViewsData.add(0);
-                                    }
-                                    agentViewsData.add(1); 
-                                }
-                        
-                                viewsData.put(agentIdStr, agentViewsData);
-                                return agentViewsData;
-                                
-                            }
+    @GetMapping("/properties")
+    public ResponseEntity<List<Property>> getAllProperty() {
+        List<Property> property = agentService.getallproperty();
+        return ResponseEntity.ok(property);
+    }
+
+    @GetMapping("/properties/{id}")
+    public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
+        Optional<Property> propertyOptiona = agentService.getpropertybyid(id);
+        return propertyOptiona.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

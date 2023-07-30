@@ -1,152 +1,50 @@
 package com.example.springapp.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Map;
-import java.util.HashMap;
+
 import com.example.springapp.model.Property;
-import com.example.springapp.repository.PropertyRepository;
 import com.example.springapp.service.PropertyService;
-import org.springframework.web.bind.annotation.GetMapping; 
-import org.springframework.http.ResponseEntity;
- import org.springframework.web.bind.annotation.PostMapping;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 @RestController
 public class PropertyController {
-	
-	private Map<String, List<Integer>> viewsData = new HashMap<>();
 
 	@Autowired
 	private PropertyService propertyService;
-	private PropertyRepository propertyRepository;
-	
+
 	@RequestMapping("/Properties")
-	public List<Property> getAllProperties()
-	{
+	public List<Property> getAllProperties() {
 		return propertyService.getAllProperties();
 	}
+
 	@RequestMapping("/properties/count1")
-	public int getCountPending(){
+	public int getCountPending() {
 		return propertyService.findpending();
 	}
 
 	@RequestMapping("/properties/count2")
-	public int getCountCancelled(){
+	public int getCountCancelled() {
 		return propertyService.findcancelled();
 	}
-	
-	
-	@RequestMapping(method = RequestMethod.POST, value="/properties")
-	public void addProperty(@RequestBody Property property)
-	{
+
+	@RequestMapping(method = RequestMethod.POST, value = "/properties")
+	public void addProperty(@RequestBody Property property) {
 		propertyService.addProperty(property);
 	}
-	
-	@RequestMapping(method = RequestMethod.PUT, value="/properties/{id}")
-	public void updateProperty(@PathVariable long id, @RequestBody Property property)
-	{
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/properties/{id}")
+	public void updateProperty(@PathVariable String id, @RequestBody Property property) {
 		propertyService.updateProperty(id, property);
 	}
-	 
 
-	@RequestMapping(method= RequestMethod.DELETE, value="/properties/{id}")
-	public void DeleteProperty(@PathVariable long id)
-	{
+	@RequestMapping(method = RequestMethod.DELETE, value = "/properties/{id}")
+	public void DeleteProperty(@PathVariable String id) {
 		propertyService.deleteProperty(id);
 	}
-
-    
-	//agentDashboard-backend-update
-    //AgentDashboard-approvedCount
-    @GetMapping("/{agentId}/count/approved")
-    public long getApprovedCountById(@PathVariable long agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Approved");
-    }
-
-    //AgentDashboard-soldCount
-    @GetMapping("/{agentId}/count/sold")
-    public long getSoldCountById(@PathVariable long agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Sold");
-    }
-    
-	//AgentDashboard-eachAgentpropertycount
-    @GetMapping("/{agentId}/count/property")
-    public long getTotalPropertiesByAgentId(@PathVariable long agentId) {
-        return propertyRepository.countByAgentId(agentId);
-    }
-    
-	//AgentDashboard-propertyofeachagent
-    @GetMapping("/{agentId}/properties")
-    public List<Property> getPropertiesByAgentId(@PathVariable long agentId) {
-        return propertyRepository.findByAgentId(agentId);
-    }
-    
-	//AgentDashboard-AvailableforRent
-    @GetMapping("/{agentId}/count/availableRent")
-    public long getAvailableRentByAgentId(@PathVariable long agentId) {
-        return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId, "rent", "Approved");
-    }
-    
-	//AgentDashboard-Availableforsale
-    @GetMapping("/{agentId}/count/availableSale")
-    public long getAvailableSaleByAgentId(@PathVariable long agentId) {
-        return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId, "Sale", "Approved");
-    }
-    
-	//AgentDashboard-TotalRentcount
-    @GetMapping("/{agentId}/count/totalRented")
-    public long getTotalRentedPropertiesByAgentId(@PathVariable long agentId) {
-        return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId, "rent", "sold");
-    }   
-	
-
-	
-    //AgentDashboard-successPercentage
-
-     @GetMapping("/{agentId}/successPercentage")
-    public ResponseEntity<Double> getAgentSuccessPercentage(@PathVariable long agentId) {
-        double successPercentage = PropertyService.calculateSuccessPercentage(agentId);
-        return ResponseEntity.ok(successPercentage);
-    }
-
-
-    //AgentDashboard-Propertyviewcount
-    @PostMapping("/{id}/viewsProperty")
-    public List<Integer> addPropertyView(@PathVariable long id) {
-
-    Calendar cal = Calendar.getInstance();
-    int currentMonth = cal.get(Calendar.MONTH);
-
-    String propertyIdStr = String.valueOf(id);
-    List<Integer> propertyViewsData = viewsData.getOrDefault(propertyIdStr, new ArrayList<>());
-    if (currentMonth < propertyViewsData.size()) {
-        propertyViewsData.set(currentMonth, propertyViewsData.get(currentMonth) + 1);
-    } else {
-        int diff = currentMonth - propertyViewsData.size();
-        for (int i = 0; i < diff; i++) {
-            propertyViewsData.add(0);
-        }
-        propertyViewsData.add(1);
-    }
-
-    viewsData.put(propertyIdStr, propertyViewsData);
-    return propertyViewsData;
-}
-
-
-    @GetMapping("/{id}/viewsProperty")
-    public List<Integer> getpropertyViewsData(@PathVariable long id) {
-        String propertyIdStr = String.valueOf(id);
-        return viewsData.getOrDefault(propertyIdStr, new ArrayList<>());
-    }
-
 
 }
