@@ -9,17 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PropertyRepository extends JpaRepository<Property, Long> {
+public interface PropertyRepository extends JpaRepository<Property,Long>{
 
     List<Property> findByAddressContainingIgnoreCase(String location);
 
-    // long countByAgentIdAndStatusAndVerificationStatus(long agentId, String
-    // status, String verificationStatus);
-
-    // long countByAgentIdAndVerificationStatus(long agentId, String
-    // verificationStatus);
-
-    // List<Property> findByAgentId(long agentId);
-
-    // long countByAgentId(long agentId);
 }

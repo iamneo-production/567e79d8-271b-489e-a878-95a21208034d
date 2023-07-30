@@ -94,10 +94,5 @@ public class PropertyService {
 		return propertyRepo.findByAddressContainingIgnoreCase(location);
 	}
 
-	// public static double calculateSuccessPercentage(long agentId) {
-	// long totalProperties = propertyRepo.countByAgentId(agentId);
-	// long successfulProperties =
-	// propertyRepo.countByAgentIdAndVerificationStatus(agentId, "sold");
-	// return ((double) successfulProperties / totalProperties) * 100.0;
-	// }
+	
 }

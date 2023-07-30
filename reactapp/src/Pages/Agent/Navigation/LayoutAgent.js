@@ -1,88 +1,74 @@
-import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { Navbar } from "react-bootstrap";
-import "./Style.css";
-import { IconContext } from "react-icons";
-import { Link, Route, Routes } from "react-router-dom";
-import Profile_update from "reactapp/src/Components/Pages/Agent/agent/Profile_update.js";
-import AddProperty from "reactapp/src/Components/Pages/Agent/agent/AddProperty.js";
-import Transactions from "reactapp/src/Pages/Contents/Transactions";
-import Dashboard from "reactapp/src/Pages/Contents/Dashboard.jsx";
+import React, { useState } from 'react';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import {Navbar} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Style.css';
+import { IconContext } from 'react-icons';
 
-export default function LayoutAgent() {
+
+function Navigation() {
   const [sidemenu, setSidemenu] = useState(false);
-  const showSideMenu = () => setSidemenu(!sidemenu);
+  
+  const showSidemenu = () => setSidemenu(!sidemenu);
 
-  const SideMenu = [
+  const SidemenuData = [
     {
-      list: "Dashboard",
-      path: "/dashboard",
-      class: "menu",
+      title: 'Dashboard',
+      path: '/',
+      clsName: 'nav-text'
     },
     {
-      list: "Property",
-      path: "/addproperty",
-      class: "menu",
+      title: 'Property',
+      path: '/property',
+      clsName: 'nav-text'
     },
     {
-      list: "Profile",
-      path: "/profile_update",
-      class: "menu",
+      title: 'Profile',
+      path: '/profile',
+      clsName: 'nav-text'
     },
     {
-      list: "Transactions",
-      path: "/transactions",
-      class: "menu",
+      title: 'Transactions',
+      path: '/transaction',
+      clsName: 'nav-text'
     },
     {
-      list: "Logout",
-      path: "/logout",
-      class: "menu",
-    },
+      title: 'Logout',
+      path: '/logout',
+      clsName: 'nav-text'
+    }
   ];
 
   return (
-    <IconContext.Provider value={{ color: "#000" }}>
-      <Navbar>
-        <Link to="#" className="menu-bars">
-          <FaIcons.FaBars onClick={showSideMenu} />
-        </Link>
-      </Navbar>
-      <nav className={sidemenu ? "nav-menu active" : "nav-menu"}>
-        <ul className="nav-menu-lists" onClick={showSideMenu}>
-          <li className="navbar-toggle">
-            <Link to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SideMenu.map((lists, index) => {
-            return (
-              <li key={index} className={lists.class}>
-                <Link to={lists.path}>
-                  {lists.icon}
-                  <span>{lists.list}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/transactions">
-          <Transactions />
-        </Route>
-        <Route path="/property">
-          <AddProperty />
-        </Route>
-        <Route path="/profile">
-          <Profile_update />
-        </Route>
-      </Routes>
-    </IconContext.Provider>
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to='#' className='menu-bars'>
+            <FaIcons.FaBars onClick={showSidemenu} />
+          </Link>
+        </div>
+        <nav className={sidemenu ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidemenu}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {SidemenuData.map((item, index) => {
+              return (
+                <li key={index} className={item.clsName}>
+                  <Link to={item.path}>
+            
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
   );
 }
+export default Navigation;
