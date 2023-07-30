@@ -296,15 +296,11 @@ console.log()
                                     </div>
                                     <div className="property-item rounded overflow-hidden" id= "propertydetails">
                                         <h5 className="text-primary-emphasis mb-3">{property.price}</h5>
-<<<<<<< HEAD
-                                        <a className="d-block h5 mb-2 text-primary-emphasis" href={property.link}>{property.title}</a>
-=======
 
                                         <a className="d-block h5 mb-2 text-primary-emphasis" href="">{property.title}</a>
 
                                         <a className="d-block h5 mb-2 text-primary-emphasis" href="#">{property.title}</a>
 
->>>>>>> main
                                         <p><i className="fa fa-map-marker-alt text-primary me-2"></i>{property.location}</p>
                                     </div>
                                     <div className="d-flex border-top">
