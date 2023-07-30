@@ -24,6 +24,9 @@ public class Property {
     private Double price;
     private String type;
     private String status;
+    private String bed;
+    private String bath;
+    private String rent;
 
     @ManyToOne
     @JsonBackReference
