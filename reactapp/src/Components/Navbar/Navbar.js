@@ -23,6 +23,7 @@ function Navbar(){
                     <li><a href="/">Home</a></li>
                     <li><a href="#">Agent</a></li>
                     <li><a href="/help" onClick={helpHandler}>Help</a></li>
+                    <li><a href="/agents/" onClick={findagentHandler}>agent</a></li>
                 </ul>
             </div>
             <div className={classes.avatar}>
