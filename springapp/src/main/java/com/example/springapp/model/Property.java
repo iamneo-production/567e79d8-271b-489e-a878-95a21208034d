@@ -1,22 +1,19 @@
 package com.example.springapp.model;
 
+import com.example.springapp.config.user.User;
+
+import javax.persistence.*;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 @Entity
 public class Property {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -26,8 +23,20 @@ public class Property {
     private String status;
 
     @ManyToOne
-    @JsonBackReference
-    private Agent agent;
+    @JoinColumn(name = "agent_id")
+    private User agent;
+
+    public User getAgent() {
+        return agent;
+    }
+
+    public void setAgent(User agent) {
+        this.agent = agent;
+    }
+
+//    @ManyToOne
+//    @JsonBackReference
+//     private Agent agent;
 
     @OneToMany(mappedBy = "property")
     @JsonManagedReference
@@ -53,7 +62,7 @@ public class Property {
         this.price = price;
         this.type = type;
         this.status = status;
-        this.agent = agent;
+//        this.agent = agent;
         this.ImageUrls = ImageUrls;
         this.VideoUrls = VideoUrls;
         this.features = features;
@@ -113,14 +122,6 @@ public class Property {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
     }
 
     public List<PropertyImage> getImageUrls() {
