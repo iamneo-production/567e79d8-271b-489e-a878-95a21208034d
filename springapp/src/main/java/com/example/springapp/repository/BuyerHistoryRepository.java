@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BuyerHistoryRepository extends JpaRepository<BuyerHistory,Long> {
 
-    List<BuyerHistory> findByUserId(Long userId);
+//    List<BuyerHistory> findByUserId(Long userId);
 }

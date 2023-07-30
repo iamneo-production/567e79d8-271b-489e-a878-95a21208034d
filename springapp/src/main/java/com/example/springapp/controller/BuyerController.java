@@ -87,9 +87,9 @@ public class BuyerController {
     }
 
     // Find history by id
-    @GetMapping("/users/{userId}/histories")
-    public ResponseEntity<List<BuyerHistory>> getSearchHistoriesByUserId(@PathVariable Long userId) {
-        List<BuyerHistory> searchHistories = buyerHisRepo.findByUserId(userId);
-        return ResponseEntity.of(Optional.ofNullable(searchHistories));
-    }
+//    @GetMapping("/users/{userId}/histories")
+//    public ResponseEntity<List<BuyerHistory>> getSearchHistoriesByUserId(@PathVariable Long userId) {
+//        List<BuyerHistory> searchHistories = buyerHisRepo.findByUserId(userId);
+//        return ResponseEntity.of(Optional.ofNullable(searchHistories));
+//    }
 }
