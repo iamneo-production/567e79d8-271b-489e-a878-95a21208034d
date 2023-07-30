@@ -1,6 +1,7 @@
 package com.example.springapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.springapp.BaseResponceDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +96,11 @@ public class PropertyController {
 			return new BaseResponceDto(e.getMessage());
 		}
 	}
-
+	@GetMapping("/api/properties/{propertyId}")
+	public Property displayById(@PathVariable int propertyId){
+		Property property=propertyService.findById(propertyId);
+		return  property;
+	}
 	// agentDashboard-backend-update
 	// AgentDashboard-approvedCount
 	// @GetMapping("/{agentId}/count/approved")
