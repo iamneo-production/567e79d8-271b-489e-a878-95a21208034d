@@ -12,11 +12,13 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     List<Property> findByAddressContainingIgnoreCase(String location);
 
-//    long countByAgentIdAndStatusAndVerificationStatus(long agentId, String status, String verificationStatus);
+    // long countByAgentIdAndStatusAndVerificationStatus(long agentId, String
+    // status, String verificationStatus);
 
-//    long countByAgentIdAndVerificationStatus(long agentId, String verificationStatus);
+    // long countByAgentIdAndVerificationStatus(long agentId, String
+    // verificationStatus);
 
-//    List<Property> findByAgentId(long agentId);
+    // List<Property> findByAgentId(long agentId);
 
-//    long countByAgentId(long agentId);
+    // long countByAgentId(long agentId);
 }

@@ -1,17 +1,10 @@
 package com.example.springapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.Calendar;
 import com.example.springapp.model.Agent;
-import com.example.springapp.model.Property;
 import com.example.springapp.service.AgentService;
 
 import java.util.List;
@@ -23,7 +16,7 @@ import java.util.Optional;
 @RestController
 public class AgentController {
 
-    private Map<String, List<Integer>> viewsData = new HashMap<>();
+    private static Map<String, List<Integer>> viewsData = new HashMap<>();
     private final AgentService agentService;
 
     public AgentController(AgentService agentService) {

@@ -24,27 +24,27 @@ public class PropertyService {
 		return propertyRepo.findAll();
 	}
 
-//	public int findpending() {
-//		int count = 0;
-//		List<Property> properties = new ArrayList<>();
-//		propertyRepo.findAll().forEach(properties::add);
-//		for (int i = 0; i < properties.size(); i++) {
-//			if (properties.get(i).getStatus().equals("Pending"))
-//				count++;
-//		}
-//		return count;
-//	}
+	// public int findpending() {
+	// int count = 0;
+	// List<Property> properties = new ArrayList<>();
+	// propertyRepo.findAll().forEach(properties::add);
+	// for (int i = 0; i < properties.size(); i++) {
+	// if (properties.get(i).getStatus().equals("Pending"))
+	// count++;
+	// }
+	// return count;
+	// }
 
-//	public int findcancelled() {
-//		int count = 0;
-//		List<Property> properties = new ArrayList<>();
-//		propertyRepo.findAll().forEach(properties::add);
-//		for (int i = 0; i < properties.size(); i++) {
-//			if (properties.get(i).getStatus().equals("Cancelled"))
-//				count = count + 1;
-//		}
-//		return count;
-//	}
+	// public int findcancelled() {
+	// int count = 0;
+	// List<Property> properties = new ArrayList<>();
+	// propertyRepo.findAll().forEach(properties::add);
+	// for (int i = 0; i < properties.size(); i++) {
+	// if (properties.get(i).getStatus().equals("Cancelled"))
+	// count = count + 1;
+	// }
+	// return count;
+	// }
 
 	public void addProperty(Property property, Long agentId) {
 		User agent = userRepository.findById(agentId).orElseThrow();

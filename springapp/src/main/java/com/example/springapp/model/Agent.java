@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 
 @Entity
-@Table(name="Agent")
+@Table(name = "Agent")
 public class Agent {
 
     @Id
@@ -16,15 +19,23 @@ public class Agent {
     private String email;
     private String phone;
     private String description;
+    private String profileImageUrl;
+
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
+    private List<Property> properties;
 
     public Agent() {
     }
 
-    public Agent(Long id, String name, String email, String phone) {
+    public Agent(Long id, String name, String email, String phone, String description, String profileImageUrl,
+            List<Property> properties) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.description = description;
+        this.profileImageUrl = profileImageUrl;
+        this.properties = properties;
     }
 
     public Long getId() {
@@ -58,11 +69,29 @@ public class Agent {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}	
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
 
 }

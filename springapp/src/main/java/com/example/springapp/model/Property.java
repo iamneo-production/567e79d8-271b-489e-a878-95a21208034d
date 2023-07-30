@@ -4,21 +4,23 @@ import com.example.springapp.config.user.User;
 
 import javax.persistence.*;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table(name = "Property")
 public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    private long agentId;
     private String title;
     private String description;
     private String address;
     private Double price;
     private String type;
     private String status;
-//    private String verificationStatus; //availableorsold
 
     @ManyToOne
     @JoinColumn(name = "agent_id")
@@ -30,6 +32,40 @@ public class Property {
 
     public void setAgent(User agent) {
         this.agent = agent;
+    }
+
+//    @ManyToOne
+//    @JsonBackReference
+//     private Agent agent;
+
+    @OneToMany(mappedBy = "property")
+    @JsonManagedReference
+    private List<PropertyImage> ImageUrls;
+
+    @OneToMany(mappedBy = "property")
+    @JsonManagedReference
+    private List<PropertyVideo> VideoUrls;
+
+    @OneToMany(mappedBy = "property")
+    @JsonManagedReference
+    private List<PropertyFeature> features;
+
+    public Property() {
+    }
+
+    public Property(Long id, String title, String description, String address, Double price, String type, String status,
+            Agent agent, List<PropertyImage> ImageUrls, List<PropertyVideo> VideoUrls, List<PropertyFeature> features) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.address = address;
+        this.price = price;
+        this.type = type;
+        this.status = status;
+//        this.agent = agent;
+        this.ImageUrls = ImageUrls;
+        this.VideoUrls = VideoUrls;
+        this.features = features;
     }
 
     public Long getId() {
@@ -79,6 +115,7 @@ public class Property {
     public void setType(String type) {
         this.type = type;
     }
+
     public String getStatus() {
         return status;
     }
@@ -87,36 +124,27 @@ public class Property {
         this.status = status;
     }
 
-    public Property(Long id, String title, String description, String address, Double price, String type,String status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.address = address;
-        this.price = price;
-        this.type = type;  
-        this.status=status;
+    public List<PropertyImage> getImageUrls() {
+        return ImageUrls;
     }
 
-    public Property() {
+    public void setImageUrls(List<PropertyImage> ImageUrls) {
+        this.ImageUrls = ImageUrls;
     }
 
-//    public long getAgentId() {
-//        return agentId;
-//    }
-//
-//    public void setAgentId(long agentId) {
-//        this.agentId = agentId;
-//    }
+    public List<PropertyVideo> getVideoUrls() {
+        return VideoUrls;
+    }
 
-//    public String getVerificationStatus() {
-//        return verificationStatus;
-//    }
-//
-//    public void setVerificationStatus(String verificationStatus) {
-//        this.verificationStatus = verificationStatus;
-//    }
+    public void setVideoUrls(List<PropertyVideo> VideoUrls) {
+        this.VideoUrls = VideoUrls;
+    }
 
-    
+    public List<PropertyFeature> getFeatures() {
+        return features;
+    }
 
-
+    public void setFeatures(List<PropertyFeature> features) {
+        this.features = features;
+    }
 }

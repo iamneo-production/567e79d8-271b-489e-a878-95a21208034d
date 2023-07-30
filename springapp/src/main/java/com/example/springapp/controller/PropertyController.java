@@ -26,7 +26,7 @@ import java.util.Calendar;
 @RestController
 public class PropertyController {
 
-	private Map<String, List<Integer>> viewsData = new HashMap<>();
+	private static Map<String, List<Integer>> viewsData = new HashMap<>();
 
 	@Autowired
 	private PropertyService propertyService;
@@ -43,10 +43,10 @@ public class PropertyController {
 		}
 	}
 
-//	@RequestMapping("/properties/count1")
-//	public int getCountPending() {
-//		return propertyService.findpending();
-//	}
+	// @RequestMapping("/properties/count1")
+	// public int getCountPending() {
+	// return propertyService.findpending();
+	// }
 
 	@PutMapping("api/agent/property")
 	public BaseResponceDto updateProperty(@RequestParam(value = "propertyId") String propertyId,
@@ -98,82 +98,88 @@ public class PropertyController {
 
 	// agentDashboard-backend-update
 	// AgentDashboard-approvedCount
-//	@GetMapping("/{agentId}/count/approved")
-//	public long getApprovedCountById(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentIdAndVerificationStatus(agentId,
-//				"Approved");
-//	}
+	// @GetMapping("/{agentId}/count/approved")
+	// public long getApprovedCountById(@PathVariable long agentId) {
+	// return propertyRepository.countByAgentIdAndVerificationStatus(agentId,
+	// "Approved");
+	// }
 
 	// AgentDashboard-soldCount
-//	@GetMapping("/{agentId}/count/sold")
-//	public long getSoldCountById(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentIdAndVerificationStatus(agentId,
-//				"Sold");
-//	}
+	// @GetMapping("/{agentId}/count/sold")
+	// public long getSoldCountById(@PathVariable long agentId) {
+	// return propertyRepository.countByAgentIdAndVerificationStatus(agentId,
+	// "Sold");
+	// }
 
 	// AgentDashboard-eachAgentpropertycount
-//	@GetMapping("/{agentId}/count/property")
-//	public long getTotalPropertiesByAgentId(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentId(agentId);
-//	}
+	// @GetMapping("/{agentId}/count/property")
+	// public long getTotalPropertiesByAgentId(@PathVariable long agentId) {
+	// return propertyRepository.countByAgentId(agentId);
+	// }
 
 	// AgentDashboard-propertyofeachagent
-//	@GetMapping("/{agentId}/properties")
-//	public List<Property> getPropertiesByAgentId(@PathVariable long agentId) {
-//		return propertyRepository.findByAgentId(agentId);
-//	}
+	// @GetMapping("/{agentId}/properties")
+	// public List<Property> getPropertiesByAgentId(@PathVariable long agentId) {
+	// return propertyRepository.findByAgentId(agentId);
+	// }
 
 	// AgentDashboard-AvailableforRent
-//	@GetMapping("/{agentId}/count/availableRent")
-//	public long getAvailableRentByAgentId(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
-//				"rent", "Approved");
-//	}
+	// @GetMapping("/{agentId}/count/availableRent")
+	// public long getAvailableRentByAgentId(@PathVariable long agentId) {
+	// return
+	// propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
+	// "rent", "Approved");
+	// }
 
 	// AgentDashboard-Availableforsale
-//	@GetMapping("/{agentId}/count/availableSale")
-//	public long getAvailableSaleByAgentId(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
-//				"Sale", "Approved");
-//	}
+	// @GetMapping("/{agentId}/count/availableSale")
+	// public long getAvailableSaleByAgentId(@PathVariable long agentId) {
+	// return
+	// propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
+	// "Sale", "Approved");
+	// }
 
 	// AgentDashboard-TotalRentcount
-//	@GetMapping("/{agentId}/count/totalRented")
-//	public long getTotalRentedPropertiesByAgentId(@PathVariable long agentId) {
-//		return propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
-//				"rent", "sold");
-//	}
+	// @GetMapping("/{agentId}/count/totalRented")
+	// public long getTotalRentedPropertiesByAgentId(@PathVariable long agentId) {
+	// return
+	// propertyRepository.countByAgentIdAndStatusAndVerificationStatus(agentId,
+	// "rent", "sold");
+	// }
 
 	// AgentDashboard-successPercentage
 
-//	@GetMapping("/{agentId}/successPercentage")
-//	public ResponseEntity<Double> getAgentSuccessPercentage(@PathVariable long agentId) {
-//		double successPercentage = PropertyService.calculateSuccessPercentage(agentId);
-//		return ResponseEntity.ok(successPercentage);
-//	}
+	// @GetMapping("/{agentId}/successPercentage")
+	// public ResponseEntity<Double> getAgentSuccessPercentage(@PathVariable long
+	// agentId) {
+	// double successPercentage =
+	// PropertyService.calculateSuccessPercentage(agentId);
+	// return ResponseEntity.ok(successPercentage);
+	// }
 
 	// AgentDashboard-Propertyviewcount
-//	@PostMapping("/{id}/viewsProperty")
-//	public List<Integer> addPropertyView(@PathVariable long id) {
-//
-//		Calendar cal = Calendar.getInstance();
-//		int currentMonth = cal.get(Calendar.MONTH);
-//
-//		String propertyIdStr = String.valueOf(id);
-//		List<Integer> propertyViewsData = viewsData.getOrDefault(propertyIdStr, new ArrayList<>());
-//		if (currentMonth < propertyViewsData.size()) {
-//			propertyViewsData.set(currentMonth, propertyViewsData.get(currentMonth) + 1);
-//		} else {
-//			int diff = currentMonth - propertyViewsData.size();
-//			for (int i = 0; i < diff; i++) {
-//				propertyViewsData.add(0);
-//			}
-//			propertyViewsData.add(1);
-//		}
-//
-//		viewsData.put(propertyIdStr, propertyViewsData);
-//		return propertyViewsData;
-//	}
+	// @PostMapping("/{id}/viewsProperty")
+	// public List<Integer> addPropertyView(@PathVariable long id) {
+	//
+	// Calendar cal = Calendar.getInstance();
+	// int currentMonth = cal.get(Calendar.MONTH);
+	//
+	// String propertyIdStr = String.valueOf(id);
+	// List<Integer> propertyViewsData = viewsData.getOrDefault(propertyIdStr, new
+	// ArrayList<>());
+	// if (currentMonth < propertyViewsData.size()) {
+	// propertyViewsData.set(currentMonth, propertyViewsData.get(currentMonth) + 1);
+	// } else {
+	// int diff = currentMonth - propertyViewsData.size();
+	// for (int i = 0; i < diff; i++) {
+	// propertyViewsData.add(0);
+	// }
+	// propertyViewsData.add(1);
+	// }
+	//
+	// viewsData.put(propertyIdStr, propertyViewsData);
+	// return propertyViewsData;
+	// }
 
 	// @GetMapping("/{id}/viewsProperty")
 	// public List<Integer> getpropertyViewsData(@PathVariable long id) {
