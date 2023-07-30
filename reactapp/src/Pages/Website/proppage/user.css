@@ -228,11 +228,13 @@ padding-left: 15%;
 #wishlist {
     border: none;
     margin: -10px;
+    width: auto;
+    
 }
 
 #wishlisttext {
-    margin-left: -2px;
-    margin-right: -90px;
+    /* margin: 0px -79px 0px 0px; */
+    width: auto;
 }
 
 #submitcp {
@@ -241,4 +243,9 @@ padding-left: 15%;
 
 #submitcp:hover {
     background-color:rgb(46, 163, 163);
+}
+
+#imgsize{
+    width: 420px ;
+    height: 270px;
 }
