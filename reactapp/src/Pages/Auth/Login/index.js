@@ -10,6 +10,12 @@ import { useMediaQuery } from "react-responsive";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import WebsiteHeader from "../../../Components/WebsiteHeader";
+import { EndPoints } from "../../../Config/endPoints";
+import { authPost } from "../../../Config/services";
+import Snackbar from "@mui/material/Snackbar";
+import { useDispatch } from "react-redux";
+import { logins } from "../../../provider/features/userSlice";
+import { setRole } from "../../../provider/features/roleSlice";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,11 +31,15 @@ const LoginSchema = Yup.object().shape({
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isMdUp = useMediaQuery({ minWidth: 768 });
   const [initialValues, setInitialValues] = useState({
     email: "",
     password: "",
   });
+
+  const [snack, setSnack] = useState(false);
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -46,8 +56,30 @@ export default function Login() {
       email: data?.email,
       password: data?.password,
     };
-    // dispatch(getLoginDetailsAction(payload));
-    console.log("login payload", payload);
+    await authPost(EndPoints.login, payload)
+      .then((res) => {
+        dispatch(logins(res?.data));
+        localStorage.setItem("token", res?.data?.token);
+        setSnack(true);
+        setMessage(res?.message);
+        if (res?.data?.userData?.roles === "ROLE_ADMIN") {
+          dispatch(setRole("admin"));
+          navigate("/admin/home");
+        } else if (res?.data?.userData?.roles === "ROLE_AGENT") {
+          dispatch(setRole("agent"));
+          navigate("/agent/home");
+        } else if (res?.data?.userData?.roles === "ROLE_BUYER") {
+          dispatch(setRole("buyer"));
+          navigate("/buyer/home");
+        }
+      })
+      .catch((err) => {
+        setSnack(true);
+        setMessage(err?.message);
+      });
+    setTimeout(() => {
+      setSnack(false);
+    }, 3000);
   }
   return (
     <>
@@ -201,6 +233,13 @@ export default function Login() {
           </Col>
         </Row>
       </Container>
+      <Snackbar
+        open={snack}
+        onClose={() => {
+          setSnack(false);
+        }}
+        message={message}
+      />
     </>
   );
 }

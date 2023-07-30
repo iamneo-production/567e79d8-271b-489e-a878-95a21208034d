@@ -1,7 +1,7 @@
 .profile1
 {
   width: 25%;
-  background-color:#003153;
+  background-color: #00274C;
   border-radius: 2px;
   text-align: center;
 }
@@ -16,7 +16,7 @@
 
 .profile2
 {
-  background-color:#d9d9d9;
+  background-color:#F5F5F5;
   width:75%;
   border-radius: 2px;
 }
@@ -43,6 +43,7 @@
   font-size: 17px;
   background-color: transparent;
 }
+
 
 #fgopt,#mgopt,#ogopt
 {
@@ -101,15 +102,39 @@
   margin-left: 6%;
 }
 
-/* settings */
+
 
 .field
 {
   padding: 20px;
-  background-color: rgba(250, 235, 215, 0.824);
-  border-radius: 5px;
+  background-color: rgb(249, 249, 251);
+  border-radius: 10px;
   margin:8%;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2); 
+}
+
+.field1{
+  height: 520px;
+}
+
+#head{
+  background-color: #00274C;
+  color: white;
 }
 
 
+#inputline
+{
+  width: 300px;
+}
+
+#btn-position{
+  position: absolute;
+  display: flex;
+  justify-content:space-evenly;
+  gap: 35px;
+  margin-top: 20px;
+  margin-left: 6.5%;
+  backdrop-filter: blur();
+}
 

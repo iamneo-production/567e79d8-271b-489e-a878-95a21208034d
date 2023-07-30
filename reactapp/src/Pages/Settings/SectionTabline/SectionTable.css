@@ -1,0 +1,20 @@
+.sectionstyle{
+    height: 150px;
+    width: 200px;
+    padding: 10px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+
+.sectionstyle:hover{
+    transform: translate(0, -5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.sectionstyle:hover .title2{
+    transition: transform 0.3s ease;
+    color: red;
+}
+      
