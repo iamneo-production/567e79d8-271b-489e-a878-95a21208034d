@@ -79,6 +79,7 @@ function WebsiteHeader() {
             </Nav>
             <Form className="d-flex mx-3">
               <Button
+                className="mx-5"
                 variant="link"
                 style={{ color: "#202020", fontWeight: "600" }}
                 onClick={() => {
