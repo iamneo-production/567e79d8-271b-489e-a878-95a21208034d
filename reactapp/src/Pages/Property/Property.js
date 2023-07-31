@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import * as IoIcons from "react-icons/io";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,8 +11,23 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { PropertyData } from "./PropertyData";
+import { API_BASE_URL } from "../../Config";
 
 const Property = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${API_BASE_URL}/properties/`)
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  const deleteData = (id, e) => {
+    axios.delete(`${API_BASE_URL}/properties/${id}`).then(() => {
+      if (window.confirm("Deleted")) {
+        window.location.reload();
+      }
+    });
+  };
   return (
     <>
       <Container style={{ paddingLeft: "125px", paddingTop: "50px" }}>
@@ -90,26 +106,34 @@ const Property = () => {
               <th>Property No</th>
               <th>Property Name</th>
               <th>Price</th>
-              <th>Location</th>
+              <th>Status</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {PropertyData.map((item) => {
+            {data.map((item) => {
               return (
                 <tr>
-                  <td>{item.pNo}</td>
-                  <td>{item.pName}</td>
+                  <td>{item.id}</td>
+                  <td>{item.title}</td>
                   <td>{item.price}</td>
-                  <td>{item.location}</td>
+                  <td>{item.status}</td>
                   <td>
-                    <Button variant="primary">
+                  <Button
+                      variant="primary"
+                      onClick={() =>
+                        navigate("/AdminHomepage/UpdateProperty", { state: { id: item.id } })
+                      }
+                    >
                       <AiIcons.AiFillEdit />
                     </Button>
                   </td>
                   <td>
-                    <Button variant="primary">
+                  <Button
+                      variant="primary"
+                      onClick={(e) => deleteData(item.id, e)}
+                    >
                       <FaIcons.FaTrash />
                     </Button>
                   </td>

@@ -5,6 +5,7 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import PrivateRouter from "./PrivateRouter";
 import Agents from "./Pages/Agent/Agents";
+import LayoutAgent from "./Pages/Agent/Navigation/LayoutAgent";
 import AdminHomepage from "./Pages/AdminHomepage";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
@@ -27,7 +28,7 @@ function App() {
             <Route path="/buyer/*" element={<Homepage />} />
           </Route>
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
-            <Route path="/agent/*" element={<Agents />} />
+            <Route path="/agent/*" element={<LayoutAgent />} />
           </Route>
           
         

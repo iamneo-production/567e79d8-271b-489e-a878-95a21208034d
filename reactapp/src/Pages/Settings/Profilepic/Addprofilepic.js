@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import "./Addprofilepic.css"
 import TextField from "@mui/material/TextField";
 import axios from 'axios';
+import { API_BASE_URL } from '../../../Config';
 
 export default function Addprofilepic({close}) {
   const [imgsel,setImgsel]= React.useState({imgurl:""});
@@ -18,7 +19,7 @@ export default function Addprofilepic({close}) {
 
   function UploadImageUrl()
   {
-    axios.put("http://localhost:8080/user/dp/1", imgsel)
+    axios.put(`${API_BASE_URL}/user/dp/1`, imgsel)
             
             close(false)
   }
