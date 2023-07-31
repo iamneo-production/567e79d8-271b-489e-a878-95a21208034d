@@ -11,17 +11,18 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { PropertyData } from "./PropertyData";
+import { API_BASE_URL } from "../../Config";
 
 const Property = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/properties")
+      .get(`${API_BASE_URL}/properties/`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
   const deleteData = (id, e) => {
-    axios.delete(`http://localhost:8080/properties/${id}`).then(() => {
+    axios.delete(`${API_BASE_URL}/properties/${id}`).then(() => {
       if (window.confirm("Deleted")) {
         window.location.reload();
       }

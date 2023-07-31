@@ -8,6 +8,7 @@ import FormGroup from 'react-bootstrap/esm/FormGroup';
 import FormLabel from 'react-bootstrap/esm/FormLabel';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { API_BASE_URL } from '../../Config';
 
 const UpdateAgent = () => {
     const location = useLocation();
@@ -19,7 +20,7 @@ const UpdateAgent = () => {
         const whole={name,price,status};
         axios({
           method:'put',
-          url:`http://localhost:8080/properties/${location.state.id}`,
+          url:`${API_BASE_URL}/properties/${location.state.id}`,
           data: whole
         }).then(()=>alert("Property Updated"));
       }

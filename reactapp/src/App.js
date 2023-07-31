@@ -53,7 +53,6 @@ function App() {
           <Route path="UserRecord" element={<UserRecord />} />
           <Route path="PropertyRecord" element={<PropertyRecord />} />
           <Route path="UpdateProperty" element={<UpdateProperty />} />
-          <Route path="search" element={<Search />} />
           <Route path="AdProperty" element={<AdProperty />} />
           <Route path="AddAgent" element={<AddAgent />} />
           <Route path="AddUser" element={<AddUser />} />
