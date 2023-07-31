@@ -2,19 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './Transactions.css';
 import { Container, Row, Col, Table} from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
+import { API_BASE_URL } from '../../../Config';
+import { Params } from 'react-router-dom';
 function Transactions() {
-
+     const agentId = useParams();
     const [total, setTotal] = useState(0);
     const [rent, setRent] = useState(0);
     const [sell, setSell] = useState(0);
-  
+    const API_URL = `${API_BASE_URL}/api/agents/` 
     useEffect(() => {
       fetchData();
     }, []); 
   
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/revenue'); 
+        const response = await fetch(API_URL+agentId+"/api/revenue"); 
         if (!response.ok) {
           throw new Error('Failed to fetch data from the backend.');
         }
