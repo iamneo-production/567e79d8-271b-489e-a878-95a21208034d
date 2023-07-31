@@ -8,9 +8,6 @@ import Agents from "./Pages/Agent/Agents";
 import AdminHomepage from "./Pages/AdminHomepage";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
-import WishList from "./Pages/User/UserWishList/Cards"
-import PropertyDescription from "./Pages/PropertyDescription/PropertyDetails"
-import Profile from "./Pages/Settings/Profilesettings/Profilesettings";
 function App() {
   return (
     <div>
@@ -30,8 +27,7 @@ function App() {
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
             <Route path="/agent/*" element={<Agents />} />
           </Route>
-          <Route path="/propertydescription" element={<PropertyDescription />} /> 
-          <Route path="/userwishlist" element={< WishList/>} />
+
         </Routes>
       </BrowserRouter>
     </div>
