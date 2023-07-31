@@ -211,7 +211,7 @@ function AddProperty() {
                 Submit
               </button>
               <div>
-                <Link className={"btn btn-outline-danger mx-2"}>Cancel</Link>
+                <Link className={"btn btn-outline-danger mx-2"} to={"/"}>Cancel</Link>
               </div>
             </div>
           </form>

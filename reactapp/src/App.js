@@ -16,8 +16,7 @@ import Cards from "./Pages/User/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
 import Prop from "./Pages/Website/proppage/propview";
 
-
-
+import AddProperty from "./Pages/Agent/AddProperty";
 function App() {
   return (
     <div>
@@ -27,11 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-pwd" element={<Changepass />} />
-          <Route path="property" element={<AddProperty />} />
-          <Route path="profile" element={<Profile_Update />} />
-          <Route path="dashboard" element={<AgentDashboard />} />
-          <Route path="transactions" element={<Transactions />} />
-         
+          <Route path="/addProperty" element={<AddProperty />} />
 
           <Route element={<PrivateRouter element={{ role: "admin" }} />}>
             <Route path="/admin/*" element={<AdminHomepage />} />
