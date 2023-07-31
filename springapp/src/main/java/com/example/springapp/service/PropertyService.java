@@ -2,6 +2,7 @@ package com.example.springapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.springapp.config.user.User;
 import com.example.springapp.config.user.UserRepository;
@@ -9,6 +10,7 @@ import com.example.springapp.model.Property;
 import com.example.springapp.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 
@@ -74,14 +76,23 @@ public class PropertyService {
 		return propertyRepo.findById(propertyId).orElseThrow();
 	}
 
+	// find property by id
+	@GetMapping("/api/properties/{prpertyId]")
+	public Property findById(int propertyId){
+		Optional<Property> result=propertyRepo.findById(Long.valueOf(propertyId));
+		Property property=null;
+		if(result.isPresent()){
+			property=result.get();
+		}
+		else {
+			throw  new RuntimeException("did not find property");
+		}
+		return property;
+	}
+
 	public List<Property> getPropertyByLocation(String location) {
 		return propertyRepo.findByAddressContainingIgnoreCase(location);
 	}
 
-	// public static double calculateSuccessPercentage(long agentId) {
-	// long totalProperties = propertyRepo.countByAgentId(agentId);
-	// long successfulProperties =
-	// propertyRepo.countByAgentIdAndVerificationStatus(agentId, "sold");
-	// return ((double) successfulProperties / totalProperties) * 100.0;
-	// }
+	
 }

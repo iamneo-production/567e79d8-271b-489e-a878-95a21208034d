@@ -5,16 +5,17 @@
     background-color: #F5F5F5;
     border-radius: 10px;
     margin-bottom: 2%;
+    border:3px solid white
 }
 
 .sectionstyle:hover{
     transform: translate(0, -5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s ease;
+    transition: transform 1s ease;
 }
 
-.sectionstyle:hover .title2{
-    transition: transform 0.3s ease;
+.sectionstyle:hover #nav-search{
+    border-color: red;
     color: red;
 }
       
