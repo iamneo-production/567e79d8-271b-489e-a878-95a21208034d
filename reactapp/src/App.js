@@ -42,8 +42,23 @@ function App() {
           <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route element={<PrivateRouter element={{ role: "admin" }} />}>
-            <Route path="/admin/*" element={<AdminHomepage />} />
+          <Route path="/AdminLogin" element={<AdminLogin/>}/>
+          <Route path="/AdminHomepage" element={<AdminHomepage/>}>
+          <Route path="" element={<Dashboard />} />
+          <Route path="Agents" element={<Agents />} />
+          <Route path="Users" element={<Users />} />
+          <Route path="Property" element={<Property />} />
+          <Route path="Revenue" element={<Revenue />} />
+          <Route path="AgentRecord" element={<AgentRecord />} />
+          <Route path="UserRecord" element={<UserRecord />} />
+          <Route path="PropertyRecord" element={<PropertyRecord />} />
+          <Route path="UpdateProperty" element={<UpdateProperty />} />
+          <Route path="search" element={<Search />} />
+          <Route path="AdProperty" element={<AdProperty />} />
+          <Route path="AddAgent" element={<AddAgent />} />
+          <Route path="AddUser" element={<AddUser />} />
+          <Route path="UpdateAgent" element={<UpdateAgent />} />
+          <Route path="Demo" element={<Demo />} /> 
           </Route>
           <Route element={<PrivateRouter element={{ role: "buyer" }} />}>
             <Route path="/buyer/*" element={<Users />} />
