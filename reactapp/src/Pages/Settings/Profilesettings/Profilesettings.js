@@ -14,6 +14,7 @@ import "./userstyle.css"
 import Addprofilepic from '../Profilepic/Addprofilepic';
 import axios from "axios";
 import SearchHistory from '../SearchHistory/SearchHistory';
+import { API_BASE_URL } from '../../../Config';
 
 
 
@@ -31,18 +32,15 @@ export default function Profile() {
     const forsave = () => {
         console.log(fullformdata)
         console.log("hi")
-        axios.put("http://localhost:8080/users/1",fullformdata)
-        .then(res=>console.log(res))
+        axios.put(`${API_BASE_URL}/users/1`,fullformdata)
+        .then(res=>{toast.success("saved",{
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });console.log(res)})
         .catch(err=>console.log("error",err))
     };
 
 
-    const notify = () => {
-        toast.success("saved", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-        });
-    }
-
+    
     
 
     function formdatachange(event) {
@@ -110,7 +108,6 @@ export default function Profile() {
             </div>
 
             <div className='profile2'>
-                {/* <h1 id="title-head">My Profile</h1> */}
                 <div id="btn-position">
                 <Button variant='outlined' id={showPro?"head":""} onClick={showprofile} >PROFILE</Button>
                 <Button variant='outlined' id={showHistory?"head":""} onClick={showhis} >HISTORY</Button>

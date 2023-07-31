@@ -45,7 +45,7 @@ function App() {
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
             <Route path="/agent/*" element={<LayoutAgent />} />
           </Route>
-        
+
         </Routes>
       </BrowserRouter>
     </div>
