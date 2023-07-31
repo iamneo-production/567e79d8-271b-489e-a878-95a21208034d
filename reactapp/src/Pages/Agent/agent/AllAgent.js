@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import image1 from "./Agent.jpg"
 import { Link,useParams } from "react-router-dom";
+import { API_BASE_URL } from '../../../Config';
 
 export default function AllAgent() {
   const [users, setUsers] = useState([]);
@@ -12,7 +13,7 @@ export default function AllAgent() {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get('https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/');
+    const result = await axios.get(`${API_BASE_URL}/agents`);
     setUsers(result.data);
   };
 

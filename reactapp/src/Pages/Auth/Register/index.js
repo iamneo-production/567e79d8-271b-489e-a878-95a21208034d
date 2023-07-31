@@ -71,9 +71,9 @@ export default function Register() {
     };
     await authPost(EndPoints.register, payload)
       .then((res) => {
+        navigate("/login");
         setSnack(true);
         setMessage(res?.message);
-        navigate("/login");
       })
       .catch((err) => {
         setSnack(true);

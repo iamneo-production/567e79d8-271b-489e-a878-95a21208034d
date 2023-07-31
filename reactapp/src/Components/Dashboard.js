@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import "./Dashboard.css"
+import { API_BASE_URL } from '../Config';
 import {
   LineChart,
   Line,
@@ -25,8 +26,8 @@ import { DashboardData } from './DashboardData';
 const Dashboard = () => {
   const [count,setCount]=useState('');
   const[count1,setCount1]=useState('');
-  axios.get('http://localhost:8080/agents').then((res)=>setCount(res.data.length));
-  axios.get('http://localhost:8080/properties').then((res)=>setCount1(res.data.length));
+  axios.get(`${API_BASE_URL}/agents/`).then((res)=>setCount(res.data.length));
+  axios.get(`${API_BASE_URL}/properties/`).then((res)=>setCount1(res.data.length));
   const data = [
     {
       "name": "Kolkata",

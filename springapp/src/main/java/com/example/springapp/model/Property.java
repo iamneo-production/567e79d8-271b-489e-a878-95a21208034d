@@ -1,22 +1,19 @@
 package com.example.springapp.model;
 
+import com.example.springapp.config.user.User;
+
+import javax.persistence.*;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 @Entity
 public class Property {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -26,16 +23,16 @@ public class Property {
     private String status;
 
     @ManyToOne
-    @JsonBackReference
-    private Agent agent;
+    @JoinColumn(name = "agent_id")
+    private User agent;
 
     @OneToMany(mappedBy = "property")
     @JsonManagedReference
-    private List<PropertyImage> ImageUrls;
+    private List<PropertyImage> imageUrls;
 
     @OneToMany(mappedBy = "property")
     @JsonManagedReference
-    private List<PropertyVideo> VideoUrls;
+    private List<PropertyVideo> videoUrls;
 
     @OneToMany(mappedBy = "property")
     @JsonManagedReference
@@ -45,7 +42,7 @@ public class Property {
     }
 
     public Property(Long id, String title, String description, String address, Double price, String type, String status,
-            Agent agent, List<PropertyImage> ImageUrls, List<PropertyVideo> VideoUrls, List<PropertyFeature> features) {
+            Agent agent, List<PropertyImage> imageUrls, List<PropertyVideo> videoUrls, List<PropertyFeature> features) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -53,9 +50,9 @@ public class Property {
         this.price = price;
         this.type = type;
         this.status = status;
-        this.agent = agent;
-        this.ImageUrls = ImageUrls;
-        this.VideoUrls = VideoUrls;
+//        this.agent = agent;
+        this.imageUrls = imageUrls;
+        this.videoUrls = videoUrls;
         this.features = features;
     }
 
@@ -115,28 +112,28 @@ public class Property {
         this.status = status;
     }
 
-    public Agent getAgent() {
+    public User getAgent() {
         return agent;
     }
 
-    public void setAgent(Agent agent) {
+    public void setAgent(User agent) {
         this.agent = agent;
     }
 
     public List<PropertyImage> getImageUrls() {
-        return ImageUrls;
+        return imageUrls;
     }
 
-    public void setImageUrls(List<PropertyImage> ImageUrls) {
-        this.ImageUrls = ImageUrls;
+    public void setImageUrls(List<PropertyImage> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     public List<PropertyVideo> getVideoUrls() {
-        return VideoUrls;
+        return videoUrls;
     }
 
-    public void setVideoUrls(List<PropertyVideo> VideoUrls) {
-        this.VideoUrls = VideoUrls;
+    public void setVideoUrls(List<PropertyVideo> videoUrls) {
+        this.videoUrls = videoUrls;
     }
 
     public List<PropertyFeature> getFeatures() {

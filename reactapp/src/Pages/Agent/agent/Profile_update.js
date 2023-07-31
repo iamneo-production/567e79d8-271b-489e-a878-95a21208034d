@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import image from './Agent1.jpg'
+import { API_BASE_URL } from "../../../Config";
 
 export default function Profile_update() {
   let navigate = useNavigate();
@@ -27,12 +28,12 @@ export default function Profile_update() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/`, user);
+    await axios.put(`${API_BASE_URL}/agents/`, user);
     navigate(`/viewagent/${id}`);
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`https://ide-ecedbaeaedeecbfcbdacabecfcbaedbffbeeaadbbb.project.examly.io/proxy/8080/agents/${id}`);
+    const result = await axios.get(`${API_BASE_URL}/agents/${id}`);
     setUser(result.data);
   };
 
@@ -101,7 +102,7 @@ export default function Profile_update() {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/agents/">
+            <Link className="btn btn-outline-danger mx-2" to={`/viewagent/${id}`}>
               Cancel
             </Link>
           </form>

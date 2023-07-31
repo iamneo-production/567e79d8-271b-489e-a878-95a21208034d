@@ -13,12 +13,16 @@ import Deactivate from '../Deactivate/Deactivate';
 import "./userstyle.css"
 import Addprofilepic from '../Profilepic/Addprofilepic';
 import axios from "axios";
+import SearchHistory from '../SearchHistory/SearchHistory';
 
 
 
 export default function Profile() {
     const [showdeactivate,setShowdeactivate]=React.useState(false);
     const [showAdddp,setShowAdddp]=React.useState(false);
+    const [showPro,setShowPro]=React.useState(true);
+    const [showHistory,setShowHistory]=React.useState(false);
+
     const [fullformdata, setFullformdata] = React.useState(
         { name: "", email: "", phone: "", address: "", bio: "",gender:""}
     )
@@ -60,7 +64,18 @@ export default function Profile() {
         setShowdeactivate(!showdeactivate);
     }
 
-    console.log(fullformdata.gender);
+    const showprofile=()=>
+    {
+        setShowPro(true);
+        setShowHistory(false);
+    }
+
+    const showhis=()=>
+    {
+        setShowPro(false);
+        setShowHistory(true);
+    }
+
     return (
         <div className='fullprofile'>
             <div className='profile1'>
@@ -87,7 +102,7 @@ export default function Profile() {
                     }
                 }>{fullformdata.email}</h4>
 
-                <Link to="/pwd" id="pwdroute1">
+                <Link to="/forgot-pwd" id="pwdroute1">
                     <Button variant='outlined' id="pwdroute">Update Password</Button>
                 </Link>
 
@@ -96,9 +111,12 @@ export default function Profile() {
 
             <div className='profile2'>
                 {/* <h1 id="title-head">My Profile</h1> */}
-                <Button variant='outlined' id='head'>PROFILE</Button>
+                <div id="btn-position">
+                <Button variant='outlined' id={showPro?"head":""} onClick={showprofile} >PROFILE</Button>
+                <Button variant='outlined' id={showHistory?"head":""} onClick={showhis} >HISTORY</Button>
+                </div>
                 <div className='field'>
-                    <form className="field1" >
+                  {showPro&&  <form className="field1" >
                         <div>
                             <TextField
                                 label="Full Name" variant="outlined"
@@ -163,12 +181,13 @@ export default function Profile() {
                         <Button variant="contained" onClick={forsave} >Save</Button><br/>
 
 
-                    </form>
-                    
+                    </form>}
+                    {showHistory&& <SearchHistory/>}
                     {showdeactivate&&<Deactivate close={setShowdeactivate}/>}
                     {showAdddp&& <Addprofilepic close={setShowAdddp}/>}
                     <ToastContainer autoClose={1000} />
                 </div>
+
             </div>
         </div>
 
