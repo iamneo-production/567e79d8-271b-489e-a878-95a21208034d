@@ -22,7 +22,7 @@ console.log()
 
     useEffect(() => {
         
-        axios.get("http://localhost:8080/prop/${location.state.loaction}")
+        axios.get(`http://localhost:8080/prop/${q}`)
           .then((response) => {
             setProperties(response.data);
           })
@@ -129,9 +129,8 @@ console.log()
             return { ...prevStatus, [propertyId]: true };
         });
     };
-    const queryParams = new URLSearchParams({ key: 'query' });
-    const queryParamValue = queryParams.get('key');
-    console.log(location.state.location);
+    const params = new URLSearchParams(window.location.search)
+    const q = params.get("query")
 
 
     return (
@@ -150,7 +149,7 @@ console.log()
                     </div>
                 </nav>
 
-                <h4>Showing Results For {location.state.location}</h4>
+                <h4>Showing Results For {q}</h4>
 
 
                 <div className="container-xxl py-5">
@@ -305,7 +304,7 @@ console.log()
                                         <p><i className="fa fa-map-marker-alt text-primary me-2"></i>{property.location}</p>
                                     </div>
                                     <div className="d-flex border-top">
-                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>{property.sqft}</small>
                                         <small className="flex-fill text-center border-end py-2"><i className="fa fa-bed text-primary me-2"></i>{property.bed}</small>
                                         <small className="flex-fill text-center py-2"><i className="fa fa-bath text-primary me-2"></i>{property.bath}</small>
                                     </div>
@@ -354,11 +353,11 @@ console.log()
                                     </div>
                                     <div className="property-item rounded overflow-hidden">
                                         <h5 className="text-primary-emphasis mb-3">{property.price}</h5>
-                                        <a className="d-block h5 mb-2 text-primary-emphasis" href="">{property.title}</a>
+                                        <a className="d-block h5 mb-2 text-primary-emphasis" href={property.link}>{property.title}</a>
                                         <p><i className="fa fa-map-marker-alt text-primary me-2"></i>{property.location}</p>
                                     </div>
                                     <div className="d-flex border-top">
-                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>{property.sqft}</small>
                                         <small className="flex-fill text-center border-end py-2"><i className="fa fa-bed text-primary me-2"></i>{property.bed}</small>
                                         <small className="flex-fill text-center py-2"><i className="fa fa-bath text-primary me-2"></i>{property.bath}</small>
                                     </div>
@@ -396,11 +395,11 @@ console.log()
                                     </div>
                                     <div className="property-item rounded overflow-hidden">
                                         <h5 className="text-primary-emphasis mb-3">{property.price}</h5>
-                                        <a className="d-block h5 mb-2 text-primary-emphasis" href="">{property.title}</a>
+                                        <a className="d-block h5 mb-2 text-primary-emphasis" href={property.link}>{property.title}</a>
                                         <p><i className="fa fa-map-marker-alt text-primary me-2"></i>{property.location}</p>
                                     </div>
                                     <div className="d-flex border-top">
-                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-ruler-combined text-primary me-2"></i>{property.sqft}</small>
                                         <small className="flex-fill text-center border-end py-2"><i className="fa fa-bed text-primary me-2"></i>{property.bed}</small>
                                         <small className="flex-fill text-center py-2"><i className="fa fa-bath text-primary me-2"></i>{property.bath}</small>
                                     </div>

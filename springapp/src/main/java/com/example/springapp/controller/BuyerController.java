@@ -28,40 +28,33 @@ public class BuyerController {
     @Autowired
     private BuyerHistoryRepository buyerHisRepo;
 
-
-
     // Show buyer by id
     @GetMapping("/user/{id}")
-    public Optional<Buyer> showbuyerbyid(@PathVariable Long id)
-    {
+    public Optional<Buyer> showbuyerbyid(@PathVariable Long id) {
         return buyerService.alluserbyid(id);
     }
 
     // Update buyer details by id
     @PutMapping("/users/{id}")
-    public Buyer updatebuyerid(@PathVariable Long id,@RequestBody BuyerDto user)
-    {
+    public Buyer updatebuyerid(@PathVariable Long id, @RequestBody BuyerDto user) {
         return buyerService.updateuser(id, user);
     }
 
     // Update buyer profile picture by id
     @PutMapping("/user/dp/{id}")
-    public Buyer changepic(@PathVariable Long id,@RequestBody BuyerImgDto user)
-    {
+    public Buyer changepic(@PathVariable Long id, @RequestBody BuyerImgDto user) {
         return buyerService.updatedp(id, user);
     }
 
     // Delete buyer by id
     @DeleteMapping("/user/delete/{id}")
-    public String accountDelete(@PathVariable Long id)
-    {
+    public String accountDelete(@PathVariable Long id) {
         return buyerService.deletebyid(id);
     }
 
     // Update password by id
     @PutMapping("pass/{id}")
-    public Buyer changepass(@PathVariable Long id,@RequestBody PassDto pass)
-    {
+    public Buyer changepass(@PathVariable Long id, @RequestBody PassDto pass) {
         return buyerService.pass(id, pass);
     }
 
@@ -87,9 +80,10 @@ public class BuyerController {
     }
 
     // Find history by id
-//    @GetMapping("/users/{userId}/histories")
-//    public ResponseEntity<List<BuyerHistory>> getSearchHistoriesByUserId(@PathVariable Long userId) {
-//        List<BuyerHistory> searchHistories = buyerHisRepo.findByUserId(userId);
-//        return ResponseEntity.of(Optional.ofNullable(searchHistories));
-//    }
+    // @GetMapping("/users/{userId}/histories")
+    // public ResponseEntity<List<BuyerHistory>>
+    // getSearchHistoriesByUserId(@PathVariable Long userId) {
+    // List<BuyerHistory> searchHistories = buyerHisRepo.findByUserId(userId);
+    // return ResponseEntity.of(Optional.ofNullable(searchHistories));
+    // }
 }
