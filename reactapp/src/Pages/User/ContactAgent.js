@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { GoMail } from "react-icons/go";
 import { BsPhone } from "react-icons/bs";
-const ContactAgent = ({ Agent }) => {
+const ContactAgent = ({ agent }) => {
+  console.log(agent)
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -49,20 +50,20 @@ const ContactAgent = ({ Agent }) => {
                     fontSize: "17px",
                   }}
                 >
-                  {Agent.agentName}
+                  {agent.firstName+" "+agent.lastName}
                 </p>
                 <p className="mail-icon">
                   <BsPhone />
-                  <span> {Agent.contactNo}</span>
+                  <span> {agent.mobile}</span>
                 </p>
                 <p className="mail-icon">
                   <GoMail />
-                  <span> {Agent.email}</span>
+                  <span> {agent.email}</span>
                 </p>
               </div>
 
               <img
-                src={Agent.url}
+                src="images/img9.png"
                 class="rounded"
                 alt="Profile image"
                 width={"20%"}

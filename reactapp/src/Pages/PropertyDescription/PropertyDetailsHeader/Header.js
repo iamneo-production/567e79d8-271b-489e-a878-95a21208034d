@@ -27,7 +27,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 import { del, get,post } from "../../../Config/services";
-const Header = ({ property }) => {
+const Header = ({ property,Id}) => {
   // current page url
   const currentPageUrl = window.location.href;
   //const currentPageUrl = "http://192.168.195.123:3000/";
@@ -35,7 +35,7 @@ const Header = ({ property }) => {
   //fav icon
   const [addToFav, setAddToFav] = useState(false);
   const [favLoad, setFavLoad] = useState(true);
-  const userId=7;
+  const userId=10;
   //const GET_URL="http://localhost:7070/favourites/";
   const GET_URL=`${API_BASE_URL}/api/userwishlist/`;
   const handleFavClick = () => {
@@ -43,7 +43,7 @@ const Header = ({ property }) => {
     if(addToFav){
       const getFavId=async ()=>{
         try{
-          const res=await get(GET_URL+userId+"/"+property.propertyId);
+          const res=await get(GET_URL+userId+"/"+Id);
           const responseFav=await res;
           const DEL_URL=`${API_BASE_URL}/api/userwishlist/`+responseFav.id;
             const deleteOptions={
@@ -60,7 +60,7 @@ const Header = ({ property }) => {
     else{
       const API_URL=`${API_BASE_URL}/api/userwishlist`;
       const addNewFav = async () =>{
-        const newFav={"propertyId":property.propertyId,"userId":userId};
+        const newFav={"propertyId":Id,"userId":userId};
         const postOptions={
           method:"POST",
           headers:{
@@ -87,10 +87,32 @@ const Header = ({ property }) => {
     );
     setAddToFav(!addToFav);
   };
+  var title,status,address;
+  const Property_URL = `${API_BASE_URL}/api/properties/`;
+  const [loadDisplay,setLoadDisplay]=useState({});
+  useEffect(()=>{
+    const fetchItems=async () => {
+      try{
+        const response= await get(Property_URL+Id);
+        const listItems=await response;
+        console.log(listItems);
+        const display={
+          title:listItems.title,
+          status:listItems.status,
+          address:listItems.address
+        }
+        setLoadDisplay(display);
+      }
+      catch(err){
+        console.log(err.stack);
+      }
+    };
+    fetchItems();
+  },[]);
   useEffect(() => {
     const getFavId=async ()=>{
       try{
-        const response=await get(GET_URL+userId+"/"+property.propertyId);
+        const response=await get(GET_URL+userId+"/"+Id);
         const responseFav=await response;
         if(responseFav!=null){
           setAddToFav(true);
@@ -124,7 +146,7 @@ const Header = ({ property }) => {
           }}
         >
           <h2>
-            {property.title} for {property.status}
+            {loadDisplay.title} for {loadDisplay.status}
           </h2>
           <div
             style={{
@@ -226,8 +248,7 @@ const Header = ({ property }) => {
           <p className="header-detail">
             <BiMap />
             <span>
-              {property.address.street} , {property.address.city} ,
-              {property.address.pinCode}
+              {loadDisplay.address} 
             </span>
           </p>
           <section>
