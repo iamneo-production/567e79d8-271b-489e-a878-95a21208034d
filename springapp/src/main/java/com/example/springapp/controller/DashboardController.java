@@ -18,8 +18,9 @@ import com.example.springapp.repository.DashboardRepository;
 import com.example.springapp.service.PropertyService;
 import com.example.springapp.model.Agent;
 import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
-@CrossOrigin(origins = "http://localhost:3002")
+@CrossOrigin
 @RequestMapping("/api/agents")
 public class DashboardController {
     private final DashboardRepository dashboardRepository;

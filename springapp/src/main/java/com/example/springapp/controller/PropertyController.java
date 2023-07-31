@@ -23,8 +23,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.Calendar;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin
+
 public class PropertyController {
 
 	private static Map<String, List<Integer>> viewsData = new HashMap<>();

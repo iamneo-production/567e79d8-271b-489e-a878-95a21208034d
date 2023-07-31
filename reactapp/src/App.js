@@ -11,12 +11,12 @@ import AdminHomepage from "./Pages/AdminHomepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import AllAgent from "./Pages/Agent/agent/AllAgent";
 import ViewAgent from "./Pages/Agent/agent/ViewAgent";
-import Profilesettings from "./Pages/Settings/Profilesettings/Profilesettings";
 import Cards from "./Pages/User/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
 import Prop from "./Pages/Website/proppage/propview";
 
 import AddProperty from "./Pages/Agent/AddProperty";
+import Profile from "./Pages/Settings/Profilesettings/Profilesettings";
 function App() {
   return (
     <div>
@@ -40,7 +40,7 @@ function App() {
             <Route path="/homepage" element={<Homepage/>}/>
             <Route path="/helppage" element={<Helppage/>}/>
             <Route path="/agent" element={<AllAgent/>}/>
-            <Route path="/settings" element={<Profilesettings/>}/>
+            <Route path="/settings" element={<Profile/>}/>
             <Route path="/fav" element={<Cards/>}/>
             <Route exact path="/viewagent/:id" element={<ViewAgent/>} />
             <Route exact path="/propertyDescription" element={<PropertyDetails/>} />
