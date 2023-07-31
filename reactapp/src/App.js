@@ -16,10 +16,17 @@ import AddProperty from "./Pages/Agent/agent/AddProperty";
 import Prop from "./Pages/Website/proppage/propview";
 import Cards from "./Pages/User/UserWishList/Cards";
 import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
-import Profile_update from "./Pages/Agent/agent/Profile_update";
 import AllAgent from "./Pages/Agent/agent/AllAgent";
 import ViewAgent from "./Pages/Agent/agent/ViewAgent";
 import UpdateProperty from "./Pages/Property/UpdateProperty";
+import Dashboard from "./Components/Dashboard";
+import Users from "./Pages/User/Users";
+import Property from "./Pages/Property/Property";
+import Revenue from "./Components/Revenue";
+import AddAgent from "./Pages/Agent/AddAgents";
+import UpdateAgent from "./Pages/Agent/UpdateAgent";
+import AddUser from "./Pages/User/AddUser";
+import AdProperty from "./Pages/Property/AdProperty";
 
 function App() {
   return (
@@ -36,8 +43,17 @@ function App() {
           <Route path="transactions" element={<Transactions />} />
          
 
-          <Route element={<PrivateRouter element={{ role: "admin" }} />}>
-            <Route path="/admin/*" element={<AdminHomepage />} />
+          <Route path="/AdminHomepage" element={<AdminHomepage/>}>
+          <Route path=""  element={<Dashboard/>}/>
+          <Route path="Agents" element={<Agents/>}/>
+          <Route path="Users" element={<Users/>}/>
+          <Route path="Property" element={<Property/>}/>
+          <Route path="Revenue" element={<Revenue/>}/>
+          <Route path="AddAgent" element={<AddAgent/>}/>
+          <Route path="UpdateAgent" element={<UpdateAgent/>}/>
+          <Route path="AddUser" element={<AddUser/>}/>
+          <Route path="AddProperty" element={<AdProperty/>}/>
+          <Route path="UpdateProperty" element={<UpdateProperty/>}/>
           </Route>
           <Route element={<PrivateRouter element={{ role: "buyer" }} />}>
             <Route path="/buyer/*" element={<Homepage />} />
