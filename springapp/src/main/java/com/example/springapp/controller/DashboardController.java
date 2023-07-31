@@ -13,12 +13,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import com.backend.backend.model.Property;
-import com.backend.backend.repository.DashboardRepositoryRepository;
-import com.backend.backend.service.PropertyService;
+import com.example.springapp.model.Property;
+import com.example.springapp.repository.DashboardRepository;
+import com.example.springapp.service.PropertyService;
+import com.example.springapp.model.Agent;
 import java.util.Map;
-
-
 @RestController
 @CrossOrigin(origins = "http://localhost:3002")
 @RequestMapping("/api/agents")
@@ -36,51 +35,51 @@ public class DashboardController {
         
     }
 
-    @GetMapping("/{agentId}/count/cancelled")
+    /*@GetMapping("/{agentId}/count/cancelled")
     public long getCancelledCountById(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Cancelled");
+        return dashboardRepository.countByAgentIdAndVerificationStatus(agentId, "Cancelled");
     }
 
     @GetMapping("/{agentId}/count/approved")
     public long getApprovedCountById(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Approved");
+        return dashboardRepository.countByAgentIdAndVerificationStatus(agentId, "Approved");
     }
 
     @GetMapping("/{agentId}/count/pending")
     public long getPendingCountById(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Pending");
+        return dashboardRepository.countByAgentIdAndVerificationStatus(agentId, "Pending");
     }
 
     @GetMapping("/{agentId}/count/sold")
     public long getSoldCountById(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndVerificationStatus(agentId, "Sold");
-    }
+        return dashboardRepository.countByAgentIdAndVerificationStatus(agentId, "Sold");
+    }*/
     
     @GetMapping("/{agentId}/count/property")
     public long getTotalPropertiesByAgentId(@PathVariable int agentId) {
-        return propertyRepository.countByAgentId(agentId);
+        return dashboardRepository.countByAgentId(agentId);
     }
 
     @GetMapping("/{agentId}/properties")
-    public List<Property> getPropertiesByAgentId(@PathVariable int agentId) {
+    public List<Property> getPropertiesByAgentId(@PathVariable Long agentId) {
         Agent agent = new Agent();
         agent.setId(agentId);
-        return propertyRepository.findByAgent(agent);
+        return dashboardRepository.findByAgent(agent);
     }
     
-    @GetMapping("/{agentId}/count/availableRent")
+    /*@GetMapping("/{agentId}/count/availableRent")
     public long getAvailableRentByAgentId(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "rent", "Approved");
+        return dashboardRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "rent", "Approved");
     }
     
     @GetMapping("/{agentId}/count/availableSale")
     public long getAvailableSaleByAgentId(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "Sale", "Approved");
+        return dashboardRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "Sale", "Approved");
     }
     
     @GetMapping("/{agentId}/count/totalRented")
     public long getTotalRentedPropertiesByAgentId(@PathVariable int agentId) {
-        return propertyRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "rent", "sold");
+        return dashboardRepository.countByAgentIdAndRentStatusAndVerificationStatus(agentId, "rent", "sold");
     }   
 
     @GetMapping("/{agentId}/successPercentage")
@@ -92,7 +91,7 @@ public ResponseEntity<Double> getAgentSuccessPercentage(@PathVariable int agentI
         successPercentage = ((double) successfulProperties / totalProperties) * 100.0;
     }
     return ResponseEntity.ok(successPercentage);
-}
+}*/
 
     @GetMapping("/{agentId}/views")
     public List<Integer> getAgentViewsData(@PathVariable int agentId) {
