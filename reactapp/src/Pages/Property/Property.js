@@ -12,9 +12,10 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { PropertyData } from "./PropertyData";
 import { API_BASE_URL } from "../../Config";
-
+import { useNavigate } from "react-router-dom";
 const Property = () => {
   const [data, setData] = useState([]);
+  const navigate=useNavigate();
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/properties/`)

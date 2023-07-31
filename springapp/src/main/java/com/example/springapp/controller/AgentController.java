@@ -12,8 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin
+
 public class AgentController {
 
     private static Map<String, List<Integer>> viewsData = new HashMap<>();
