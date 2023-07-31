@@ -11,7 +11,7 @@ import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import Transactions from "./Pages/Agent/Contents/Transactions";
 import AgentDashboard from "./Pages/Agent/Contents/AgentDashboard"
-import Profile_Update from "./pages/Agent/agent/Profile_update";
+import Profile_Update from "./Pages/Agent/agent/Profile_update";
 import AddProperty from "./Pages/Agent/agent/AddProperty";
 import Prop from "./Pages/Website/proppage/propview";
 import Cards from "./Pages/User/UserWishList/Cards";

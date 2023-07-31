@@ -14,19 +14,20 @@ import { AgentsData } from "./AgentsData";
 import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../../Config";
 
 const Agents = () => {
   const [data, setData] = useState([]);
   const[count,setCount]=useState('');
   useEffect(() => {
-    axios.get('http://localhost:8080/agents').then((res)=>setCount(res.data.length));
+    axios.get(`${API_BASE_URL}/agents/`).then((res)=>setCount(res.data.length));
     axios
-      .get("http://localhost:8080/agents")
+      .get(`${API_BASE_URL}/agents/`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
   const deleteData = (id, e) => {
-    axios.delete(`http://localhost:8080/agents/${id}`).then(() => {
+    axios.delete(`${API_BASE_URL}/agents/${id}`).then(() => {
       if (window.confirm("Deleted")) {
         window.location.reload();
       }
