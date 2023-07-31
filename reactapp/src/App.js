@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Helppage from "./Pages/Website/Userpage/Helppage/Helppage";
-// import Website from "./Pages/Website";
-// import Login from "./Pages/Auth/Login";
-// import Register from "./Pages/Auth/Register";
-// import PrivateRouter from "./PrivateRouter";
-// import Agents from "./Pages/Agent/Agents";
-// import AdminHomepage from "./Pages/AdminHomepage";
-// import Changepass from "./Pages/Auth/Changepass/Changepassword";
+import Website from "./Pages/Website";
+import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
+import PrivateRouter from "./PrivateRouter";
+import Agents from "./Pages/Agent/Agents";
+import AdminHomepage from "./Pages/AdminHomepage";
+import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import AllAgent from "./Pages/Agent/agent/AllAgent";
 import ViewAgent from "./Pages/Agent/agent/ViewAgent";
 import Profilesettings from "./Pages/Settings/Profilesettings/Profilesettings";
@@ -23,10 +23,15 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Website />} />
+          <Route path="/" element={<Website />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-pwd" element={<Changepass />} />
+          <Route path="property" element={<AddProperty />} />
+          <Route path="profile" element={<Profile_Update />} />
+          <Route path="dashboard" element={<AgentDashboard />} />
+          <Route path="transactions" element={<Transactions />} />
+         
 
           <Route element={<PrivateRouter element={{ role: "admin" }} />}>
             <Route path="/admin/*" element={<AdminHomepage />} />
@@ -36,7 +41,7 @@ function App() {
           </Route>
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
             <Route path="/agent/*" element={<Agents />} />
-          </Route> */}
+          </Route>
             <Route path="/homepage" element={<Homepage/>}/>
             <Route path="/helppage" element={<Helppage/>}/>
             <Route path="/agent" element={<AllAgent/>}/>

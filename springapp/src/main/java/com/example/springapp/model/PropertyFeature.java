@@ -30,6 +30,12 @@ public class PropertyFeature {
     private String playGround;
     private String Elevator;
     private String Garden;
+    private String location;
+    private String bed;
+    private String bath;
+    private String rent;
+
+
 
     @ManyToOne
     @JsonBackReference
@@ -39,7 +45,7 @@ public class PropertyFeature {
     }
 
     public PropertyFeature(Long id, String waterSupply, String swimmingPool, String gym, String playGround,
-            String elevator, String garden, Property property) {
+            String elevator, String garden, Property property, String location, String bed, String bath, String rent) {
         this.id = id;
         this.waterSupply = waterSupply;
         this.swimmingPool = swimmingPool;
@@ -48,6 +54,10 @@ public class PropertyFeature {
         Elevator = elevator;
         Garden = garden;
         this.property = property;
+        this.location = location;
+        this.bed = bed;
+        this.bath = bath;
+        this.rent = rent;
     }
 
     public Long getId() {
@@ -112,5 +122,21 @@ public class PropertyFeature {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public String getlocation() {
+        return location;
+    }
+
+    public String getbed() {
+        return bed;
+    }
+
+    public String getbath() {
+        return bath;
+    }
+
+    public String getrent() {
+        return rent;
     }
 }

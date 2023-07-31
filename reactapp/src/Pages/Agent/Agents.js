@@ -17,14 +17,16 @@ import axios from "axios";
 
 const Agents = () => {
   const [data, setData] = useState([]);
+  const[count,setCount]=useState('');
   useEffect(() => {
+    axios.get('http://localhost:8080/agents').then((res)=>setCount(res.data.length));
     axios
-      .get("http://localhost:8080/api/v1/employees")
+      .get("http://localhost:8080/agents")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
   const deleteData = (id, e) => {
-    axios.delete(`http://localhost:8080/api/v1/employees/${id}`).then(() => {
+    axios.delete(`http://localhost:8080/agents/${id}`).then(() => {
       if (window.confirm("Deleted")) {
         window.location.reload();
       }
@@ -47,7 +49,7 @@ const Agents = () => {
                 <FaIcons.FaUserSecret className="fa-5x" />
                   <h4 className="first" style={{ color: "black" }}>
                     Agent Count
-                    20
+                    {count}
                   </h4>
               </Card.Body>
             </Card>
@@ -107,7 +109,8 @@ const Agents = () => {
             <tr>
               <th>Agent No</th>
               <th>Agent Name</th>
-              <th>Property Count</th>
+              <th>Email</th>
+              <th>Phone</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
@@ -117,13 +120,14 @@ const Agents = () => {
               return (
                 <tr>
                   <td>{item.id}</td>
-                  <td>{item.firstname}</td>
-                  <td>{item.lastname}</td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
                   <td>
                     <Button
                       variant="primary"
                       onClick={() =>
-                        navigate("/UpdateAgent", { state: { id: item.id } })
+                        navigate("/AdminHomepage/UpdateAgent", { state: { id: item.id } })
                       }
                     >
                       <AiIcons.AiFillEdit />
