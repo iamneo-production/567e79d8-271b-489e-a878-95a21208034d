@@ -7,6 +7,7 @@ import { Line } from 'react-chartjs-2';
 import {Icon} from 'leaflet';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from "../../../Config";
 import {
   Chart as ChartJS,
   LineElement,
@@ -42,51 +43,51 @@ function Dashboard() {
   const [chartData, setChartData] = useState({ labels: [], datasets: [{ data: [] }] });
   const [selectedPropertyId, setSelectedPropertyId] = useState('');
   const [propertyMarkers, setPropertyMarkers] = useState([]);
-
+  const API_URL = `${API_BASE_URL}/api/agents/`
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const totalResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/property`);
+        const totalResponse = await fetch(API_URL+agentId+"/count/property");
         const totalData = await totalResponse.json();
         setTotal(totalData);
   
-        const currentResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/approved`);
+        const currentResponse = await fetch(API_URL+agentId+"/count/approved");
         const currentData = await currentResponse.json();
         setCurrent(currentData);
   
-        const soldResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/sold`);
+        const soldResponse = await fetch(API_URL+agentId+"/count/sold");
         const soldData = await soldResponse.json();
         setSold(soldData);
   
-        const verifyResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/pending`);
+        const verifyResponse = await fetch(API_URL+agentId+"/count/pending");
         const verifyData = await verifyResponse.json();
         setVerify(verifyData);
   
-        const cancelResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/cancelled`);
+        const cancelResponse = await fetch(API_URL+agentId+"/count/cancelled");
         const cancelData = await cancelResponse.json();
         setCancel(cancelData);
   
-        const propertiesResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/properties`);
+        const propertiesResponse = await fetch(API_URL+agentId+"/properties");
         const propertiesData = await propertiesResponse.json();
         setPropertyData(propertiesData);
   
-        const availableRentResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/availableRent`);
+        const availableRentResponse = await fetch(API_URL+agentId+"/count/availableRent");
         const availableRentData = await availableRentResponse.json();
         setAvailableRent(availableRentData);
   
-        const availableSaleResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/availableSale`);
+        const availableSaleResponse = await fetch(API_URL+agentId+"/count/availableSale");
         const availableSaleData = await availableSaleResponse.json();
         setAvailableSale(availableSaleData);
   
-        const totalRentedResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/count/totalRented`);
+        const totalRentedResponse = await fetch(API_URL+agentId+"/count/totalRented");
         const totalRentedData = await totalRentedResponse.json();
         setTotalRented(totalRentedData);
   
-        const rateResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/successPercentage`);
+        const rateResponse = await fetch(API_URL+agentId+"/successPercentage");
         const rateData = await rateResponse.json();
         setRate(rateData);
 
-        const propertyResponse = await fetch(`http://localhost:8080/api/agents/${agentId}/properties`);
+        const propertyResponse = await fetch(API_URL+agentId+"/properties");
         const propertyData = await propertyResponse.json();
         const propertyMarkersData = propertyData.map((property) => ({
           geocode: [property.latitude, property.longitude],
@@ -110,7 +111,7 @@ function Dashboard() {
 
   const fetchTotalViews = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/agents/${agentId}/views`);
+      const response = await axios.get(API_URL+agentId+"/views");
       updateChartData(response.data);
     } catch (error) {
       console.error('Error fetching total views:', error);
@@ -201,7 +202,7 @@ const fetchTotal = async () => {
       return;
     }
 
-    const response = await axios.get(`http://localhost:8080/api/agents/${selectedPropertyId}/viewsProperty`);
+    const response = await axios.get(API_BASE_URL+"/api/agents/"+selectedPropertyId+"/viewsProperty");
     updatePropertyTrafficData(response.data);
   } catch (error) {
     console.error('Error fetching total views:', error);
