@@ -13,6 +13,14 @@ import Transactions from "./Pages/Agent/Contents/Transactions";
 import AgentDashboard from "./Pages/Agent/Contents/AgentDashboard"
 import Profile_Update from "./pages/Agent/agent/Profile_update";
 import AddProperty from "./Pages/Agent/agent/AddProperty";
+import Prop from "./Pages/Website/proppage/propview";
+import Cards from "./Pages/User/UserWishList/Cards";
+import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
+import Profile_update from "./Pages/Agent/agent/Profile_update";
+import AllAgent from "./Pages/Agent/agent/AllAgent";
+import ViewAgent from "./Pages/Agent/agent/ViewAgent";
+import UpdateProperty from "./Pages/Property/UpdateProperty";
+
 function App() {
   return (
     <div>
