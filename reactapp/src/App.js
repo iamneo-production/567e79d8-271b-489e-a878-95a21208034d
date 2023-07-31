@@ -1,14 +1,21 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
+import Helppage from "./Pages/Website/Userpage/Helppage/Helppage";
 import Website from "./Pages/Website";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import PrivateRouter from "./PrivateRouter";
 import Agents from "./Pages/Agent/Agents";
-import LayoutAgent from "./Pages/Agent/Navigation/LayoutAgent";
 import AdminHomepage from "./Pages/AdminHomepage";
-import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
+import AllAgent from "./Pages/Agent/agent/AllAgent";
+import ViewAgent from "./Pages/Agent/agent/ViewAgent";
+import Profilesettings from "./Pages/Settings/Profilesettings/Profilesettings";
+import Cards from "./Pages/User/UserWishList/Cards";
+import PropertyDetails from "./Pages/PropertyDescription/PropertyDetails";
+import Prop from "./Pages/Website/proppage/propview";
+
 import AddProperty from "./Pages/Agent/AddProperty";
 function App() {
   return (
@@ -28,11 +35,18 @@ function App() {
             <Route path="/buyer/*" element={<Homepage />} />
           </Route>
           <Route element={<PrivateRouter element={{ role: "agent" }} />}>
-            <Route path="/agent/*" element={<LayoutAgent />} />
+            <Route path="/agent/*" element={<Agents />} />
           </Route>
-          
-        
-        </Routes>
+            <Route path="/homepage" element={<Homepage/>}/>
+            <Route path="/helppage" element={<Helppage/>}/>
+            <Route path="/agent" element={<AllAgent/>}/>
+            <Route path="/settings" element={<Profilesettings/>}/>
+            <Route path="/fav" element={<Cards/>}/>
+            <Route exact path="/viewagent/:id" element={<ViewAgent/>} />
+            <Route exact path="/propertyDescription" element={<PropertyDetails/>} />
+            <Route exact path="/results" element={<Prop/>} />
+
+        </Routes>        
       </BrowserRouter>
     </div>
   );

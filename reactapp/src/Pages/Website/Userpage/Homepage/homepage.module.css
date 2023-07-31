@@ -14,6 +14,7 @@
     font-size: 30px;
     font-family: Arial;
     color: white;
+    
 }
 .quote{
     width: 100%;
@@ -44,7 +45,7 @@
     border-radius: 60px;
     background: white;
     padding: 10px 20px;
-    height: 59px;
+    height: 50px;
 }
 
 .search_bar input{
@@ -90,21 +91,21 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-left: 10px ;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
     color: white;
 }
 
 .img2{
-    width: 30%;
+    width: 25%;
     background-color: #00274C;
     padding-left: 20px;
 }
 .img3{
-    width: 30%;
-    padding-left: 40px;
+    width: 25%;
+    padding-left: 35px;
 }
+
 
 .why{
     width: 100%;

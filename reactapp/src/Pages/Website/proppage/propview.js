@@ -7,6 +7,7 @@ import img2 from "../../../assets/Propimg/icon-building.png"
 import img4 from "../../../assets/Propimg/icon-house.png"
 import img5 from "../../../assets/Propimg/icon-housing.png"
 import { useLocation } from "react-router-dom";
+import { API_BASE_URL } from "../../../Config";
 function Prop() {
     const [properties, setProperties] = useState([]);
     const [propertyCount, setPropertyCount] = useState(6);
@@ -35,7 +36,7 @@ console.log()
       useEffect(() => {
       if(location.state.location !== undefined){
         // axios.get("http://localhost:8080/properties")
-        axios.get(`${API_BASE_URL}/properties`)
+        axios.get(`${API_BASE_URL}/api/property/all`)
         .then((response) => {
           setProperties(response.data.filter(data => data.location === location.state.location));
         })

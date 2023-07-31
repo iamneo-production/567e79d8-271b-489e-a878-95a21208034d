@@ -16,12 +16,14 @@ import icon_5 from "../../../../assets/userpageimg/icon-5.png";
 import icon_6 from "../../../../assets/userpageimg/icon-6.png";
 import { useNavigate } from "react-router-dom";
 function Homepage() {
+
+    
     const[query,setQuery]=React.useState("");
     const history=useNavigate();
 
     const handleSearch = () => {
         
-        history(`/results?query=${encodeURIComponent(query)}` ,{state:{location:query}});
+        history(`/results` ,{state:{location:query}});
       };
 
 
@@ -30,7 +32,7 @@ function Homepage() {
       <div className={classes.top}>
         <Navbar />
       </div>
-      <div className={classes.welcome}>Welcome to Sample</div>
+      <div className={classes.welcome}>Welcome to Elite Estates</div>
       <div className={classes.quote}>Find your dream property with ease</div>
       <div className={classes.container}>
         <form className={classes.search_bar}>
