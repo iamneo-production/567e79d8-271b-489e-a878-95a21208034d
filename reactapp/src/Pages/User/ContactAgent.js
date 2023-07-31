@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { GoMail } from "react-icons/go";
 import { BsPhone } from "react-icons/bs";
-const ContactAgent = ({ Agent,agent }) => {
+const ContactAgent = ({ agent }) => {
   console.log(agent)
   const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -63,7 +63,7 @@ const ContactAgent = ({ Agent,agent }) => {
               </div>
 
               <img
-                src={Agent.url}
+                src="images/img9.png"
                 class="rounded"
                 alt="Profile image"
                 width={"20%"}

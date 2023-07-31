@@ -73,7 +73,7 @@ const CardUi = ({ favourite, handleDelete }) => {
           }}
         >
           {/*<Button variant="outline-primary">Contact Agent</Button>*/}
-          <ContactAgent Agent={favourite.NewAgent}agent={favourite.agent} />
+          <ContactAgent agent={favourite.agent} />
           <Button
             variant="outline-danger"
             onClick={() => handleDelete(favourite.favouriteId)}

@@ -149,7 +149,7 @@ const Content = ({ property,Id }) => {
       <br />
       <Button variant="outline-primary" onClick={()=> paynow()}>Buy Now !</Button>
       <span className="contact-button">
-        <ContactAgent Agent={property.Agent} agent={loadDisplay.agent} />
+        <ContactAgent agent={loadDisplay.agent} />
       </span>
     </div>
   );
