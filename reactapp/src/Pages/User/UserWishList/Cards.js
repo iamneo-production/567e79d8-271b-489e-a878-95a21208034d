@@ -95,7 +95,7 @@ const Cards = () => {
   
   const API_URL=`${API_BASE_URL}/api/userwishlist/`;
   const [favouritesList, setFavouritesList] = useState([]);
-  const userId=1;
+  const userId=3;
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -116,7 +116,8 @@ const Cards = () => {
               propertyid: favItem.propertyId,
               src: "images/img5.jpg",
               date: new Date(favItem.date),
-              Agent: {
+              agent:propertyList.agent,
+              NewAgent: {
                 agentId: 1,
                 agentName: "AgentName",
                 email: "agent@gmail.com",
