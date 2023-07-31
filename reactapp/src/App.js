@@ -10,6 +10,7 @@ import Homepage from "./Pages/Website/Userpage/Homepage/Homepage";
 import Changepass from "./Pages/Auth/Changepass/Changepassword";
 import WishList from "./Pages/User/UserWishList/Cards"
 import PropertyDescription from "./Pages/PropertyDescription/PropertyDetails"
+import Profile from "./Pages/Settings/Profilesettings/Profilesettings";
 function App() {
   return (
     <div>

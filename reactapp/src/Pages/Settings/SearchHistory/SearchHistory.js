@@ -6,17 +6,20 @@ import axios from 'axios'
 export default function SearchHistory() {
     const [api, setApi] = React.useState([])
 
-    // axios.get("http://localhost:8080/users/1")
-    // .then(res=>{
-    //     if (Array.isArray(res.data)) {
-    //     setApi(res.data);}
-    // })
-        
-    console.log(api)
+  React.useEffect(() => {
+    fetch("http://localhost:8080/user/1")
+        .then(res => res.json())
+        .then(data =>setApi(data.histories))
+        .catch(err => console.log("error", err))
+}, [api])
 
     return (
         <div className='history'>
-                <SectionTabline  title="Bangalore" titles="Bangalore" />
+               {api&&
+      api.map((dates)=>(
+        <SectionTabline title={dates.title}/>
+      ))
+}
         </div>
     )
 }
