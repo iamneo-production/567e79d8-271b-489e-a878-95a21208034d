@@ -23,7 +23,7 @@ function Homepage() {
 
     const handleSearch = () => {
         
-        history(`/results?query=${encodeURIComponent(query)}` ,{state:{location:query}});
+        history(`/results` ,{state:{location:query}});
       };
 //   const [location, setLocation] = useState("");
 //   const history = useNavigate();

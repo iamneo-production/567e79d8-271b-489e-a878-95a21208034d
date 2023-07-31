@@ -35,7 +35,7 @@ console.log()
       useEffect(() => {
       if(location.state.location !== undefined){
         // axios.get("http://localhost:8080/properties")
-        axios.get(`${API_BASE_URL}/properties`)
+        axios.get(`${API_BASE_URL}/api/property/all`)
         .then((response) => {
           setProperties(response.data.filter(data => data.location === location.state.location));
         })

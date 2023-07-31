@@ -25,6 +25,7 @@ h{
     justify-content: space-between;
     padding-left: 10%;
     padding-right: 10%;
+    flex-direction: column;
 
 }
 ul{
@@ -113,35 +114,38 @@ font-size:2em ;
 }
 
 .overlay {
-    background: rgba(49,49,49,0.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 70px;
+   margin-left: 87%;
+
+
 }
 .model_content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    pointer-events: auto;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px #ccc;
  
 }
 
 .close_model {
     position: absolute;
-    top: 30px;
-    right: 35px;
+    top: 10px;
+    right: 10px;
     padding: 5px 7px;
 }
 
 ui{
-    font-size: 25px;
+    font-size: 15px;
     gap: 30px;
     display: flex;
     flex-direction: column;
@@ -159,15 +163,14 @@ ui li a{
 }
 
 .model_content{
-    width: 500px;
-    height: 300px;
+    width: 100px;
+    height: 150px;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
-    border-radius: 100px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 button{
@@ -176,6 +179,3 @@ button{
     cursor: pointer;
 }
 
-body.active-model{
-    overflow-y: hidden;
-}
